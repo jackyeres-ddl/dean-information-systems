@@ -42,7 +42,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 @keyframes floatR{0%,100%{transform:translateY(-50%) scaleX(-1) rotate(2deg)}50%{transform:translateY(-52%) scaleX(-1) rotate(-2deg)}}
 .hero-line{position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(56,189,248,0.15),transparent);transform:translateX(-50%);pointer-events:none;}
 .hero-content{position:relative;z-index:2;max-width:760px;}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px;font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--blue-elec);}
+.hero-logo{
+  margin-bottom:20px;
+  opacity:0.92;
+}
+.hero-logo svg{
+  height:clamp(48px,8vw,72px);
+  width:auto;
+  filter:drop-shadow(0 0 22px rgba(56,189,248,0.18));
+}align-items:center;gap:10px;margin-bottom:28px;font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--blue-elec);}
 .eyebrow::before,.eyebrow::after{content:'';height:1px;width:40px;background:var(--blue-elec);opacity:0.5;}
 .hero h1{font-size:clamp(2.8rem,6vw,4.8rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--white);margin-bottom:8px;}
 .hero h1 em{font-style:normal;color:transparent;background:linear-gradient(90deg,var(--blue-bright),var(--blue-elec),var(--blue-light));-webkit-background-clip:text;background-clip:text;}
@@ -270,7 +278,7 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
 
     <div class="modal-label">Get in Touch</div>
     <h2 class="modal-title">Contact Us</h2>
-    <p class="modal-sub">Reach out directly. Expect responses within 24 hours.</p>
+    <p class="modal-sub">Reach out directly. Expect a response within 24 hours.</p>
     <div class="modal-divider"></div>
 
     <!-- Email button row -->
@@ -399,10 +407,20 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
   </svg>
   <div class="hero-line"></div>
   <div class="hero-content">
-    <div class="eyebrow">Veteran Owned &nbsp; Network Engineer &nbsp; Digital Strategist</div>
+    <div class="hero-logo">
+      <svg viewBox="0 0 320 100" aria-label="Dean Information Systems">
+        <text x="0" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#ffffff" letter-spacing="-2">D</text>
+        <text x="62" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#90caf9" letter-spacing="-2">E</text>
+        <rect x="70" y="38" width="36" height="7" rx="3" fill="#90caf9"/>
+        <text x="126" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#64b5f6" letter-spacing="-2">A</text>
+        <text x="198" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#0ea5e9" letter-spacing="-2">N</text>
+        <text x="0" y="92" font-family="Arial,sans-serif" font-weight="600" font-size="13" fill="#94a3b8" letter-spacing="6">INFORMATION SYSTEMS</text>
+      </svg>
+    </div>
+    <div class="eyebrow">Veteran Owned &nbsp; Network Engineering &nbsp; Digital Strategy</div>
     <h1>Secure Your Assets.<br><em>Scale Your Business.</em></h1>
     <div class="hero-rule"></div>
-    <p class="hero-sub">Dean brings years of network engineering and digital craftsmanship to your doorstep, delivering elite security, web administration, and growth strategy built for small businesses.</p>
+    <p class="hero-sub">Dean brings years of network engineering and digital craftsmanship to your doorstep, delivering elite security, web administration, and growth strategy built for small businesses like yours.</p>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">4<sup>+</sup></div><div class="stat-label">Years of Experience</div></div>
       <div class="stat"><div class="stat-num">100<sup>%</sup></div><div class="stat-label">Mission Focused</div></div>
@@ -497,7 +515,7 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
           </svg>
         </div>
         <h3>Performance</h3>
-        <p>Results driven mindset forged under real pressure. Deadlines are honored, and the process is transparent.</p>
+        <p>Results driven mindset forged by experience and real pressure. Deadlines are honored, and the process is transparent.</p>
       </div>
     </div>
   </div>
@@ -519,7 +537,7 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
   <div class="wrap" style="position:relative;z-index:2;">
     <div class="sec-head ctr">
       <div class="sec-label">Services</div>
-      <h2 class="sec-title">What I Deploy For You</h2>
+      <h2 class="sec-title">What We Deploy For You</h2>
       <p class="sec-sub">Three core offerings engineered to protect, grow, and optimize your digital operations.</p>
     </div>
     <div class="svc-grid">
@@ -766,7 +784,7 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
   <div class="cta-inner">
     <div class="sec-label">Ready to Secure &amp; Scale?</div>
     <h2 class="sec-title">Let's Build Something <span style="color:var(--blue-elec)">Bulletproof.</span></h2>
-    <p class="sec-sub">Let's talk about what we can do for your business. No gimmicks, just professional assistance on securing and growing your business online.</p>
+    <p class="sec-sub">Let's talk about how we can support your business. No gimmicks, just professional assistance on securing and growing your business online.</p>
     <div class="cta-btn-center">
       <button class="btn-outline-elec" onclick="openModal(event)">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
