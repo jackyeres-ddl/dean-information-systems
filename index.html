@@ -149,6 +149,76 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
   #advantage,#services,#process,#contact{padding:80px 24px;}
   footer{padding:20px 24px;flex-direction:column;text-align:center;}
 }
+
+/* ── MOBILE NAV ── */
+.mobile-menu-btn{
+  display:none;
+  background:transparent;border:1px solid rgba(56,189,248,0.3);
+  border-radius:3px;padding:8px;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+.mobile-menu-btn svg{width:20px;height:20px;stroke:var(--blue-elec);}
+.mobile-nav{
+  display:none;
+  position:fixed;top:0;left:0;right:0;bottom:0;z-index:300;
+  background:rgba(8,16,32,0.98);
+  backdrop-filter:blur(20px);
+  flex-direction:column;align-items:center;justify-content:center;gap:0;
+  opacity:0;pointer-events:none;transition:opacity .3s ease;
+}
+.mobile-nav.open{opacity:1;pointer-events:all;}
+.mobile-nav-close{
+  position:absolute;top:20px;right:20px;
+  background:transparent;border:1px solid rgba(56,189,248,0.2);
+  border-radius:3px;padding:9px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.mobile-nav-close svg{width:18px;height:18px;stroke:var(--muted);}
+.mobile-nav-logo{margin-bottom:44px;}
+.mobile-nav-logo svg{height:36px;width:auto;}
+.mobile-nav a{
+  display:block;width:100%;max-width:280px;text-align:center;
+  padding:18px 0;
+  color:var(--muted);text-decoration:none;
+  font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;
+  border-bottom:1px solid rgba(56,189,248,0.07);
+  transition:color .2s;
+}
+.mobile-nav a:first-of-type{border-top:1px solid rgba(56,189,248,0.07);}
+.mobile-nav a:hover{color:var(--white);}
+.mobile-nav-cta{
+  margin-top:32px;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 36px;border-radius:4px;
+  background:var(--blue-elec);color:var(--navy);
+  font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:all .25s;
+}
+.mobile-nav-cta svg{width:14px;height:14px;stroke:var(--navy);}
+
+/* ── MOBILE HERO TWEAKS ── */
+@media(max-width:600px){
+  .hero h1{font-size:2.2rem;letter-spacing:-1px;}
+  .hero-stats{flex-wrap:wrap;}
+  .stat{min-width:50%;border-right:none !important;border-bottom:1px solid rgba(56,189,248,0.1);}
+  .stat:nth-child(odd){border-right:1px solid rgba(56,189,248,0.1) !important;}
+  .stat:last-child,.stat:nth-last-child(2):nth-child(odd){border-bottom:none;}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .btn-primary,.btn-ghost{width:100%;max-width:300px;justify-content:center;}
+  .modal-box{padding:40px 24px 32px;}
+  .contact-row-value{font-size:.82rem;}
+  .cta-btns{flex-direction:column;align-items:center;}
+  .btn-outline-elec,.btn-outline-dim{width:100%;max-width:300px;justify-content:center;}
+  .process-track{grid-template-columns:1fr;}
+  .adv-grid{grid-template-columns:1fr;}
+  footer{font-size:10px;}
+  .sec-title{font-size:1.6rem;}
+}
+@media(max-width:960px){
+  .mobile-menu-btn{display:flex;}
+  .nav-cta{display:none;}
+}
 /* CONTACT MODAL */
 .modal-overlay{
   position:fixed;inset:0;z-index:999;
@@ -291,12 +361,12 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
     </div>
 
     <div class="modal-label">Get in Touch</div>
-    <h2 class="modal-title">Contact Ayden Dean</h2>
+    <h2 class="modal-title">Contact Us</h2>
     <p class="modal-sub">Reach out directly. Response time is mission-critical.</p>
     <div class="modal-divider"></div>
 
     <!-- Email row -->
-    <a class="contact-row" href="mailto:deaninformationsystems@gmail.com">
+          <a class="contact-row" href="mailto:dean.informationsystems@gmail.com">
       <div class="contact-row-icon">
         <svg viewBox="0 0 42 42" fill="none">
           <!-- petal ring around envelope -->
@@ -316,7 +386,7 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
       </div>
       <div class="contact-row-text">
         <div class="contact-row-type">Email</div>
-        <div class="contact-row-value">deaninformationsystems@gmail.com</div>
+        <div class="contact-row-value">dean.informationsystems@gmail.com</div>
       </div>
     </a>
 
@@ -367,7 +437,39 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
     Get in Touch
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
   </a>
+  <button class="mobile-menu-btn" onclick="openMobileNav()" aria-label="Open menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+      <line x1="3" y1="6"  x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
 </nav>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div class="mobile-nav-logo">
+    <svg viewBox="0 0 320 100" aria-label="Dean Information Systems">
+      <text x="0" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#ffffff" letter-spacing="-2">D</text>
+      <text x="62" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#90caf9" letter-spacing="-2">E</text>
+      <rect x="70" y="38" width="36" height="7" rx="3" fill="#90caf9"/>
+      <text x="126" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#64b5f6" letter-spacing="-2">A</text>
+      <text x="198" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#0ea5e9" letter-spacing="-2">N</text>
+      <text x="0" y="92" font-family="Arial,sans-serif" font-weight="600" font-size="13" fill="#94a3b8" letter-spacing="6">INFORMATION SYSTEMS</text>
+    </svg>
+  </div>
+  <a href="#advantage" onclick="closeMobileNav()">Advantage</a>
+  <a href="#services"  onclick="closeMobileNav()">Services</a>
+  <a href="#process"   onclick="closeMobileNav()">Process</a>
+  <a href="#contact"   onclick="closeMobileNav()">Contact</a>
+  <button class="mobile-nav-cta" onclick="closeMobileNav();openModal(event);">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+    Contact Ayden
+  </button>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -400,9 +502,9 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
     <div class="eyebrow">Marine Veteran &nbsp; Network Engineer &nbsp; Digital Strategist</div>
     <h1>Secure Your Assets.<br><em>Scale Your Business.</em></h1>
     <div class="hero-rule"></div>
-    <p class="hero-sub">Ayden Dean brings four years of high-stakes Marine Corps network engineering to your doorstep, delivering elite security, web administration, and growth strategy built for small businesses.</p>
+    <p class="hero-sub">Dean brings years network engineering to your doorstep, delivering elite security, web administration, and growth strategy built for small businesses.</p>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num">4<sup>+</sup></div><div class="stat-label">Years USMC</div></div>
+      <div class="stat"><div class="stat-num">4<sup>+</sup></div><div class="stat-label">Years of Experience</div></div>
       <div class="stat"><div class="stat-num">100<sup>%</sup></div><div class="stat-label">Mission Focused</div></div>
       <div class="stat"><div class="stat-num">3</div><div class="stat-label">Core Services</div></div>
       <div class="stat"><div class="stat-num">24<sup>/7</sup></div><div class="stat-label">Availability</div></div>
@@ -414,7 +516,7 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
       </button>
       <a href="#contact" class="btn-primary" onclick="openModal(event)">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-        Contact Ayden
+        Contact Us
       </a>
     </div>
   </div>
@@ -435,7 +537,7 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
     <div class="sec-head ctr">
       <div class="sec-label">The Veteran Advantage</div>
       <h2 class="sec-title">Mission-Ready. Every Time.</h2>
-      <p class="sec-sub">A Marine's ethos doesn't retire. It transforms into an unfair advantage for your business.</p>
+      <p class="sec-sub">Our ethos doesn't retire. Our mission is your growth.</p>
     </div>
     <div class="adv-grid">
 
@@ -457,7 +559,7 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
           </svg>
         </div>
         <h3>Discipline</h3>
-        <p>Marine Corps precision applied to every project. No shortcuts, no compromises, no excuses. Every deliverable meets the standard.</p>
+        <p>Precision applied to every project. No shortcuts, no compromises, no excuses. Every deliverable meets the standard.</p>
       </div>
 
       <!-- Precision -->
@@ -766,7 +868,7 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
   <div class="cta-inner">
     <div class="sec-label">Ready to Secure &amp; Scale?</div>
     <h2 class="sec-title">Let's Build Something <span style="color:var(--blue-elec)">Bulletproof.</span></h2>
-    <p class="sec-sub">Book a free strategy session. No jargon, just clear, veteran-grade guidance on securing and growing your business online.</p>
+    <p class="sec-sub">Let's talk about how we can help grow your business. No gimmicks, just clear, guidance on securing and growing your business online.</p>
     <div class="cta-btns">
       <button class="btn-outline-dim">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
@@ -820,7 +922,9 @@ loop();
 function openModal(e){if(e)e.preventDefault();document.getElementById('contactModal').classList.add('open');document.body.style.overflow='hidden';}
 function closeModal(){document.getElementById('contactModal').classList.remove('open');document.body.style.overflow='';}
 document.getElementById('contactModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal();closeMobileNav();}});
+function openMobileNav(){const n=document.getElementById('mobileNav');n.style.display='flex';requestAnimationFrame(()=>n.classList.add('open'));document.body.style.overflow='hidden';}
+function closeMobileNav(){const n=document.getElementById('mobileNav');n.classList.remove('open');setTimeout(()=>{if(!n.classList.contains('open'))n.style.display='none';},300);document.body.style.overflow='';}
 </script>
 </body>
 </html>
