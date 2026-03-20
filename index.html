@@ -12,7 +12,7 @@
 html{scroll-behavior:smooth;}
 body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--navy);}::-webkit-scrollbar-thumb{background:var(--blue-elec);border-radius:2px;}
-#bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.82;}
+#bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:1;}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:18px 56px;background:rgba(8,15,30,0.88);backdrop-filter:blur(24px);border-bottom:1px solid rgba(56,189,248,0.07);}
 .nav-links{display:flex;gap:40px;list-style:none;}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:color .2s;position:relative;}
@@ -188,29 +188,86 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
 @keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
 .shimmer{color:transparent;background:linear-gradient(100deg,#38bdf8 0%,#bae6fd 50%,#38bdf8 100%);-webkit-background-clip:text;background-clip:text;background-size:200% auto;animation:shimmer 4s linear infinite;}
 @media(max-width:1024px){
-  .hero{grid-template-columns:1fr;padding:120px 40px 80px;}
-  .hero-left{padding:0 0 48px;max-width:600px;}
-  .hero-right{border-left:none;border-top:1px solid rgba(56,189,248,0.08);padding:40px 0 0;}
-  nav{padding:16px 28px;}.nav-links,.nav-cta{display:none;}
+  nav{padding:14px 24px;}
+  .nav-links,.nav-cta{display:none;}
   .mobile-menu-btn{display:flex;}
-  #advantage,#services,#process,#contact,#versus{padding:80px 32px;}
-  .adv-header,.vs-header{grid-template-columns:1fr;}
-  .adv-header-right,.vs-header-right{border-left:none;padding-left:0;border-top:1px solid rgba(56,189,248,0.08);padding-top:16px;}
+  .hero{grid-template-columns:1fr;padding:100px 28px 72px;}
+  .hero-left{padding:0 0 40px;max-width:100%;}
+  .hero-right{border-left:none;border-top:1px solid rgba(56,189,248,0.08);padding:36px 0 0;}
+  #advantage,#services,#process,#contact,#versus{padding:72px 28px;}
+  .adv-header,.vs-header{grid-template-columns:1fr;gap:28px;}
+  .adv-header-right,.vs-header-right{border-left:none;padding-left:0;border-top:1px solid rgba(56,189,248,0.08);padding-top:20px;}
   .svc-grid{grid-template-columns:1fr;}.svc-card.tall{grid-row:span 1;}
   .process-track{grid-template-columns:1fr 1fr;}
-  .process-header{flex-direction:column;gap:24px;}
-  .cta-grid{grid-template-columns:1fr;gap:40px;}
-  footer{padding:20px 28px;flex-direction:column;text-align:center;}
-  .scroll-hint{left:32px;}
+  .process-header{flex-direction:column;gap:20px;}
+  .cta-grid{grid-template-columns:1fr;gap:48px;}
+  footer{padding:20px 24px;flex-direction:column;text-align:center;}
+  .scroll-hint{display:none;}
+  /* table: hide generic builder column on tablet */
+  .vs-table thead th:nth-child(3),.vs-table tbody td:nth-child(3){display:none;}
 }
+
 @media(max-width:640px){
-  .hero h1{font-size:2.6rem;}
+  /* NAV */
+  nav{padding:12px 20px;}
+
+  /* HERO */
+  .hero{padding:88px 20px 60px;}
+  .hero h1{font-size:2.4rem;letter-spacing:-0.5px;}
+  .hero-sub{font-size:.9rem;}
+  .hero-btn-row{flex-direction:column;align-items:stretch;gap:10px;}
+  .btn-primary{justify-content:center;padding:14px 20px;font-size:12px;}
+  .btn-ghost{text-align:center;padding:12px 0;font-size:11px;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .hero-vet-badge{font-size:9px;letter-spacing:1px;padding:11px 14px;}
+
+  /* MOBILE NAV */
+  .mobile-nav a{font-size:13px;letter-spacing:4px;padding:20px 0;}
+  .mobile-nav-cta{width:80%;text-align:center;justify-content:center;font-size:12px;padding:15px 20px;}
+
+  /* SECTIONS */
+  #advantage,#services,#process,#contact,#versus{padding:60px 20px;}
+  .label-tag{font-size:8px;letter-spacing:4px;}
   .adv-grid{grid-template-columns:1fr;}
+  .adv-card{padding:32px 24px;}
+  .adv-header-left h2,
+  .vs-header-left h2,
+  .process-header-left h2,
+  .cta-left h2{font-size:clamp(1.7rem,7vw,2.4rem);}
+
+  /* SERVICES */
+  .svc-header-row{flex-direction:column;align-items:flex-start;gap:16px;}
+  .svc-header-sub{text-align:left;max-width:100%;font-size:.875rem;}
+  .svc-card{padding:28px 22px;}
+  .svc-tag{font-size:7px;letter-spacing:3px;}
+
+  /* VS TABLE — single column on small screens */
+  .vs-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .vs-table thead th:nth-child(3),.vs-table tbody td:nth-child(3){display:table-cell;}
+  .vs-table thead th,.vs-table tbody td{padding:14px 12px;font-size:.78rem;}
+  .vs-table thead th:first-child{width:28%;}
+
+  /* PROCESS */
   .process-track{grid-template-columns:1fr;}
-  .step{border-right:none;border-bottom:1px solid rgba(56,189,248,0.07);}
-  .svc-header-row{flex-direction:column;align-items:flex-start;}
-  .svc-header-sub{text-align:left;}
+  .step{border-right:none;border-bottom:1px solid rgba(56,189,248,0.07);padding:28px 20px;}
+
+  /* FORM */
   .form-row{grid-template-columns:1fr;}
+  .contact-form{padding:24px 20px;gap:12px;}
+  .form-group input,
+  .form-group select,
+  .form-group textarea{padding:12px 14px;font-size:16px;} /* 16px prevents iOS zoom */
+  .btn-submit{padding:15px 20px;font-size:12px;letter-spacing:1.5px;}
+  .form-success{padding:40px 20px;}
+
+  /* MODAL */
+  .modal-box{padding:40px 24px 32px;}
+  .contact-row{padding:14px 14px;}
+  .contact-row-value{font-size:.85rem;}
+
+  /* FOOTER */
+  footer{padding:20px;gap:10px;font-size:10px;}
+  .footer-brand,.footer-copy{font-size:9px;}
 }
 </style>
 </head>
@@ -255,11 +312,11 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
     <text x="0" y="92" font-family="Arial,sans-serif" font-weight="600" font-size="13" fill="#94a3b8" letter-spacing="6">INFORMATION SYSTEMS</text>
   </svg>
   <ul class="nav-links">
-    <li><a href="#advantage">Advantage</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#versus">Why Dean</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#advantage" onclick="event.preventDefault();document.getElementById('advantage').scrollIntoView({behavior:'smooth'})">Advantage</a></li>
+    <li><a href="#services"  onclick="event.preventDefault();document.getElementById('services').scrollIntoView({behavior:'smooth'})">Services</a></li>
+    <li><a href="#versus"    onclick="event.preventDefault();document.getElementById('versus').scrollIntoView({behavior:'smooth'})">Why Dean</a></li>
+    <li><a href="#process"   onclick="event.preventDefault();document.getElementById('process').scrollIntoView({behavior:'smooth'})">Process</a></li>
+    <li><a href="#contact"   onclick="event.preventDefault();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a></li>
   </ul>
   <button class="nav-cta" onclick="openModal(event)">Get in Touch</button>
   <button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
@@ -270,7 +327,7 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
     <div class="hero-eyebrow">Veteran-Owned and Operated</div>
     <h1>Secure<br>your <span class="gradient-word">digital</span><br><span class="italic-serif">foundation.</span></h1>
     <div class="hero-rule"></div>
-    <p class="hero-sub">At DIS, we bring military-grade discipline to web development and digital strategy, giving small businesses the security posture and online presence they deserve.</p>
+    <p class="hero-sub">At DIS, we bring military-grade discipline to network engineering and digital strategy, giving small businesses the security posture and online presence they deserve.</p>
     <div class="hero-btn-row">
       <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
@@ -288,7 +345,7 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
     </div>
     <div class="hero-vet-badge">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      Veteran-Owned and Operated · Franklin, TN
+      Veteran-Owned and Operated · Based in Tennessee
     </div>
   </div>
   <div class="scroll-hint">Scroll to explore</div>
@@ -337,7 +394,7 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
       <div class="label-tag">Services</div>
       <div class="svc-header-row">
         <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:400;letter-spacing:-.5px;line-height:1.1;max-width:500px;">What we <span class="shimmer">deploy</span> for you</h2>
-        <p class="svc-header-sub">Three core offerings engineered to protect, grow, and optimize your digital operations.</p>
+        <p class="svc-header-sub">Three core offerings engineered to protect, build, and maintain your digital operations.</p>
       </div>
     </div>
     <div class="svc-grid">
@@ -399,7 +456,7 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
     <div class="process-track">
       <div class="step"><span class="step-num-label">Step 01</span><div class="step-icon"><svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="22" stroke="#38bdf8" stroke-width="0.8" fill="none" stroke-dasharray="3 4"/><circle cx="30" cy="30" r="14" stroke="#38bdf8" stroke-width="0.7" fill="rgba(56,189,248,0.04)"/><circle cx="30" cy="30" r="6" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.1)"/><circle cx="30" cy="30" r="2" fill="rgba(56,189,248,0.7)"/><line x1="30" y1="30" x2="30" y2="8" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/><circle cx="43" cy="18" r="2.5" fill="rgba(56,189,248,0.5)" stroke="#38bdf8" stroke-width="0.8"/><line x1="30" y1="8" x2="30" y2="11" stroke="#38bdf8" stroke-width="1" stroke-linecap="round"/><line x1="49" y1="30" x2="52" y2="30" stroke="#38bdf8" stroke-width="1" stroke-linecap="round"/></svg></div><h4>Discovery Call</h4><p>Assess your current digital posture, goals, and vulnerabilities in a free 30-minute session.</p></div>
       <div class="step"><span class="step-num-label">Step 02</span><div class="step-icon"><svg viewBox="0 0 60 60" fill="none"><path d="M14 16 Q14 10 20 10 L46 10 Q52 10 52 16 L52 50 Q52 56 46 56 L20 56 Q14 56 14 50 Z" fill="rgba(56,189,248,0.06)" stroke="#38bdf8" stroke-width="1.1"/><path d="M38 10 L38 20 L52 20" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1" stroke-linejoin="round"/><line x1="20" y1="28" x2="44" y2="28" stroke="#38bdf8" stroke-width="0.9" stroke-linecap="round"/><line x1="20" y1="34" x2="44" y2="34" stroke="#38bdf8" stroke-width="0.9" stroke-linecap="round"/><line x1="20" y1="40" x2="36" y2="40" stroke="#38bdf8" stroke-width="0.9" stroke-linecap="round"/><polyline points="20,22 23,25 28,19" stroke="#38bdf8" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><h4>Mission Brief</h4><p>A tailored proposal outlining scope, timeline, and deliverables. No fluff, just the plan.</p></div>
-      <div class="step"><span class="step-num-label">Step 03</span><div class="step-icon"><svg viewBox="0 0 60 60" fill="none"><path d="M30 8 C30 8 20 20 20 34 L30 40 L40 34 C40 20 30 8 30 8Z" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.2" stroke-linejoin="round"/><path d="M24 34 L20 46 L30 42 L40 46 L36 34" fill="rgba(56,189,248,0.06)" stroke="#38bdf8" stroke-width="1" stroke-linejoin="round"/><circle cx="30" cy="26" r="4" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1"/><circle cx="30" cy="26" r="1.5" fill="rgba(56,189,248,0.55)"/><path d="M20 34 L13 40 L20 38" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.9" stroke-linejoin="round"/><path d="M40 34 L47 40 L40 38" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.9" stroke-linejoin="round"/><line x1="30" y1="50" x2="30" y2="56" stroke="#38bdf8" stroke-width="0.9" stroke-linecap="round" opacity="0.6"/></svg></div><h4>Deployment</h4><p>Precision execution of all agreed deliverables with regular status updates throughout.</p></div>
+      <div class="step"><span class="step-num-label">Step 03</span><div class="step-icon"><svg viewBox="0 0 60 60" fill="none"><path d="M30 8 C30 8 20 20 20 34 L30 40 L40 34 C40 20 30 8 30 8Z" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.2" stroke-linejoin="round"/><path d="M24 34 L20 46 L30 42 L40 46 L36 34" fill="rgba(56,189,248,0.06)" stroke="#38bdf8" stroke-width="1" stroke-linejoin="round"/><circle cx="30" cy="26" r="4" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1"/><circle cx="30" cy="26" r="1.5" fill="rgba(56,189,248,0.55)"/><line x1="30" y1="50" x2="30" y2="56" stroke="#38bdf8" stroke-width="0.9" stroke-linecap="round" opacity="0.6"/></svg></div><h4>Deployment</h4><p>Precision execution of all agreed deliverables with regular status updates throughout.</p></div>
       <div class="step"><span class="step-num-label">Step 04</span><div class="step-icon"><svg viewBox="0 0 60 60" fill="none"><rect x="10" y="38" width="8" height="12" rx="1.5" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1"/><rect x="22" y="28" width="8" height="22" rx="1.5" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1"/><rect x="34" y="18" width="8" height="32" rx="1.5" fill="rgba(56,189,248,0.2)" stroke="#38bdf8" stroke-width="1"/><line x1="8" y1="51" x2="52" y2="51" stroke="#38bdf8" stroke-width="1" stroke-linecap="round"/><circle cx="46" cy="12" r="5" stroke="#38bdf8" stroke-width="0.9" fill="rgba(56,189,248,0.1)"/><circle cx="46" cy="12" r="2" fill="rgba(56,189,248,0.55)"/><ellipse cx="46" cy="5" rx="2" ry="4" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.7"/><ellipse cx="53" cy="12" rx="4" ry="2" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.7"/></svg></div><h4>Debrief and Scale</h4><p>Review outcomes, measure results, and execute the next mission to keep your business advancing.</p></div>
     </div>
   </div>
@@ -458,105 +515,370 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
 
 <footer>
   <span class="footer-brand">Dean Information Systems</span>
-  <span class="footer-copy">© 2026 Dean Information Systems. All rights reserved.</span>
+  <span class="footer-copy">2026 Dean Information Systems. All rights reserved.</span>
   <span class="footer-vet"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Veteran-Owned and Operated</span>
 </footer>
 
 <script>
 (function(){ emailjs.init({publicKey:"C3dhaIQj0sAr8XxMf"}); })();
 
-function handleBizType(){
-  var v=document.getElementById('bizType').value;
-  document.getElementById('otherField').style.display=v==='Other'?'flex':'none';
+function handleBizType() {
+  var v = document.getElementById('bizType').value;
+  document.getElementById('otherField').style.display = (v === 'Other') ? 'flex' : 'none';
 }
 
-function submitForm(){
-  var firstName=document.getElementById('firstName').value.trim();
-  var lastName=document.getElementById('lastName').value.trim();
-  var email=document.getElementById('emailAddr').value.trim();
-  var phone=document.getElementById('phoneNum').value.trim();
-  var biz=document.getElementById('bizName').value.trim();
-  var bizType=document.getElementById('bizType').value;
-  var other=document.getElementById('otherDesc').value.trim();
-  if(!firstName||!lastName||!email||!phone||!biz||!bizType){alert('Please fill out all required fields.');return;}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){alert('Please enter a valid email address.');return;}
-  if(bizType==='Other'&&!other){alert('Please describe your business.');return;}
-  var btn=document.getElementById('submitBtn');
-  btn.disabled=true;
-  btn.textContent='Sending...';
-  emailjs.send('service_ufkowjm','template_2wmbmsj',{
-    to_email:'management@deaninformationsystems.com',
-    from_name:'Dean IS Sales',
-    reply_to:email,
-    first_name:firstName,
-    last_name:lastName,
-    client_email:email,
-    phone:phone,
-    business:biz,
-    biz_type:bizType,
-    description:bizType==='Other'?other:'N/A'
-  }).then(function(){
-    document.getElementById('contactForm').style.display='none';
-    document.getElementById('formSuccess').style.display='flex';
-  }).catch(function(err){
-    console.error('EmailJS error:',err);
-    btn.disabled=false;
-    btn.textContent='Submit';
+function submitForm() {
+  var firstName = document.getElementById('firstName').value.trim();
+  var lastName  = document.getElementById('lastName').value.trim();
+  var email     = document.getElementById('emailAddr').value.trim();
+  var phone     = document.getElementById('phoneNum').value.trim();
+  var biz       = document.getElementById('bizName').value.trim();
+  var bizType   = document.getElementById('bizType').value;
+  var other     = document.getElementById('otherDesc').value.trim();
+  if (!firstName || !lastName || !email || !phone || !biz || !bizType) { alert('Please fill out all required fields.'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+  if (bizType === 'Other' && !other) { alert('Please describe your business.'); return; }
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  emailjs.send('service_ufkowjm', 'template_2wmbmsj', {
+    to_email:     'management@deaninformationsystems.com',
+    from_name:    'Dean IS Sales',
+    reply_to:     email,
+    first_name:   firstName,
+    last_name:    lastName,
+    client_email: email,
+    phone:        phone,
+    business:     biz,
+    biz_type:     bizType,
+    description:  (bizType === 'Other') ? other : 'N/A'
+  }).then(function() {
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'flex';
+  }).catch(function(err) {
+    console.error('EmailJS error:', err);
+    btn.disabled = false;
+    btn.textContent = 'Submit';
     alert('Something went wrong. Please try again or call us directly at (615) 651-3603.');
   });
 }
 
-function openModal(e){if(e)e.preventDefault();document.getElementById('contactModal').classList.add('open');document.body.style.overflow='hidden';}
-function closeModal(){document.getElementById('contactModal').classList.remove('open');document.body.style.overflow='';}
-document.getElementById('contactModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal();closeMobileNav();}});
-function openMobileNav(){var n=document.getElementById('mobileNav');n.style.display='flex';requestAnimationFrame(function(){n.classList.add('open');});document.body.style.overflow='hidden';}
-function closeMobileNav(){var n=document.getElementById('mobileNav');n.classList.remove('open');setTimeout(function(){if(!n.classList.contains('open'))n.style.display='none';},300);document.body.style.overflow='';}
+function openModal(e) { if (e) e.preventDefault(); document.getElementById('contactModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal() { document.getElementById('contactModal').classList.remove('open'); document.body.style.overflow = ''; }
+document.getElementById('contactModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeModal(); closeMobileNav(); } });
+function openMobileNav() { var n = document.getElementById('mobileNav'); n.style.display = 'flex'; requestAnimationFrame(function(){ n.classList.add('open'); }); document.body.style.overflow = 'hidden'; }
+function closeMobileNav() { var n = document.getElementById('mobileNav'); n.classList.remove('open'); setTimeout(function(){ if (!n.classList.contains('open')) n.style.display = 'none'; }, 300); document.body.style.overflow = ''; }
 
-var canvas=document.getElementById('bgCanvas'),ctx=canvas.getContext('2d');
-var W,H,particles=[],stems=[],hexagons=[],gridLines=[];
-var EXPLODE_DUR=1.4,SETTLE_DUR=3.8,startTime=null;
-function easeOutExpo(t){return t>=1?1:1-Math.pow(2,-10*t);}
-function easeOutCubic(t){return 1-Math.pow(1-t,3);}
-function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;buildGrid();}
-resize();window.addEventListener('resize',resize);
-function buildGrid(){gridLines=[];var gX=80,gY=80;for(var x=0;x<W+gX;x+=gX)gridLines.push({type:'v',pos:x,alpha:Math.random()*.04+.015});for(var y=0;y<H+gY;y+=gY)gridLines.push({type:'h',pos:y,alpha:Math.random()*.04+.015});}
-function drawGrid(p){var f=Math.min(1,p*1.6);gridLines.forEach(function(g){ctx.beginPath();ctx.strokeStyle='rgba(56,189,248,'+g.alpha*f+')';ctx.lineWidth=.5;if(g.type==='v'){ctx.moveTo(g.pos,0);ctx.lineTo(g.pos,H);}else{ctx.moveTo(0,g.pos);ctx.lineTo(W,g.pos);}ctx.stroke();});}
-function Particle(tx,ty){this.targetX=tx!==undefined?tx:Math.random()*W;this.targetY=ty!==undefined?ty:Math.random()*H;var a=Math.random()*Math.PI*2;this.bvx=Math.cos(a)*(Math.random()*6+3);this.bvy=Math.sin(a)*(Math.random()*6+3);this.originX=W/2;this.originY=H/2;this.r=Math.random()*2.8+.4;this.baseAlpha=Math.random()*.35+.08;this.pulse=Math.random()*Math.PI*2;this.speedX=(Math.random()-.5)*.22;this.speedY=(Math.random()-.5)*.22;this.x=this.originX;this.y=this.originY;}
-Particle.prototype.update=function(p){this.pulse+=.014;if(p<1){var ep=Math.min(1,p/EXPLODE_DUR),sp=Math.max(0,(p-EXPLODE_DUR)/(SETTLE_DUR-EXPLODE_DUR)),b=easeOutExpo(ep),s=easeOutCubic(Math.min(1,sp)),bx=this.originX+this.bvx*b*Math.max(W,H)*.12,by=this.originY+this.bvy*b*Math.max(W,H)*.12;this.x=bx+(this.targetX-bx)*s;this.y=by+(this.targetY-by)*s;}else{this.x+=this.speedX;this.y+=this.speedY;if(this.x<-10||this.x>W+10||this.y<-10||this.y>H+10){this.x=Math.random()*W;this.y=Math.random()*H;}}};
-Particle.prototype.draw=function(p){var f=Math.min(1,p/EXPLODE_DUR*2),a=(this.baseAlpha+Math.sin(this.pulse)*.07)*f;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle='rgba(56,189,248,'+a+')';ctx.fill();};
-function Stem(tx,ty){this.targetX=tx!==undefined?tx:Math.random()*W;this.targetY=ty!==undefined?ty:Math.random()*H;var a=Math.random()*Math.PI*2;this.bvx=Math.cos(a)*(Math.random()*5+2);this.bvy=Math.sin(a)*(Math.random()*5+2);this.originX=W/2;this.originY=H/2;this.x=this.originX;this.y=this.originY;this.len=Math.random()*140+70;this.angle=Math.random()*Math.PI*2;this.speed=(Math.random()-.5)*.004;this.driftX=(Math.random()-.5)*.07;this.driftY=(Math.random()-.5)*.07;this.baseAlpha=Math.random()*.1+.03;this.leaves=Math.floor(Math.random()*4)+2;this.pulse=Math.random()*Math.PI*2;}
-Stem.prototype.update=function(p){this.angle+=this.speed;this.pulse+=.009;if(p<1){var ep=Math.min(1,p/EXPLODE_DUR),sp=Math.max(0,(p-EXPLODE_DUR)/(SETTLE_DUR-EXPLODE_DUR)),b=easeOutExpo(ep),s=easeOutCubic(Math.min(1,sp)),bx=this.originX+this.bvx*b*Math.max(W,H)*.14,by=this.originY+this.bvy*b*Math.max(W,H)*.14;this.x=bx+(this.targetX-bx)*s;this.y=by+(this.targetY-by)*s;}else{this.x+=this.driftX;this.y+=this.driftY;if(this.x<-200)this.x=W+200;if(this.x>W+200)this.x=-200;if(this.y<-200)this.y=H+200;if(this.y>H+200)this.y=-200;}};
-Stem.prototype.draw=function(p){var f=Math.min(1,p/EXPLODE_DUR*1.8),a=(this.baseAlpha+Math.sin(this.pulse)*.02)*f;ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.angle);ctx.strokeStyle='rgba(56,189,248,'+a+')';ctx.lineWidth=.9;ctx.beginPath();ctx.moveTo(0,this.len*.5);ctx.quadraticCurveTo(this.len*.2,0,0,-this.len*.5);ctx.stroke();for(var i=0;i<this.leaves;i++){var t=(i+1)/(this.leaves+1),sy=this.len*.5-t*this.len,side=i%2===0?1:-1;ctx.beginPath();ctx.moveTo(0,sy);ctx.quadraticCurveTo(side*this.len*.22,sy-this.len*.12,side*this.len*.08,sy-this.len*.24);ctx.stroke();ctx.save();ctx.translate(side*this.len*.08,sy-this.len*.24);ctx.rotate(side*.6);ctx.scale(1,.45);ctx.beginPath();ctx.arc(0,0,this.len*.07,0,Math.PI*2);ctx.fillStyle='rgba(56,189,248,'+(a*.35)+')';ctx.fill();ctx.strokeStyle='rgba(56,189,248,'+a+')';ctx.stroke();ctx.restore();}ctx.restore();};
-function Hexagon(tx,ty){this.targetX=tx!==undefined?tx:Math.random()*W;this.targetY=ty!==undefined?ty:Math.random()*H;var a=Math.random()*Math.PI*2;this.bvx=Math.cos(a)*(Math.random()*7+3);this.bvy=Math.sin(a)*(Math.random()*7+3);this.originX=W/2;this.originY=H/2;this.x=this.originX;this.y=this.originY;this.r=Math.random()*28+10;this.angle=Math.random()*Math.PI*2;this.rotSpeed=(Math.random()-.5)*.004;this.dx=(Math.random()-.5)*.12;this.dy=(Math.random()-.5)*.12;this.baseAlpha=Math.random()*.07+.02;this.pulse=Math.random()*Math.PI*2;}
-Hexagon.prototype.update=function(p){this.angle+=this.rotSpeed;this.pulse+=.011;if(p<1){var ep=Math.min(1,p/EXPLODE_DUR),sp=Math.max(0,(p-EXPLODE_DUR)/(SETTLE_DUR-EXPLODE_DUR)),b=easeOutExpo(ep),s=easeOutCubic(Math.min(1,sp)),bx=this.originX+this.bvx*b*Math.max(W,H)*.16,by=this.originY+this.bvy*b*Math.max(W,H)*.16;this.x=bx+(this.targetX-bx)*s;this.y=by+(this.targetY-by)*s;}else{this.x+=this.dx;this.y+=this.dy;if(this.x<-60||this.x>W+60||this.y<-60||this.y>H+60){this.x=Math.random()*W;this.y=Math.random()*H;}}};
-Hexagon.prototype.draw=function(p){var f=Math.min(1,p/EXPLODE_DUR*1.6),a=(this.baseAlpha+Math.sin(this.pulse)*.025)*f;ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.angle);ctx.beginPath();for(var i=0;i<6;i++){var ag=i*Math.PI/3;if(i===0)ctx.moveTo(this.r*Math.cos(ag),this.r*Math.sin(ag));else ctx.lineTo(this.r*Math.cos(ag),this.r*Math.sin(ag));}ctx.closePath();ctx.strokeStyle='rgba(56,189,248,'+a+')';ctx.lineWidth=.8;ctx.stroke();ctx.fillStyle='rgba(56,189,248,'+(a*.18)+')';ctx.fill();ctx.restore();};
-function Ring(tx,ty){this.targetX=tx!==undefined?tx:Math.random()*W;this.targetY=ty!==undefined?ty:Math.random()*H;var a=Math.random()*Math.PI*2;this.bvx=Math.cos(a)*(Math.random()*8+4);this.bvy=Math.sin(a)*(Math.random()*8+4);this.originX=W/2;this.originY=H/2;this.x=this.originX;this.y=this.originY;this.r=Math.random()*45+15;this.r2=this.r*(Math.random()*.4+.5);this.baseAlpha=Math.random()*.06+.015;this.pulse=Math.random()*Math.PI*2;this.dx=(Math.random()-.5)*.09;this.dy=(Math.random()-.5)*.09;this.angle=0;this.rotSpeed=(Math.random()-.5)*.003;}
-Ring.prototype.update=function(p){this.pulse+=.01;this.angle+=this.rotSpeed;if(p<1){var ep=Math.min(1,p/EXPLODE_DUR),sp=Math.max(0,(p-EXPLODE_DUR)/(SETTLE_DUR-EXPLODE_DUR)),b=easeOutExpo(ep),s=easeOutCubic(Math.min(1,sp)),bx=this.originX+this.bvx*b*Math.max(W,H)*.17,by=this.originY+this.bvy*b*Math.max(W,H)*.17;this.x=bx+(this.targetX-bx)*s;this.y=by+(this.targetY-by)*s;}else{this.x+=this.dx;this.y+=this.dy;if(this.x<-100||this.x>W+100||this.y<-100||this.y>H+100){this.x=Math.random()*W;this.y=Math.random()*H;}}};
-Ring.prototype.draw=function(p){var f=Math.min(1,p/EXPLODE_DUR*1.7),a=(this.baseAlpha+Math.sin(this.pulse)*.02)*f;ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.angle);ctx.strokeStyle='rgba(56,189,248,'+a+')';ctx.lineWidth=.7;ctx.beginPath();ctx.arc(0,0,this.r,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.arc(0,0,this.r2,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.moveTo(-this.r,0);ctx.lineTo(this.r,0);ctx.stroke();ctx.beginPath();ctx.moveTo(0,-this.r);ctx.lineTo(0,this.r);ctx.stroke();ctx.restore();};
-function mkTX(){return Math.random()*W;}
-function mkTY(b){return b?H*.5+Math.random()*H*.5:Math.random()*H;}
-for(var i=0;i<160;i++)particles.push(new Particle(mkTX(),mkTY()));
-for(var i=0;i<80;i++) particles.push(new Particle(mkTX(),mkTY(true)));
-for(var i=0;i<28;i++) stems.push(new Stem(mkTX(),mkTY()));
-for(var i=0;i<16;i++) stems.push(new Stem(mkTX(),mkTY(true)));
-for(var i=0;i<22;i++) hexagons.push(new Hexagon(mkTX(),mkTY()));
-for(var i=0;i<14;i++) hexagons.push(new Hexagon(mkTX(),mkTY(true)));
-var circuits=[];
-for(var i=0;i<18;i++)circuits.push(new Particle(mkTX(),mkTY()));
-var rings=[];
-for(var i=0;i<16;i++)rings.push(new Ring(mkTX(),mkTY()));
-for(var i=0;i<12;i++)rings.push(new Ring(mkTX(),mkTY(true)));
-function loop(ts){
-  if(!startTime)startTime=ts;
-  var prog=(ts-startTime)/1000,normP=prog/SETTLE_DUR;
-  ctx.clearRect(0,0,W,H);
+/* ── CANVAS ── */
+var canvas = document.getElementById('bgCanvas');
+var ctx    = canvas.getContext('2d');
+var W, H, gridLines = [];
+var EXPLODE_DUR = 1.2;
+var SETTLE_DUR  = 3.5;
+var CANVAS_FADE = 2.0;
+var startTime   = null;
+
+function easeOutExpo(t)  { return t >= 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; buildGrid(); }
+window.addEventListener('resize', resize);
+
+function buildGrid() {
+  gridLines = [];
+  for (var x = 0; x < W + 80; x += 80) gridLines.push({type:'v', pos:x, alpha:Math.random()*.04+.015});
+  for (var y = 0; y < H + 80; y += 80) gridLines.push({type:'h', pos:y, alpha:Math.random()*.04+.015});
+}
+
+function drawGrid(p) {
+  var f = Math.min(1, p * 1.6);
+  for (var i = 0; i < gridLines.length; i++) {
+    var g = gridLines[i];
+    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(56,189,248,' + (g.alpha * f) + ')';
+    ctx.lineWidth = 0.5;
+    if (g.type === 'v') { ctx.moveTo(g.pos, 0); ctx.lineTo(g.pos, H); }
+    else                { ctx.moveTo(0, g.pos); ctx.lineTo(W, g.pos); }
+    ctx.stroke();
+  }
+}
+
+/* Particle */
+function Particle(tx, ty) {
+  this.x        = (tx !== undefined) ? tx : Math.random() * W;
+  this.y        = (ty !== undefined) ? ty : Math.random() * H;
+  this.r        = Math.random() * 2.8 + 0.4;
+  this.baseAlpha= Math.random() * 0.35 + 0.08;
+  this.pulse    = Math.random() * Math.PI * 2;
+  this.speedX   = (Math.random() - 0.5) * 0.22;
+  this.speedY   = (Math.random() - 0.5) * 0.22;
+  this.fadeIn   = Math.random() * 2.5; /* each particle fades in at a random time 0–2.5s */
+}
+Particle.prototype.update = function(p) {
+  this.pulse += 0.014;
+  this.x += this.speedX;
+  this.y += this.speedY;
+  if (this.x < -10 || this.x > W + 10 || this.y < -10 || this.y > H + 10) {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+  }
+};
+Particle.prototype.draw = function(elapsed) {
+  /* elapsed = seconds since start */
+  var fade = easeOutCubic(Math.min(1, Math.max(0, (elapsed - this.fadeIn) / 1.4)));
+  var a    = (this.baseAlpha + Math.sin(this.pulse) * 0.07) * fade;
+  if (a <= 0.001) return;
+  ctx.beginPath();
+  ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(56,189,248,' + a + ')';
+  ctx.fill();
+};
+
+/* Stem */
+function Stem(tx, ty) {
+  this.targetX  = (tx !== undefined) ? tx : Math.random() * W;
+  this.targetY  = (ty !== undefined) ? ty : Math.random() * H;
+  var a         = Math.random() * Math.PI * 2;
+  this.bvx      = Math.cos(a) * (Math.random() * 5 + 2);
+  this.bvy      = Math.sin(a) * (Math.random() * 5 + 2);
+  this.originX  = W / 2;
+  this.originY  = H / 2;
+  this.x        = this.originX;
+  this.y        = this.originY;
+  this.len      = Math.random() * 140 + 70;
+  this.angle    = Math.random() * Math.PI * 2;
+  this.speed    = (Math.random() - 0.5) * 0.004;
+  this.driftX   = (Math.random() - 0.5) * 0.07;
+  this.driftY   = (Math.random() - 0.5) * 0.07;
+  this.baseAlpha= Math.random() * 0.1 + 0.03;
+  this.leaves   = Math.floor(Math.random() * 4) + 2;
+  this.pulse    = Math.random() * Math.PI * 2;
+}
+Stem.prototype.update = function(p) {
+  this.angle += this.speed;
+  this.pulse += 0.009;
+  if (p < 1) {
+    var ep = Math.min(1, p / EXPLODE_DUR);
+    var sp = Math.max(0, (p - EXPLODE_DUR) / (SETTLE_DUR - EXPLODE_DUR));
+    var b  = easeOutQuart(ep);
+    var s  = easeOutCubic(Math.min(1, sp));
+    var bx = this.originX + this.bvx * b * Math.max(W, H) * 0.14;
+    var by = this.originY + this.bvy * b * Math.max(W, H) * 0.14;
+    this.x = bx + (this.targetX - bx) * s;
+    this.y = by + (this.targetY - by) * s;
+  } else {
+    this.x += this.driftX;
+    this.y += this.driftY;
+    if (this.x < -200) this.x = W + 200;
+    if (this.x > W + 200) this.x = -200;
+    if (this.y < -200) this.y = H + 200;
+    if (this.y > H + 200) this.y = -200;
+  }
+};
+Stem.prototype.draw = function(p) {
+  var f = Math.min(1, p / EXPLODE_DUR * 1.8);
+  var a = (this.baseAlpha + Math.sin(this.pulse) * 0.02) * f;
+  ctx.save();
+  ctx.translate(this.x, this.y);
+  ctx.rotate(this.angle);
+  ctx.strokeStyle = 'rgba(56,189,248,' + a + ')';
+  ctx.lineWidth = 0.9;
+  ctx.beginPath();
+  ctx.moveTo(0, this.len * 0.5);
+  ctx.quadraticCurveTo(this.len * 0.2, 0, 0, -this.len * 0.5);
+  ctx.stroke();
+  for (var i = 0; i < this.leaves; i++) {
+    var t    = (i + 1) / (this.leaves + 1);
+    var sy   = this.len * 0.5 - t * this.len;
+    var side = (i % 2 === 0) ? 1 : -1;
+    ctx.beginPath();
+    ctx.moveTo(0, sy);
+    ctx.quadraticCurveTo(side * this.len * 0.22, sy - this.len * 0.12, side * this.len * 0.08, sy - this.len * 0.24);
+    ctx.stroke();
+    ctx.save();
+    ctx.translate(side * this.len * 0.08, sy - this.len * 0.24);
+    ctx.rotate(side * 0.6);
+    ctx.scale(1, 0.45);
+    ctx.beginPath();
+    ctx.arc(0, 0, this.len * 0.07, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(56,189,248,' + (a * 0.35) + ')';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(56,189,248,' + a + ')';
+    ctx.stroke();
+    ctx.restore();
+  }
+  ctx.restore();
+};
+
+/* Hexagon */
+function Hexagon(tx, ty) {
+  this.targetX  = (tx !== undefined) ? tx : Math.random() * W;
+  this.targetY  = (ty !== undefined) ? ty : Math.random() * H;
+  var a         = Math.random() * Math.PI * 2;
+  this.bvx      = Math.cos(a) * (Math.random() * 7 + 3);
+  this.bvy      = Math.sin(a) * (Math.random() * 7 + 3);
+  this.originX  = W / 2;
+  this.originY  = H / 2;
+  this.x        = this.originX;
+  this.y        = this.originY;
+  this.r        = Math.random() * 28 + 10;
+  this.angle    = Math.random() * Math.PI * 2;
+  this.rotSpeed = (Math.random() - 0.5) * 0.004;
+  this.dx       = (Math.random() - 0.5) * 0.12;
+  this.dy       = (Math.random() - 0.5) * 0.12;
+  this.baseAlpha= Math.random() * 0.07 + 0.02;
+  this.pulse    = Math.random() * Math.PI * 2;
+}
+Hexagon.prototype.update = function(p) {
+  this.angle += this.rotSpeed;
+  this.pulse += 0.011;
+  if (p < 1) {
+    var ep = Math.min(1, p / EXPLODE_DUR);
+    var sp = Math.max(0, (p - EXPLODE_DUR) / (SETTLE_DUR - EXPLODE_DUR));
+    var b  = easeOutQuart(ep);
+    var s  = easeOutCubic(Math.min(1, sp));
+    var bx = this.originX + this.bvx * b * Math.max(W, H) * 0.16;
+    var by = this.originY + this.bvy * b * Math.max(W, H) * 0.16;
+    this.x = bx + (this.targetX - bx) * s;
+    this.y = by + (this.targetY - by) * s;
+  } else {
+    this.x += this.dx;
+    this.y += this.dy;
+    if (this.x < -60 || this.x > W + 60 || this.y < -60 || this.y > H + 60) {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+    }
+  }
+};
+Hexagon.prototype.draw = function(p) {
+  var f = Math.min(1, p / EXPLODE_DUR * 1.6);
+  var a = (this.baseAlpha + Math.sin(this.pulse) * 0.025) * f;
+  ctx.save();
+  ctx.translate(this.x, this.y);
+  ctx.rotate(this.angle);
+  ctx.beginPath();
+  for (var i = 0; i < 6; i++) {
+    var ag = i * Math.PI / 3;
+    if (i === 0) ctx.moveTo(this.r * Math.cos(ag), this.r * Math.sin(ag));
+    else         ctx.lineTo(this.r * Math.cos(ag), this.r * Math.sin(ag));
+  }
+  ctx.closePath();
+  ctx.strokeStyle = 'rgba(56,189,248,' + a + ')';
+  ctx.lineWidth = 0.8;
+  ctx.stroke();
+  ctx.fillStyle = 'rgba(56,189,248,' + (a * 0.18) + ')';
+  ctx.fill();
+  ctx.restore();
+};
+
+/* Ring */
+function Ring(tx, ty) {
+  this.targetX  = (tx !== undefined) ? tx : Math.random() * W;
+  this.targetY  = (ty !== undefined) ? ty : Math.random() * H;
+  var a         = Math.random() * Math.PI * 2;
+  this.bvx      = Math.cos(a) * (Math.random() * 8 + 4);
+  this.bvy      = Math.sin(a) * (Math.random() * 8 + 4);
+  this.originX  = W / 2;
+  this.originY  = H / 2;
+  this.x        = this.originX;
+  this.y        = this.originY;
+  this.r        = Math.random() * 45 + 15;
+  this.r2       = this.r * (Math.random() * 0.4 + 0.5);
+  this.baseAlpha= Math.random() * 0.06 + 0.015;
+  this.pulse    = Math.random() * Math.PI * 2;
+  this.dx       = (Math.random() - 0.5) * 0.09;
+  this.dy       = (Math.random() - 0.5) * 0.09;
+  this.angle    = 0;
+  this.rotSpeed = (Math.random() - 0.5) * 0.003;
+}
+Ring.prototype.update = function(p) {
+  this.pulse += 0.01;
+  this.angle += this.rotSpeed;
+  if (p < 1) {
+    var ep = Math.min(1, p / EXPLODE_DUR);
+    var sp = Math.max(0, (p - EXPLODE_DUR) / (SETTLE_DUR - EXPLODE_DUR));
+    var b  = easeOutQuart(ep);
+    var s  = easeOutCubic(Math.min(1, sp));
+    var bx = this.originX + this.bvx * b * Math.max(W, H) * 0.17;
+    var by = this.originY + this.bvy * b * Math.max(W, H) * 0.17;
+    this.x = bx + (this.targetX - bx) * s;
+    this.y = by + (this.targetY - by) * s;
+  } else {
+    this.x += this.dx;
+    this.y += this.dy;
+    if (this.x < -100 || this.x > W + 100 || this.y < -100 || this.y > H + 100) {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+    }
+  }
+};
+Ring.prototype.draw = function(p) {
+  var f = Math.min(1, p / EXPLODE_DUR * 1.7);
+  var a = (this.baseAlpha + Math.sin(this.pulse) * 0.02) * f;
+  ctx.save();
+  ctx.translate(this.x, this.y);
+  ctx.rotate(this.angle);
+  ctx.strokeStyle = 'rgba(56,189,248,' + a + ')';
+  ctx.lineWidth = 0.7;
+  ctx.beginPath(); ctx.arc(0, 0, this.r,  0, Math.PI * 2); ctx.stroke();
+  ctx.beginPath(); ctx.arc(0, 0, this.r2, 0, Math.PI * 2); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(-this.r, 0); ctx.lineTo(this.r, 0); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(0, -this.r); ctx.lineTo(0, this.r); ctx.stroke();
+  ctx.restore();
+};
+
+function mkTX() { return Math.random() * W; }
+function mkTY(b) { return b ? H * 0.5 + Math.random() * H * 0.5 : Math.random() * H; }
+
+var particles = [];
+var stems     = [];
+var hexagons  = [];
+var rings     = [];
+
+resize();
+
+for (var i = 0; i < 160; i++) particles.push(new Particle(mkTX(), mkTY()));
+for (var i = 0; i < 80;  i++) particles.push(new Particle(mkTX(), mkTY(true)));
+for (var i = 0; i < 28;  i++) stems.push(new Stem(mkTX(), mkTY()));
+for (var i = 0; i < 16;  i++) stems.push(new Stem(mkTX(), mkTY(true)));
+for (var i = 0; i < 22;  i++) hexagons.push(new Hexagon(mkTX(), mkTY()));
+for (var i = 0; i < 14;  i++) hexagons.push(new Hexagon(mkTX(), mkTY(true)));
+for (var i = 0; i < 16;  i++) rings.push(new Ring(mkTX(), mkTY()));
+for (var i = 0; i < 12;  i++) rings.push(new Ring(mkTX(), mkTY(true)));
+
+function loop(ts) {
+  if (!startTime) startTime = ts;
+  var elapsed = (ts - startTime) / 1000;
+  var normP   = elapsed / SETTLE_DUR;
+
+  /* Smoothly fade the entire canvas in over CANVAS_FADE seconds */
+  var canvasAlpha = Math.min(0.82, easeOutCubic(Math.min(1, elapsed / CANVAS_FADE)) * 0.82);
+  canvas.style.opacity = canvasAlpha;
+
+  ctx.clearRect(0, 0, W, H);
   drawGrid(normP);
-  rings.forEach(function(r){r.update(normP);r.draw(normP);});
-  hexagons.forEach(function(h){h.update(normP);h.draw(normP);});
-  stems.forEach(function(s){s.update(normP);s.draw(normP);});
-  particles.forEach(function(p){p.update(normP);p.draw(normP);});
-  for(var i=0;i<particles.length;i++){for(var j=i+1;j<particles.length;j++){var dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<90){var fade=Math.min(1,normP*1.4);ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='rgba(56,189,248,'+(.07*(1-d/90)*fade)+')';ctx.lineWidth=.5;ctx.stroke();}}}
+  for (var i = 0; i < rings.length;     i++) { rings[i].update(normP);     rings[i].draw(normP); }
+  for (var i = 0; i < hexagons.length;  i++) { hexagons[i].update(normP);  hexagons[i].draw(normP); }
+  for (var i = 0; i < stems.length;     i++) { stems[i].update(normP);     stems[i].draw(normP); }
+  for (var i = 0; i < particles.length; i++) { particles[i].update(normP); particles[i].draw(normP); }
+  for (var i = 0; i < particles.length; i++) {
+    for (var j = i + 1; j < particles.length; j++) {
+      var dx = particles[i].x - particles[j].x;
+      var dy = particles[i].y - particles[j].y;
+      var d  = Math.sqrt(dx * dx + dy * dy);
+      if (d < 90) {
+        var fade = Math.min(1, normP * 1.4);
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = 'rgba(56,189,248,' + (0.07 * (1 - d / 90) * fade) + ')';
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
   requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);
