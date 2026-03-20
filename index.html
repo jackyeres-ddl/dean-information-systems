@@ -5,17 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Dean Information Systems</title>
 <style>
-:root {
-  --navy:#0a1628;--navy2:#0d1f3c;--blue-mid:#1255a3;
-  --blue-bright:#1e7fd4;--blue-elec:#38bdf8;--blue-light:#bae6fd;
-  --white:#f8fafc;--muted:#94a3b8;--dim:#64748b;
-}
+:root{--navy:#0a1628;--navy2:#0d1f3c;--blue-mid:#1255a3;--blue-bright:#1e7fd4;--blue-elec:#38bdf8;--blue-light:#bae6fd;--white:#f8fafc;--muted:#94a3b8;--dim:#64748b;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'Segoe UI',Arial,sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
-::-webkit-scrollbar{width:5px;}
-::-webkit-scrollbar-track{background:var(--navy);}
-::-webkit-scrollbar-thumb{background:var(--blue-elec);border-radius:3px;}
+::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--navy);}::-webkit-scrollbar-thumb{background:var(--blue-elec);border-radius:3px;}
 #bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.55;}
 
 /* NAV */
@@ -27,6 +21,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-cta{display:inline-flex;align-items:center;gap:8px;padding:9px 22px;border-radius:4px;background:transparent;color:var(--blue-elec);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .25s;border:1px solid rgba(56,189,248,0.5);cursor:pointer;}
 .nav-cta:hover{background:rgba(56,189,248,0.1);border-color:var(--blue-elec);}
 .nav-cta svg{width:13px;height:13px;stroke:var(--blue-elec);}
+.mobile-menu-btn{display:none;background:transparent;border:1px solid rgba(56,189,248,0.3);border-radius:3px;padding:8px;cursor:pointer;align-items:center;justify-content:center;}
+.mobile-menu-btn svg{width:20px;height:20px;stroke:var(--blue-elec);}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:300;background:rgba(8,16,32,0.98);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+.mobile-nav.open{opacity:1;pointer-events:all;}
+.mobile-nav-close{position:absolute;top:20px;right:20px;background:transparent;border:1px solid rgba(56,189,248,0.2);border-radius:3px;padding:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.mobile-nav-close svg{width:18px;height:18px;stroke:var(--muted);}
+.mobile-nav-logo{margin-bottom:44px;}.mobile-nav-logo svg{height:36px;width:auto;}
+.mobile-nav a{display:block;width:100%;max-width:280px;text-align:center;padding:18px 0;color:var(--muted);text-decoration:none;font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;border-bottom:1px solid rgba(56,189,248,0.07);transition:color .2s;}
+.mobile-nav a:first-of-type{border-top:1px solid rgba(56,189,248,0.07);}
+.mobile-nav a:hover{color:var(--white);}
+.mobile-nav-cta{margin-top:32px;display:inline-flex;align-items:center;gap:10px;padding:14px 36px;border-radius:4px;background:var(--blue-elec);color:var(--navy);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .25s;}
+.mobile-nav-cta svg{width:14px;height:14px;stroke:var(--navy);}
 
 /* HERO */
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:130px 24px 100px;overflow:hidden;}
@@ -42,7 +48,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero h1 em{font-style:normal;color:transparent;background:linear-gradient(90deg,var(--blue-bright),var(--blue-elec),var(--blue-light));-webkit-background-clip:text;background-clip:text;}
 .hero-rule{width:60px;height:2px;margin:24px auto;background:linear-gradient(90deg,var(--blue-mid),var(--blue-elec));}
 .hero-sub{font-size:1.05rem;line-height:1.8;color:var(--muted);max-width:520px;margin:0 auto 48px;}
-.hero-stats{display:flex;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:52px;border:1px solid rgba(56,189,248,0.12);border-radius:8px;overflow:hidden;max-width:560px;margin-left:auto;margin-right:auto;background:rgba(10,22,40,0.6);backdrop-filter:blur(12px);}
+.hero-stats{display:flex;justify-content:center;flex-wrap:wrap;margin-bottom:52px;border:1px solid rgba(56,189,248,0.12);border-radius:8px;overflow:hidden;max-width:560px;margin-left:auto;margin-right:auto;background:rgba(10,22,40,0.6);backdrop-filter:blur(12px);}
 .stat{flex:1;padding:20px 16px;text-align:center;border-right:1px solid rgba(56,189,248,0.1);min-width:100px;}
 .stat:last-child{border-right:none;}
 .stat-num{font-size:1.7rem;font-weight:900;color:var(--white);line-height:1;}
@@ -52,10 +58,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .btn-primary{display:inline-flex;align-items:center;gap:9px;padding:13px 32px;border-radius:4px;background:var(--blue-elec);color:var(--navy);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:pointer;border:none;transition:all .25s;box-shadow:0 0 28px rgba(56,189,248,0.25);}
 .btn-primary:hover{background:var(--blue-light);box-shadow:0 0 40px rgba(56,189,248,0.4);transform:translateY(-2px);}
 .btn-primary svg{width:15px;height:15px;stroke:var(--navy);}
-.btn-ghost{display:inline-flex;align-items:center;gap:9px;padding:13px 32px;border-radius:4px;border:1px solid rgba(56,189,248,0.3);color:var(--muted);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:transparent;text-decoration:none;cursor:pointer;transition:all .25s;}
-.btn-ghost:hover{border-color:var(--blue-elec);color:var(--white);background:rgba(56,189,248,0.06);}
-.btn-ghost svg{width:15px;height:15px;stroke:var(--muted);}
-.btn-ghost:hover svg{stroke:var(--white);}
 .scroll-down{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(148,163,184,0.4);font-size:8px;letter-spacing:4px;text-transform:uppercase;text-decoration:none;animation:sink 2.4s ease-in-out infinite;}
 .scroll-down svg{width:18px;height:18px;stroke:rgba(148,163,184,0.4);}
 @keyframes sink{0%,100%{transform:translateX(-50%) translateY(0)}60%{transform:translateX(-50%) translateY(7px)}}
@@ -65,8 +67,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .sec-label{font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--blue-elec);margin-bottom:10px;}
 .sec-title{font-size:clamp(1.7rem,3vw,2.5rem);font-weight:900;letter-spacing:-0.5px;margin-bottom:14px;}
 .sec-sub{font-size:.95rem;color:var(--muted);line-height:1.75;max-width:480px;}
-.sec-head{margin-bottom:60px;}
-.sec-head.ctr{text-align:center;}.sec-head.ctr .sec-sub{margin:0 auto;}
+.sec-head{margin-bottom:60px;}.sec-head.ctr{text-align:center;}.sec-head.ctr .sec-sub{margin:0 auto;}
 
 /* ADVANTAGE */
 #advantage{position:relative;padding:110px 52px;background:linear-gradient(180deg,var(--navy) 0%,#071220 100%);overflow:hidden;}
@@ -74,11 +75,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .adv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.08);}
 .adv-card{background:var(--navy);padding:44px 36px;transition:all .3s;cursor:default;position:relative;overflow:hidden;}
 .adv-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 0% 0%,rgba(56,189,248,0.06) 0%,transparent 60%);opacity:0;transition:opacity .4s;}
-.adv-card:hover::before{opacity:1;}
-.adv-card:hover{background:#0b1e38;}
+.adv-card:hover::before{opacity:1;}.adv-card:hover{background:#0b1e38;}
 .adv-num{position:absolute;bottom:20px;right:24px;font-size:5rem;font-weight:900;color:rgba(56,189,248,0.04);line-height:1;font-family:'Arial Black',sans-serif;letter-spacing:-3px;pointer-events:none;}
-.adv-icon-wrap{width:52px;height:52px;margin-bottom:22px;}
-.adv-icon-wrap svg{width:100%;height:100%;}
+.adv-icon-wrap{width:52px;height:52px;margin-bottom:22px;}.adv-icon-wrap svg{width:100%;height:100%;}
 .adv-card h3{font-size:1.1rem;font-weight:800;margin-bottom:10px;letter-spacing:.5px;}
 .adv-card p{font-size:.88rem;color:var(--muted);line-height:1.75;}
 
@@ -86,15 +85,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 #services{position:relative;padding:110px 52px;background:#071220;overflow:hidden;}
 .bot-left-svc{position:absolute;left:-80px;bottom:-60px;width:500px;opacity:0.06;pointer-events:none;transform:rotate(30deg);}
 .bot-right-svc{position:absolute;right:-80px;top:-60px;width:440px;opacity:0.06;pointer-events:none;transform:rotate(-20deg) scaleX(-1);}
-#services .sec-title{color:var(--white);}
-#services .sec-sub{color:var(--muted);}
+#services .sec-title{color:var(--white);}#services .sec-sub{color:var(--muted);}
 .svc-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:auto auto;gap:16px;}
 .svc-card{background:rgba(13,31,60,0.7);border:1px solid rgba(56,189,248,0.1);border-radius:2px;padding:38px 32px;position:relative;overflow:hidden;transition:all .3s;cursor:default;backdrop-filter:blur(8px);}
 .svc-card:hover{border-color:rgba(56,189,248,0.35);background:rgba(18,40,75,0.9);transform:translateY(-4px);}
 .svc-card.tall{grid-row:span 2;}
 .svc-tag{display:inline-block;margin-bottom:16px;font-size:8px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--blue-elec);padding:4px 0;border-bottom:1px solid rgba(56,189,248,0.3);}
-.svc-icon{width:64px;height:64px;margin-bottom:20px;}
-.svc-icon svg{width:100%;height:100%;}
+.svc-icon{width:64px;height:64px;margin-bottom:20px;}.svc-icon svg{width:100%;height:100%;}
 .svc-card h3{font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:12px;}
 .svc-card p{font-size:.87rem;color:var(--muted);line-height:1.75;}
 .svc-list{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:9px;}
@@ -112,10 +109,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .process-track{display:grid;grid-template-columns:repeat(4,1fr);position:relative;gap:0;border:1px solid rgba(56,189,248,0.1);}
 .process-track::before{content:'';position:absolute;top:47px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,var(--blue-mid),var(--blue-elec),var(--blue-mid));z-index:0;}
 .step{padding:44px 28px;text-align:center;border-right:1px solid rgba(56,189,248,0.1);position:relative;z-index:1;transition:background .3s;}
-.step:last-child{border-right:none;}
-.step:hover{background:rgba(56,189,248,0.03);}
-.step-num{width:64px;height:64px;margin:0 auto 22px;position:relative;}
-.step-num svg{width:100%;height:100%;}
+.step:last-child{border-right:none;}.step:hover{background:rgba(56,189,248,0.03);}
+.step-num{width:64px;height:64px;margin:0 auto 22px;position:relative;}.step-num svg{width:100%;height:100%;}
 .step h4{font-size:.95rem;font-weight:800;margin-bottom:10px;color:var(--white);}
 .step p{font-size:.83rem;color:var(--muted);line-height:1.7;}
 
@@ -123,15 +118,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 #contact{position:relative;padding:120px 52px;text-align:center;background:var(--navy);overflow:hidden;}
 .bot-cta-l{position:absolute;left:-100px;top:50%;transform:translateY(-50%);width:460px;opacity:0.07;pointer-events:none;animation:floatL 10s ease-in-out infinite;}
 .bot-cta-r{position:absolute;right:-100px;top:50%;transform:translateY(-50%) scaleX(-1);width:420px;opacity:0.07;pointer-events:none;animation:floatR 11s ease-in-out infinite;}
+/* extra cta florals */
+.bot-cta-top{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:500px;opacity:0.05;pointer-events:none;}
+.bot-cta-bl{position:absolute;bottom:-60px;left:60px;width:260px;opacity:0.06;pointer-events:none;transform:rotate(15deg);}
+.bot-cta-br{position:absolute;bottom:-60px;right:60px;width:260px;opacity:0.06;pointer-events:none;transform:rotate(-15deg) scaleX(-1);}
 .cta-inner{position:relative;z-index:2;max-width:600px;margin:0 auto;}
 .cta-inner .sec-sub{margin:0 auto 48px;max-width:460px;}
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.cta-btn-center{display:flex;justify-content:center;}
 .btn-outline-elec{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border-radius:4px;border:2px solid var(--blue-elec);color:var(--blue-elec);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:pointer;background:transparent;transition:all .2s;}
 .btn-outline-elec:hover{background:var(--blue-elec);color:var(--navy);transform:translateY(-2px);}
 .btn-outline-elec svg{width:14px;height:14px;stroke:currentColor;}
-.btn-outline-dim{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border-radius:4px;border:2px solid #334155;color:#94a3b8;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:pointer;background:transparent;transition:all .2s;}
-.btn-outline-dim:hover{border-color:#fff;color:#fff;transform:translateY(-2px);}
-.btn-outline-dim svg{width:14px;height:14px;stroke:currentColor;}
 
 /* FOOTER */
 footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28px 52px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
@@ -140,8 +136,47 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
 .footer-vet{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:1px;color:rgba(56,189,248,0.45);}
 .footer-vet svg{width:12px;height:12px;stroke:rgba(56,189,248,0.45);}
 
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:rgba(6,10,20,0.88);backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity .35s ease;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-box{position:relative;width:min(540px,94vw);background:linear-gradient(160deg,#080f20 0%,#0a1628 50%,#071830 100%);border:1px solid rgba(56,189,248,0.22);border-radius:4px;padding:56px 48px 48px;overflow:hidden;transform:translateY(28px) scale(0.96);transition:transform .42s cubic-bezier(.22,1,.36,1);}
+.modal-overlay.open .modal-box{transform:translateY(0) scale(1);}
+/* bracket corners */
+.modal-box::before,.modal-box::after{content:'';position:absolute;width:32px;height:32px;}
+.modal-box::before{top:14px;left:14px;border-top:1.5px solid rgba(56,189,248,0.5);border-left:1.5px solid rgba(56,189,248,0.5);}
+.modal-box::after{bottom:14px;right:14px;border-bottom:1.5px solid rgba(56,189,248,0.5);border-right:1.5px solid rgba(56,189,248,0.5);}
+.modal-corner-tr,.modal-corner-bl{position:absolute;width:32px;height:32px;pointer-events:none;}
+.modal-corner-tr{top:14px;right:14px;border-top:1.5px solid rgba(56,189,248,0.25);border-right:1.5px solid rgba(56,189,248,0.25);}
+.modal-corner-bl{bottom:14px;left:14px;border-bottom:1.5px solid rgba(56,189,248,0.25);border-left:1.5px solid rgba(56,189,248,0.25);}
+/* glow layers */
+.modal-glow-top{position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:380px;height:260px;background:radial-gradient(ellipse,rgba(56,189,248,0.12) 0%,transparent 70%);pointer-events:none;}
+.modal-glow-bl{position:absolute;bottom:-80px;left:-60px;width:240px;height:200px;background:radial-gradient(ellipse,rgba(18,85,163,0.15) 0%,transparent 70%);pointer-events:none;}
+.modal-glow-br{position:absolute;bottom:-80px;right:-60px;width:240px;height:200px;background:radial-gradient(ellipse,rgba(56,189,248,0.08) 0%,transparent 70%);pointer-events:none;}
+/* floating mini botanical accents inside modal */
+.modal-floral-tl{position:absolute;top:48px;left:48px;width:60px;opacity:0.12;pointer-events:none;}
+.modal-floral-br{position:absolute;bottom:48px;right:48px;width:60px;opacity:0.12;pointer-events:none;transform:rotate(180deg);}
+.modal-close{position:absolute;top:18px;right:18px;width:32px;height:32px;border-radius:2px;border:1px solid rgba(56,189,248,0.2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.modal-close:hover{background:rgba(56,189,248,0.1);border-color:rgba(56,189,248,0.5);}
+.modal-close svg{width:14px;height:14px;stroke:var(--muted);}
+.modal-emblem{display:flex;justify-content:center;margin-bottom:24px;}
+.modal-emblem svg{width:96px;height:96px;}
+.modal-label{text-align:center;font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--blue-elec);margin-bottom:8px;}
+.modal-title{text-align:center;font-size:1.55rem;font-weight:900;letter-spacing:-0.5px;color:var(--white);margin-bottom:6px;}
+.modal-sub{text-align:center;font-size:.82rem;color:var(--dim);line-height:1.65;margin-bottom:32px;}
+.modal-divider{height:1px;margin-bottom:28px;background:linear-gradient(90deg,transparent,rgba(56,189,248,0.2),transparent);}
+/* contact rows */
+.contact-row{display:flex;align-items:center;gap:18px;padding:16px 20px;border:1px solid rgba(56,189,248,0.1);border-radius:3px;background:rgba(56,189,248,0.03);margin-bottom:12px;transition:all .25s;cursor:pointer;text-decoration:none;}
+.contact-row:last-of-type{margin-bottom:0;}
+.contact-row:hover{background:rgba(56,189,248,0.08);border-color:rgba(56,189,248,0.3);transform:translateX(3px);}
+.contact-row-icon{width:42px;height:42px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.contact-row-icon svg{width:100%;height:100%;}
+.contact-row-type{font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue-elec);margin-bottom:3px;}
+.contact-row-value{font-size:.95rem;font-weight:700;color:var(--white);letter-spacing:.3px;}
+
+/* RESPONSIVE */
 @media(max-width:960px){
-  nav{padding:14px 24px;}.nav-links{display:none;}
+  nav{padding:14px 24px;}.nav-links{display:none;}.nav-cta{display:none;}
+  .mobile-menu-btn{display:flex;}
   .hero{padding:120px 24px 90px;}.botanical-left,.botanical-right{display:none;}
   .svc-grid{grid-template-columns:1fr;}.svc-card.tall{grid-row:span 1;}
   .process-track{grid-template-columns:1fr 1fr;}.process-track::before{display:none;}
@@ -149,174 +184,19 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
   #advantage,#services,#process,#contact{padding:80px 24px;}
   footer{padding:20px 24px;flex-direction:column;text-align:center;}
 }
-
-/* ── MOBILE NAV ── */
-.mobile-menu-btn{
-  display:none;
-  background:transparent;border:1px solid rgba(56,189,248,0.3);
-  border-radius:3px;padding:8px;cursor:pointer;
-  align-items:center;justify-content:center;
-}
-.mobile-menu-btn svg{width:20px;height:20px;stroke:var(--blue-elec);}
-.mobile-nav{
-  display:none;
-  position:fixed;top:0;left:0;right:0;bottom:0;z-index:300;
-  background:rgba(8,16,32,0.98);
-  backdrop-filter:blur(20px);
-  flex-direction:column;align-items:center;justify-content:center;gap:0;
-  opacity:0;pointer-events:none;transition:opacity .3s ease;
-}
-.mobile-nav.open{opacity:1;pointer-events:all;}
-.mobile-nav-close{
-  position:absolute;top:20px;right:20px;
-  background:transparent;border:1px solid rgba(56,189,248,0.2);
-  border-radius:3px;padding:9px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-}
-.mobile-nav-close svg{width:18px;height:18px;stroke:var(--muted);}
-.mobile-nav-logo{margin-bottom:44px;}
-.mobile-nav-logo svg{height:36px;width:auto;}
-.mobile-nav a{
-  display:block;width:100%;max-width:280px;text-align:center;
-  padding:18px 0;
-  color:var(--muted);text-decoration:none;
-  font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;
-  border-bottom:1px solid rgba(56,189,248,0.07);
-  transition:color .2s;
-}
-.mobile-nav a:first-of-type{border-top:1px solid rgba(56,189,248,0.07);}
-.mobile-nav a:hover{color:var(--white);}
-.mobile-nav-cta{
-  margin-top:32px;
-  display:inline-flex;align-items:center;gap:10px;
-  padding:14px 36px;border-radius:4px;
-  background:var(--blue-elec);color:var(--navy);
-  font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
-  text-decoration:none;border:none;cursor:pointer;
-  transition:all .25s;
-}
-.mobile-nav-cta svg{width:14px;height:14px;stroke:var(--navy);}
-
-/* ── MOBILE HERO TWEAKS ── */
 @media(max-width:600px){
   .hero h1{font-size:2.2rem;letter-spacing:-1px;}
-  .hero-stats{flex-wrap:wrap;}
   .stat{min-width:50%;border-right:none !important;border-bottom:1px solid rgba(56,189,248,0.1);}
   .stat:nth-child(odd){border-right:1px solid rgba(56,189,248,0.1) !important;}
   .stat:last-child,.stat:nth-last-child(2):nth-child(odd){border-bottom:none;}
   .hero-btns{flex-direction:column;align-items:center;}
-  .btn-primary,.btn-ghost{width:100%;max-width:300px;justify-content:center;}
+  .btn-primary{width:100%;max-width:300px;justify-content:center;}
   .modal-box{padding:40px 24px 32px;}
   .contact-row-value{font-size:.82rem;}
-  .cta-btns{flex-direction:column;align-items:center;}
-  .btn-outline-elec,.btn-outline-dim{width:100%;max-width:300px;justify-content:center;}
   .process-track{grid-template-columns:1fr;}
   .adv-grid{grid-template-columns:1fr;}
-  footer{font-size:10px;}
-  .sec-title{font-size:1.6rem;}
+  footer{font-size:10px;}.sec-title{font-size:1.6rem;}
 }
-@media(max-width:960px){
-  .mobile-menu-btn{display:flex;}
-  .nav-cta{display:none;}
-}
-/* CONTACT MODAL */
-.modal-overlay{
-  position:fixed;inset:0;z-index:999;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(6,10,20,0.85);
-  backdrop-filter:blur(10px);
-  opacity:0;pointer-events:none;
-  transition:opacity .35s ease;
-}
-.modal-overlay.open{opacity:1;pointer-events:all;}
-.modal-box{
-  position:relative;
-  width:min(520px,92vw);
-  background:linear-gradient(160deg,#0a1628 0%,#0b1e38 60%,#071830 100%);
-  border:1px solid rgba(56,189,248,0.2);
-  border-radius:4px;
-  padding:52px 48px 44px;
-  overflow:hidden;
-  transform:translateY(24px) scale(0.97);
-  transition:transform .4s cubic-bezier(.22,1,.36,1);
-}
-.modal-overlay.open .modal-box{transform:translateY(0) scale(1);}
-
-/* corner bracket accents */
-.modal-box::before,.modal-box::after{
-  content:'';position:absolute;width:28px;height:28px;
-}
-.modal-box::before{top:14px;left:14px;border-top:1.5px solid rgba(56,189,248,0.45);border-left:1.5px solid rgba(56,189,248,0.45);}
-.modal-box::after{bottom:14px;right:14px;border-bottom:1.5px solid rgba(56,189,248,0.45);border-right:1.5px solid rgba(56,189,248,0.45);}
-
-/* inner corner accents */
-.modal-corner-tr,.modal-corner-bl{
-  position:absolute;width:28px;height:28px;pointer-events:none;
-}
-.modal-corner-tr{top:14px;right:14px;border-top:1.5px solid rgba(56,189,248,0.25);border-right:1.5px solid rgba(56,189,248,0.25);}
-.modal-corner-bl{bottom:14px;left:14px;border-bottom:1.5px solid rgba(56,189,248,0.25);border-left:1.5px solid rgba(56,189,248,0.25);}
-
-.modal-glow{
-  position:absolute;top:-80px;left:50%;transform:translateX(-50%);
-  width:320px;height:220px;
-  background:radial-gradient(ellipse,rgba(56,189,248,0.1) 0%,transparent 70%);
-  pointer-events:none;
-}
-.modal-close{
-  position:absolute;top:18px;right:18px;
-  width:32px;height:32px;border-radius:2px;
-  border:1px solid rgba(56,189,248,0.2);
-  background:transparent;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .2s;
-}
-.modal-close:hover{background:rgba(56,189,248,0.1);border-color:rgba(56,189,248,0.5);}
-.modal-close svg{width:14px;height:14px;stroke:var(--muted);}
-
-/* central floral emblem */
-.modal-emblem{
-  display:flex;justify-content:center;margin-bottom:24px;
-}
-.modal-emblem svg{width:80px;height:80px;}
-
-.modal-label{
-  text-align:center;font-size:9px;font-weight:700;
-  letter-spacing:5px;text-transform:uppercase;
-  color:var(--blue-elec);margin-bottom:8px;
-}
-.modal-title{
-  text-align:center;font-size:1.55rem;font-weight:900;
-  letter-spacing:-0.5px;color:var(--white);margin-bottom:6px;
-}
-.modal-sub{
-  text-align:center;font-size:.82rem;color:var(--dim);
-  line-height:1.65;margin-bottom:36px;
-}
-.modal-divider{
-  height:1px;margin-bottom:32px;
-  background:linear-gradient(90deg,transparent,rgba(56,189,248,0.2),transparent);
-}
-
-/* contact rows */
-.contact-row{
-  display:flex;align-items:center;gap:18px;
-  padding:16px 20px;
-  border:1px solid rgba(56,189,248,0.1);
-  border-radius:3px;
-  background:rgba(56,189,248,0.03);
-  margin-bottom:12px;
-  transition:all .25s;cursor:pointer;text-decoration:none;
-}
-.contact-row:last-of-type{margin-bottom:0;}
-.contact-row:hover{background:rgba(56,189,248,0.08);border-color:rgba(56,189,248,0.3);transform:translateX(3px);}
-.contact-row-icon{
-  width:42px;height:42px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-}
-.contact-row-icon svg{width:100%;height:100%;}
-.contact-row-text{}
-.contact-row-type{font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue-elec);margin-bottom:3px;}
-.contact-row-value{font-size:.95rem;font-weight:700;color:var(--white);letter-spacing:.3px;}
 </style>
 </head>
 <body>
@@ -325,51 +205,78 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
 <!-- CONTACT MODAL -->
 <div class="modal-overlay" id="contactModal">
   <div class="modal-box">
-    <div class="modal-glow"></div>
+    <div class="modal-glow-top"></div>
+    <div class="modal-glow-bl"></div>
+    <div class="modal-glow-br"></div>
     <div class="modal-corner-tr"></div>
     <div class="modal-corner-bl"></div>
+
+    <!-- floating mini botanical inside modal, top-left -->
+    <svg class="modal-floral-tl" viewBox="0 0 60 60" fill="none">
+      <path d="M30 55 C30 55 30 38 30 28" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+      <ellipse cx="30" cy="18" rx="4" ry="7" fill="rgba(56,189,248,0.2)" stroke="#38bdf8" stroke-width="1"/>
+      <ellipse cx="30" cy="18" rx="7" ry="4" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="0.8"/>
+      <ellipse cx="30" cy="18" rx="4" ry="7" transform="rotate(45 30 18)" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.7"/>
+      <ellipse cx="30" cy="18" rx="4" ry="7" transform="rotate(-45 30 18)" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.7"/>
+      <circle cx="30" cy="18" r="3" fill="rgba(56,189,248,0.4)" stroke="#38bdf8" stroke-width="1"/>
+      <path d="M30 36 C30 36 22 32 18 26" stroke="#38bdf8" stroke-width="1" stroke-linecap="round"/>
+      <ellipse cx="17" cy="24" rx="5" ry="3" transform="rotate(-35 17 24)" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="0.8"/>
+    </svg>
+
+    <!-- floating mini botanical inside modal, bottom-right -->
+    <svg class="modal-floral-br" viewBox="0 0 60 60" fill="none">
+      <path d="M30 55 C30 55 30 38 30 28" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+      <ellipse cx="30" cy="18" rx="4" ry="7" fill="rgba(56,189,248,0.2)" stroke="#38bdf8" stroke-width="1"/>
+      <ellipse cx="30" cy="18" rx="7" ry="4" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="0.8"/>
+      <ellipse cx="30" cy="18" rx="4" ry="7" transform="rotate(45 30 18)" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.7"/>
+      <ellipse cx="30" cy="18" rx="4" ry="7" transform="rotate(-45 30 18)" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.7"/>
+      <circle cx="30" cy="18" r="3" fill="rgba(56,189,248,0.4)" stroke="#38bdf8" stroke-width="1"/>
+      <path d="M30 36 C30 36 22 32 18 26" stroke="#38bdf8" stroke-width="1" stroke-linecap="round"/>
+      <ellipse cx="17" cy="24" rx="5" ry="3" transform="rotate(-35 17 24)" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="0.8"/>
+    </svg>
+
     <button class="modal-close" onclick="closeModal()">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
 
-    <!-- large central floral emblem -->
+    <!-- grand emblem -->
     <div class="modal-emblem">
-      <svg viewBox="0 0 80 80" fill="none">
-        <!-- outer ring of petals -->
-        <ellipse cx="40" cy="10" rx="5.5" ry="9" fill="rgba(56,189,248,0.14)" stroke="#38bdf8" stroke-width="1"/>
-        <ellipse cx="40" cy="70" rx="5.5" ry="9" fill="rgba(56,189,248,0.14)" stroke="#38bdf8" stroke-width="1"/>
-        <ellipse cx="10" cy="40" rx="9" ry="5.5" fill="rgba(56,189,248,0.14)" stroke="#38bdf8" stroke-width="1"/>
-        <ellipse cx="70" cy="40" rx="9" ry="5.5" fill="rgba(56,189,248,0.14)" stroke="#38bdf8" stroke-width="1"/>
-        <ellipse cx="18" cy="18" rx="5.5" ry="9" transform="rotate(-45 18 18)" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.9"/>
-        <ellipse cx="62" cy="18" rx="5.5" ry="9" transform="rotate(45 62 18)"  fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.9"/>
-        <ellipse cx="18" cy="62" rx="5.5" ry="9" transform="rotate(45 18 62)"  fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.9"/>
-        <ellipse cx="62" cy="62" rx="5.5" ry="9" transform="rotate(-45 62 62)" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.9"/>
-        <!-- mid ring -->
-        <ellipse cx="40" cy="22" rx="4" ry="7" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.8"/>
-        <ellipse cx="40" cy="58" rx="4" ry="7" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.8"/>
-        <ellipse cx="22" cy="40" rx="7" ry="4" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.8"/>
-        <ellipse cx="58" cy="40" rx="7" ry="4" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.8"/>
-        <ellipse cx="27" cy="27" rx="4" ry="7" transform="rotate(-45 27 27)" fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="0.7"/>
-        <ellipse cx="53" cy="27" rx="4" ry="7" transform="rotate(45 53 27)"  fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="0.7"/>
-        <ellipse cx="27" cy="53" rx="4" ry="7" transform="rotate(45 27 53)"  fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="0.7"/>
-        <ellipse cx="53" cy="53" rx="4" ry="7" transform="rotate(-45 53 53)" fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="0.7"/>
-        <!-- inner circles -->
-        <circle cx="40" cy="40" r="12" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.2"/>
-        <circle cx="40" cy="40" r="7"  fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1"/>
-        <circle cx="40" cy="40" r="3"  fill="rgba(56,189,248,0.45)" stroke="#38bdf8" stroke-width="1"/>
+      <svg viewBox="0 0 96 96" fill="none">
+        <!-- outermost petal ring -->
+        <ellipse cx="48" cy="8"  rx="6" ry="10" fill="rgba(56,189,248,0.13)" stroke="#38bdf8" stroke-width="1"/>
+        <ellipse cx="48" cy="88" rx="6" ry="10" fill="rgba(56,189,248,0.13)" stroke="#38bdf8" stroke-width="1"/>
+        <ellipse cx="8"  cy="48" rx="10" ry="6" fill="rgba(56,189,248,0.13)" stroke="#38bdf8" stroke-width="1"/>
+        <ellipse cx="88" cy="48" rx="10" ry="6" fill="rgba(56,189,248,0.13)" stroke="#38bdf8" stroke-width="1"/>
+        <ellipse cx="20" cy="20" rx="6" ry="10" transform="rotate(-45 20 20)" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.9"/>
+        <ellipse cx="76" cy="20" rx="6" ry="10" transform="rotate(45 76 20)"  fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.9"/>
+        <ellipse cx="20" cy="76" rx="6" ry="10" transform="rotate(45 20 76)"  fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.9"/>
+        <ellipse cx="76" cy="76" rx="6" ry="10" transform="rotate(-45 76 76)" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.9"/>
+        <!-- mid petal ring -->
+        <ellipse cx="48" cy="20" rx="4.5" ry="8" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.8"/>
+        <ellipse cx="48" cy="76" rx="4.5" ry="8" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.8"/>
+        <ellipse cx="20" cy="48" rx="8" ry="4.5" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.8"/>
+        <ellipse cx="76" cy="48" rx="8" ry="4.5" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.8"/>
+        <ellipse cx="29" cy="29" rx="4.5" ry="8" transform="rotate(-45 29 29)" fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="0.7"/>
+        <ellipse cx="67" cy="29" rx="4.5" ry="8" transform="rotate(45 67 29)"  fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="0.7"/>
+        <ellipse cx="29" cy="67" rx="4.5" ry="8" transform="rotate(45 29 67)"  fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="0.7"/>
+        <ellipse cx="67" cy="67" rx="4.5" ry="8" transform="rotate(-45 67 67)" fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="0.7"/>
+        <!-- inner rings -->
+        <circle cx="48" cy="48" r="18" fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="1.2"/>
+        <circle cx="48" cy="48" r="11" fill="rgba(56,189,248,0.1)"  stroke="#38bdf8" stroke-width="1"/>
+        <circle cx="48" cy="48" r="6"  fill="rgba(56,189,248,0.18)" stroke="#38bdf8" stroke-width="1"/>
+        <circle cx="48" cy="48" r="2.5" fill="rgba(56,189,248,0.6)" stroke="#38bdf8" stroke-width="1"/>
       </svg>
     </div>
 
     <div class="modal-label">Get in Touch</div>
     <h2 class="modal-title">Contact Us</h2>
-    <p class="modal-sub">Reach out directly. Response time is mission-critical.</p>
+    <p class="modal-sub">Reach out directly. Expect responses within 24 hours.</p>
     <div class="modal-divider"></div>
 
-    <!-- Email row -->
-          <a class="contact-row" href="mailto:dean.informationsystems@gmail.com">
+    <!-- Email button row -->
+    <a class="contact-row" href="mailto:management@deaninformationsystems.com">
       <div class="contact-row-icon">
         <svg viewBox="0 0 42 42" fill="none">
-          <!-- petal ring around envelope -->
           <ellipse cx="21" cy="6"  rx="3" ry="5" fill="rgba(56,189,248,0.13)" stroke="#38bdf8" stroke-width="0.9"/>
           <ellipse cx="21" cy="36" rx="3" ry="5" fill="rgba(56,189,248,0.13)" stroke="#38bdf8" stroke-width="0.9"/>
           <ellipse cx="6"  cy="21" rx="5" ry="3" fill="rgba(56,189,248,0.13)" stroke="#38bdf8" stroke-width="0.9"/>
@@ -378,7 +285,6 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
           <ellipse cx="32" cy="10" rx="3" ry="5" transform="rotate(45 32 10)"  fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="0.7"/>
           <ellipse cx="10" cy="32" rx="3" ry="5" transform="rotate(45 10 32)"  fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="0.7"/>
           <ellipse cx="32" cy="32" rx="3" ry="5" transform="rotate(-45 32 32)" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="0.7"/>
-          <!-- envelope -->
           <rect x="10" y="14" width="22" height="14" rx="2" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.2"/>
           <polyline points="10,14 21,23 32,14" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="21" cy="21" r="2.5" fill="rgba(56,189,248,0.3)" stroke="#38bdf8" stroke-width="0.8"/>
@@ -386,7 +292,7 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
       </div>
       <div class="contact-row-text">
         <div class="contact-row-type">Email</div>
-        <div class="contact-row-value">dean.informationsystems@gmail.com</div>
+        <div class="contact-row-value">Send an Email</div>
       </div>
     </a>
 
@@ -394,7 +300,6 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
     <a class="contact-row" href="tel:+16156513603">
       <div class="contact-row-icon">
         <svg viewBox="0 0 42 42" fill="none">
-          <!-- petal ring around phone -->
           <ellipse cx="21" cy="6"  rx="3" ry="5" fill="rgba(56,189,248,0.13)" stroke="#38bdf8" stroke-width="0.9"/>
           <ellipse cx="21" cy="36" rx="3" ry="5" fill="rgba(56,189,248,0.13)" stroke="#38bdf8" stroke-width="0.9"/>
           <ellipse cx="6"  cy="21" rx="5" ry="3" fill="rgba(56,189,248,0.13)" stroke="#38bdf8" stroke-width="0.9"/>
@@ -403,7 +308,6 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
           <ellipse cx="32" cy="10" rx="3" ry="5" transform="rotate(45 32 10)"  fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="0.7"/>
           <ellipse cx="10" cy="32" rx="3" ry="5" transform="rotate(45 10 32)"  fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="0.7"/>
           <ellipse cx="32" cy="32" rx="3" ry="5" transform="rotate(-45 32 32)" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="0.7"/>
-          <!-- phone handset -->
           <path d="M15 13 C15 13 14 17 16 19 C18 21 21 21 21 21 C21 21 21 24 23 26 C25 28 29 27 29 27 L27 23 C27 23 24 24 23 23 C22 22 23 19 23 19 C23 19 20 18 19 17 C18 16 19 13 19 13 Z" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1.2" stroke-linejoin="round"/>
           <circle cx="21" cy="21" r="2.5" fill="rgba(56,189,248,0.3)" stroke="#38bdf8" stroke-width="0.8"/>
         </svg>
@@ -417,42 +321,13 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
   </div>
 </div>
 
-<!-- NAV -->
-<nav>
-  <svg class="logo-svg" viewBox="0 0 320 100" aria-label="Dean Information Systems">
-    <text x="0" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#ffffff" letter-spacing="-2">D</text>
-    <text x="62" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#90caf9" letter-spacing="-2">E</text>
-    <rect x="70" y="38" width="36" height="7" rx="3" fill="#90caf9"/>
-    <text x="126" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#64b5f6" letter-spacing="-2">A</text>
-    <text x="198" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#0ea5e9" letter-spacing="-2">N</text>
-    <text x="0" y="92" font-family="Arial,sans-serif" font-weight="600" font-size="13" fill="#94a3b8" letter-spacing="6">INFORMATION SYSTEMS</text>
-  </svg>
-  <ul class="nav-links">
-    <li><a href="#advantage">Advantage</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">
-    Get in Touch
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-  </a>
-  <button class="mobile-menu-btn" onclick="openMobileNav()" aria-label="Open menu">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
-      <line x1="3" y1="6"  x2="21" y2="6"/>
-      <line x1="3" y1="12" x2="21" y2="12"/>
-      <line x1="3" y1="18" x2="21" y2="18"/>
-    </svg>
-  </button>
-</nav>
-
-<!-- MOBILE NAV OVERLAY -->
+<!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav">
   <button class="mobile-nav-close" onclick="closeMobileNav()">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>
   <div class="mobile-nav-logo">
-    <svg viewBox="0 0 320 100" aria-label="Dean Information Systems">
+    <svg viewBox="0 0 320 100">
       <text x="0" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#ffffff" letter-spacing="-2">D</text>
       <text x="62" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#90caf9" letter-spacing="-2">E</text>
       <rect x="70" y="38" width="36" height="7" rx="3" fill="#90caf9"/>
@@ -467,9 +342,34 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
   <a href="#contact"   onclick="closeMobileNav()">Contact</a>
   <button class="mobile-nav-cta" onclick="closeMobileNav();openModal(event);">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-    Contact Ayden
+    Contact Us
   </button>
 </div>
+
+<!-- NAV -->
+<nav>
+  <svg class="logo-svg" viewBox="0 0 320 100">
+    <text x="0" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#ffffff" letter-spacing="-2">D</text>
+    <text x="62" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#90caf9" letter-spacing="-2">E</text>
+    <rect x="70" y="38" width="36" height="7" rx="3" fill="#90caf9"/>
+    <text x="126" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#64b5f6" letter-spacing="-2">A</text>
+    <text x="198" y="72" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="88" fill="#0ea5e9" letter-spacing="-2">N</text>
+    <text x="0" y="92" font-family="Arial,sans-serif" font-weight="600" font-size="13" fill="#94a3b8" letter-spacing="6">INFORMATION SYSTEMS</text>
+  </svg>
+  <ul class="nav-links">
+    <li><a href="#advantage">Advantage</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openModal(event)">
+    Get in Touch
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </button>
+  <button class="mobile-menu-btn" onclick="openMobileNav()">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -502,7 +402,7 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
     <div class="eyebrow">Marine Veteran &nbsp; Network Engineer &nbsp; Digital Strategist</div>
     <h1>Secure Your Assets.<br><em>Scale Your Business.</em></h1>
     <div class="hero-rule"></div>
-    <p class="hero-sub">Dean brings years network engineering to your doorstep, delivering elite security, web administration, and growth strategy built for small businesses.</p>
+    <p class="hero-sub">Dean brings years of network engineering and digital craftsmanship to your doorstep, delivering elite security, web administration, and growth strategy built for small businesses.</p>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">4<sup>+</sup></div><div class="stat-label">Years of Experience</div></div>
       <div class="stat"><div class="stat-num">100<sup>%</sup></div><div class="stat-label">Mission Focused</div></div>
@@ -510,10 +410,6 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
       <div class="stat"><div class="stat-num">24<sup>/7</sup></div><div class="stat-label">Availability</div></div>
     </div>
     <div class="hero-btns">
-      <button class="btn-ghost">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        View This Demo
-      </button>
       <a href="#contact" class="btn-primary" onclick="openModal(event)">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
         Contact Us
@@ -531,17 +427,19 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
   <svg class="bot-top" viewBox="0 0 600 200" fill="none">
     <path d="M300 200 C300 200 250 150 180 120 C110 90 50 80 20 50 C-10 20 10 0 50 10 C90 20 150 60 200 70 C250 80 280 60 300 40 C320 60 350 80 400 70 C450 60 510 20 550 10 C590 0 610 20 580 50 C550 80 490 90 420 120 C350 150 300 200 300 200Z" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.04)"/>
     <circle cx="300" cy="40" r="16" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.06)"/>
-    <circle cx="300" cy="40" r="8" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.08)"/>
+    <circle cx="300" cy="40" r="8"  stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.08)"/>
+    <path d="M150 90 C130 70 110 60 90 45" stroke="#38bdf8" stroke-width="1" fill="none"/>
+    <path d="M450 90 C470 70 490 60 510 45" stroke="#38bdf8" stroke-width="1" fill="none"/>
+    <ellipse cx="90" cy="45" rx="18" ry="10" transform="rotate(-30 90 45)" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.04)"/>
+    <ellipse cx="510" cy="45" rx="18" ry="10" transform="rotate(30 510 45)" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.04)"/>
   </svg>
   <div class="wrap">
     <div class="sec-head ctr">
       <div class="sec-label">The Veteran Advantage</div>
       <h2 class="sec-title">Mission-Ready. Every Time.</h2>
-      <p class="sec-sub">Our ethos doesn't retire. Our mission is your growth.</p>
+      <p class="sec-sub">We are veteran owned and operated, with that experience influencing our work ethic and mindset toward your success.</p>
     </div>
     <div class="adv-grid">
-
-      <!-- Discipline -->
       <div class="adv-card">
         <div class="adv-num">01</div>
         <div class="adv-icon-wrap">
@@ -561,8 +459,6 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
         <h3>Discipline</h3>
         <p>Precision applied to every project. No shortcuts, no compromises, no excuses. Every deliverable meets the standard.</p>
       </div>
-
-      <!-- Precision -->
       <div class="adv-card">
         <div class="adv-num">02</div>
         <div class="adv-icon-wrap">
@@ -583,8 +479,6 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
         <h3>Precision</h3>
         <p>Mission-critical network engineering habits transferred directly to your infrastructure, keeping your systems bulletproof and reliable.</p>
       </div>
-
-      <!-- Performance -->
       <div class="adv-card">
         <div class="adv-num">03</div>
         <div class="adv-icon-wrap">
@@ -603,9 +497,8 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
           </svg>
         </div>
         <h3>Performance</h3>
-        <p>High-velocity results driven by a veteran mindset forged under real pressure. Deadlines are orders, and orders get executed.</p>
+        <p>Results driven mindset forged under real pressure. Deadlines are honored, and the process is transparent.</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -630,8 +523,6 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
       <p class="sec-sub">Three core offerings engineered to protect, grow, and optimize your digital operations.</p>
     </div>
     <div class="svc-grid">
-
-      <!-- Network Security (tall) -->
       <div class="svc-card tall">
         <div class="svc-tag">Security Auditing</div>
         <div class="svc-icon">
@@ -652,34 +543,14 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
         <h3>Network Security</h3>
         <p>Comprehensive security audits, vulnerability assessments, and hardened defenses built with the same rigor applied to military-grade networks. Your assets stay locked down.</p>
         <div class="svc-capability-list">
-          <div class="svc-cap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-            <span>SSL Encryption</span>
-          </div>
-          <div class="svc-cap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            <span>Web App Firewall</span>
-          </div>
-          <div class="svc-cap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            <span>Threat Monitoring</span>
-          </div>
-          <div class="svc-cap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-            <span>Penetration Testing</span>
-          </div>
-          <div class="svc-cap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-            <span>Network Hardening</span>
-          </div>
-          <div class="svc-cap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
-            <span>Access Control</span>
-          </div>
+          <div class="svc-cap"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>SSL Encryption</span></div>
+          <div class="svc-cap"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><span>Web App Firewall</span></div>
+          <div class="svc-cap"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span>Threat Monitoring</span></div>
+          <div class="svc-cap"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg><span>Penetration Testing</span></div>
+          <div class="svc-cap"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg><span>Network Hardening</span></div>
+          <div class="svc-cap"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg><span>Access Control</span></div>
         </div>
       </div>
-
-      <!-- Client Growth -->
       <div class="svc-card">
         <div class="svc-tag">Digital Growth</div>
         <div class="svc-icon">
@@ -699,14 +570,8 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
         </div>
         <h3>Client Growth</h3>
         <p>Growth-focused web strategies that turn your online presence into a reliable engine for new business.</p>
-        <ul class="svc-list">
-          <li>SEO &amp; performance optimization</li>
-          <li>Conversion rate improvements</li>
-          <li>Analytics &amp; reporting dashboards</li>
-        </ul>
+        <ul class="svc-list"><li>SEO &amp; performance optimization</li><li>Conversion rate improvements</li><li>Analytics &amp; reporting dashboards</li></ul>
       </div>
-
-      <!-- Web Administration -->
       <div class="svc-card">
         <div class="svc-tag">Web Administration</div>
         <div class="svc-icon">
@@ -729,13 +594,8 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
         </div>
         <h3>Web Administration</h3>
         <p>Elite, hands-on website management so your platform stays fast, secure, and always mission-ready.</p>
-        <ul class="svc-list">
-          <li>Uptime &amp; performance monitoring</li>
-          <li>CMS updates &amp; maintenance</li>
-          <li>Backup &amp; disaster recovery</li>
-        </ul>
+        <ul class="svc-list"><li>Uptime &amp; performance monitoring</li><li>CMS updates &amp; maintenance</li><li>Backup &amp; disaster recovery</li></ul>
       </div>
-
     </div>
   </div>
 </section>
@@ -751,6 +611,10 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
     <ellipse cx="350" cy="378" rx="18" ry="28" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.04)"/>
     <ellipse cx="172" cy="200" rx="28" ry="18" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.04)"/>
     <ellipse cx="528" cy="200" rx="28" ry="18" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.04)"/>
+    <ellipse cx="223" cy="73"  rx="18" ry="28" transform="rotate(-45 223 73)"  stroke="#38bdf8" stroke-width="0.8" fill="rgba(56,189,248,0.03)"/>
+    <ellipse cx="477" cy="73"  rx="18" ry="28" transform="rotate(45 477 73)"   stroke="#38bdf8" stroke-width="0.8" fill="rgba(56,189,248,0.03)"/>
+    <ellipse cx="223" cy="327" rx="18" ry="28" transform="rotate(45 223 327)"  stroke="#38bdf8" stroke-width="0.8" fill="rgba(56,189,248,0.03)"/>
+    <ellipse cx="477" cy="327" rx="18" ry="28" transform="rotate(-45 477 327)" stroke="#38bdf8" stroke-width="0.8" fill="rgba(56,189,248,0.03)"/>
   </svg>
   <div class="wrap">
     <div class="sec-head ctr">
@@ -759,8 +623,6 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
       <p class="sec-sub">A clear, no-nonsense process from first contact to full deployment.</p>
     </div>
     <div class="process-track">
-
-      <!-- Step 1: Discovery -->
       <div class="step">
         <div class="step-num">
           <svg viewBox="0 0 60 60" fill="none">
@@ -779,8 +641,6 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
         <h4>Discovery Call</h4>
         <p>Assess your current digital posture, goals, and vulnerabilities in a free 30-minute session.</p>
       </div>
-
-      <!-- Step 2: Brief -->
       <div class="step">
         <div class="step-num">
           <svg viewBox="0 0 60 60" fill="none">
@@ -798,8 +658,6 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
         <h4>Mission Brief</h4>
         <p>A tailored proposal outlining scope, timeline, and deliverables. No fluff, just the plan.</p>
       </div>
-
-      <!-- Step 3: Deployment -->
       <div class="step">
         <div class="step-num">
           <svg viewBox="0 0 60 60" fill="none">
@@ -819,8 +677,6 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
         <h4>Deployment</h4>
         <p>Precision execution of all agreed deliverables with regular status updates throughout.</p>
       </div>
-
-      <!-- Step 4: Debrief -->
       <div class="step">
         <div class="step-num">
           <svg viewBox="0 0 60 60" fill="none">
@@ -838,15 +694,22 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
           </svg>
         </div>
         <h4>Debrief &amp; Scale</h4>
-        <p>Review outcomes, measure results, and identify the next mission to keep your business advancing.</p>
+        <p>Review outcomes, measure results, and execute the next mission to keep your business advancing.</p>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section id="contact">
+  <!-- top arch floral -->
+  <svg class="bot-cta-top" viewBox="0 0 500 160" fill="none">
+    <path d="M250 155 C250 155 200 120 140 95 C80 70 30 65 10 40 C-10 15 10 0 40 8 C70 16 120 50 160 58 C200 66 230 48 250 30 C270 48 300 66 340 58 C380 50 430 16 460 8 C490 0 510 15 490 40 C470 65 420 70 360 95 C300 120 250 155 250 155Z" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.03)"/>
+    <circle cx="250" cy="30" r="12" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.06)"/>
+    <circle cx="250" cy="30" r="6"  stroke="#38bdf8" stroke-width="0.8" fill="rgba(56,189,248,0.08)"/>
+    <ellipse cx="100" cy="68" rx="16" ry="9" transform="rotate(-25 100 68)" stroke="#38bdf8" stroke-width="0.8" fill="rgba(56,189,248,0.03)"/>
+    <ellipse cx="400" cy="68" rx="16" ry="9" transform="rotate(25 400 68)"  stroke="#38bdf8" stroke-width="0.8" fill="rgba(56,189,248,0.03)"/>
+  </svg>
   <svg class="bot-cta-l" viewBox="0 0 400 700" fill="none">
     <path d="M200 650 C200 650 180 500 120 420 C60 340 20 280 40 200 C60 120 140 80 200 50" stroke="#38bdf8" stroke-width="2" fill="none"/>
     <ellipse cx="100" cy="420" rx="55" ry="30" transform="rotate(-35 100 420)" stroke="#38bdf8" stroke-width="1.5" fill="rgba(56,189,248,0.06)"/>
@@ -855,6 +718,11 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
     <circle cx="200" cy="50" r="12" stroke="#38bdf8" stroke-width="1.5" fill="rgba(56,189,248,0.1)"/>
     <circle cx="220" cy="38" r="8"  stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.06)"/>
     <circle cx="180" cy="36" r="8"  stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.06)"/>
+    <!-- extra side sprigs -->
+    <path d="M60 310 C35 295 20 285 8 268" stroke="#38bdf8" stroke-width="1" fill="none"/>
+    <ellipse cx="8" cy="266" rx="16" ry="9" transform="rotate(20 8 266)" stroke="#38bdf8" stroke-width="0.9" fill="rgba(56,189,248,0.04)"/>
+    <path d="M140 250 C110 235 95 225 78 208" stroke="#38bdf8" stroke-width="1" fill="none"/>
+    <ellipse cx="77" cy="206" rx="16" ry="9" transform="rotate(50 77 206)" stroke="#38bdf8" stroke-width="0.9" fill="rgba(56,189,248,0.04)"/>
   </svg>
   <svg class="bot-cta-r" viewBox="0 0 400 700" fill="none">
     <path d="M200 650 C200 650 180 500 120 420 C60 340 20 280 40 200 C60 120 140 80 200 50" stroke="#38bdf8" stroke-width="2" fill="none"/>
@@ -864,16 +732,42 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
     <circle cx="200" cy="50" r="12" stroke="#38bdf8" stroke-width="1.5" fill="rgba(56,189,248,0.1)"/>
     <circle cx="220" cy="38" r="8"  stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.06)"/>
     <circle cx="180" cy="36" r="8"  stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.06)"/>
+    <path d="M60 310 C35 295 20 285 8 268" stroke="#38bdf8" stroke-width="1" fill="none"/>
+    <ellipse cx="8" cy="266" rx="16" ry="9" transform="rotate(20 8 266)" stroke="#38bdf8" stroke-width="0.9" fill="rgba(56,189,248,0.04)"/>
+    <path d="M140 250 C110 235 95 225 78 208" stroke="#38bdf8" stroke-width="1" fill="none"/>
+    <ellipse cx="77" cy="206" rx="16" ry="9" transform="rotate(50 77 206)" stroke="#38bdf8" stroke-width="0.9" fill="rgba(56,189,248,0.04)"/>
   </svg>
+  <!-- bottom corner small blooms -->
+  <svg class="bot-cta-bl" viewBox="0 0 200 200" fill="none">
+    <path d="M100 190 C100 190 100 130 100 90" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M100 130 C100 130 70 115 55 90" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M100 110 C100 110 130 95 145 70" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+    <ellipse cx="54" cy="87" rx="16" ry="9" transform="rotate(-35 54 87)" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1"/>
+    <ellipse cx="146" cy="67" rx="16" ry="9" transform="rotate(-35 146 67)" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1"/>
+    <ellipse cx="100" cy="60" rx="10" ry="17" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1"/>
+    <ellipse cx="100" cy="60" rx="17" ry="10" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="0.8"/>
+    <ellipse cx="100" cy="60" rx="10" ry="17" transform="rotate(45 100 60)" fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="0.7"/>
+    <circle cx="100" cy="60" r="7" fill="rgba(56,189,248,0.25)" stroke="#38bdf8" stroke-width="1"/>
+    <circle cx="100" cy="60" r="3" fill="rgba(56,189,248,0.5)" stroke="#38bdf8" stroke-width="0.8"/>
+  </svg>
+  <svg class="bot-cta-br" viewBox="0 0 200 200" fill="none">
+    <path d="M100 190 C100 190 100 130 100 90" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M100 130 C100 130 70 115 55 90" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M100 110 C100 110 130 95 145 70" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+    <ellipse cx="54" cy="87" rx="16" ry="9" transform="rotate(-35 54 87)" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1"/>
+    <ellipse cx="146" cy="67" rx="16" ry="9" transform="rotate(-35 146 67)" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1"/>
+    <ellipse cx="100" cy="60" rx="10" ry="17" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1"/>
+    <ellipse cx="100" cy="60" rx="17" ry="10" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="0.8"/>
+    <ellipse cx="100" cy="60" rx="10" ry="17" transform="rotate(45 100 60)" fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="0.7"/>
+    <circle cx="100" cy="60" r="7" fill="rgba(56,189,248,0.25)" stroke="#38bdf8" stroke-width="1"/>
+    <circle cx="100" cy="60" r="3" fill="rgba(56,189,248,0.5)" stroke="#38bdf8" stroke-width="0.8"/>
+  </svg>
+
   <div class="cta-inner">
     <div class="sec-label">Ready to Secure &amp; Scale?</div>
     <h2 class="sec-title">Let's Build Something <span style="color:var(--blue-elec)">Bulletproof.</span></h2>
-    <p class="sec-sub">Let's talk about how we can help grow your business. No gimmicks, just clear, guidance on securing and growing your business online.</p>
-    <div class="cta-btns">
-      <button class="btn-outline-dim">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        View This Demo
-      </button>
+    <p class="sec-sub">Let's talk about what we can do for your business. No gimmicks, just professional assistance on securing and growing your business online.</p>
+    <div class="cta-btn-center">
       <button class="btn-outline-elec" onclick="openModal(event)">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
         Contact Ayden
@@ -885,7 +779,7 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
 <!-- FOOTER -->
 <footer>
   <span class="footer-brand">Dean Information Systems</span>
-  <span class="footer-copy">© 2026 Ayden Dean. All rights reserved.</span>
+  <span class="footer-copy">© 2026 Dean Information Systems. All rights reserved.</span>
   <span class="footer-vet">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
     Veteran-Owned &amp; Operated
@@ -893,31 +787,15 @@ footer{background:#060f1e;border-top:1px solid rgba(56,189,248,0.08);padding:28p
 </footer>
 
 <script>
-const canvas = document.getElementById('bgCanvas');
-const ctx = canvas.getContext('2d');
-let W, H, particles = [], stems = [];
+const canvas=document.getElementById('bgCanvas'),ctx=canvas.getContext('2d');
+let W,H,particles=[],stems=[];
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
 resize();window.addEventListener('resize',resize);
-class Particle{
-  constructor(){this.reset();}
-  reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*2.5+0.5;this.speedX=(Math.random()-.5)*.18;this.speedY=(Math.random()-.5)*.18;this.alpha=Math.random()*.25+.05;this.pulse=Math.random()*Math.PI*2;}
-  update(){this.x+=this.speedX;this.y+=this.speedY;this.pulse+=.012;if(this.x<-10||this.x>W+10||this.y<-10||this.y>H+10)this.reset();}
-  draw(){const a=this.alpha+Math.sin(this.pulse)*.05;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(56,189,248,${a})`;ctx.fill();}
-}
-class Stem{
-  constructor(){this.x=Math.random()*W;this.y=Math.random()*H;this.len=Math.random()*120+60;this.angle=Math.random()*Math.PI*2;this.speed=(Math.random()-.5)*.003;this.drift={x:(Math.random()-.5)*.06,y:(Math.random()-.5)*.06};this.alpha=Math.random()*.07+.02;this.leaves=Math.floor(Math.random()*3)+2;this.pulse=Math.random()*Math.PI*2;}
-  update(){this.angle+=this.speed;this.x+=this.drift.x;this.y+=this.drift.y;this.pulse+=.008;if(this.x<-200)this.x=W+200;if(this.x>W+200)this.x=-200;if(this.y<-200)this.y=H+200;if(this.y>H+200)this.y=-200;}
-  draw(){const a=this.alpha+Math.sin(this.pulse)*.015;ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.angle);ctx.strokeStyle=`rgba(56,189,248,${a})`;ctx.lineWidth=.8;ctx.beginPath();ctx.moveTo(0,this.len*.5);ctx.quadraticCurveTo(this.len*.2,0,0,-this.len*.5);ctx.stroke();for(let i=0;i<this.leaves;i++){const t=(i+1)/(this.leaves+1);const sy=this.len*.5-t*this.len;const side=i%2===0?1:-1;ctx.beginPath();ctx.moveTo(0,sy);ctx.quadraticCurveTo(side*this.len*.22,sy-this.len*.12,side*this.len*.08,sy-this.len*.24);ctx.stroke();ctx.save();ctx.translate(side*this.len*.08,sy-this.len*.24);ctx.rotate(side*.6);ctx.scale(1,.45);ctx.beginPath();ctx.arc(0,0,this.len*.07,0,Math.PI*2);ctx.fillStyle=`rgba(56,189,248,${a*.4})`;ctx.fill();ctx.strokeStyle=`rgba(56,189,248,${a})`;ctx.stroke();ctx.restore();}ctx.restore();}
-}
+class Particle{constructor(){this.reset();}reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*2.5+0.5;this.speedX=(Math.random()-.5)*.18;this.speedY=(Math.random()-.5)*.18;this.alpha=Math.random()*.25+.05;this.pulse=Math.random()*Math.PI*2;}update(){this.x+=this.speedX;this.y+=this.speedY;this.pulse+=.012;if(this.x<-10||this.x>W+10||this.y<-10||this.y>H+10)this.reset();}draw(){const a=this.alpha+Math.sin(this.pulse)*.05;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(56,189,248,${a})`;ctx.fill();}}
+class Stem{constructor(){this.x=Math.random()*W;this.y=Math.random()*H;this.len=Math.random()*120+60;this.angle=Math.random()*Math.PI*2;this.speed=(Math.random()-.5)*.003;this.drift={x:(Math.random()-.5)*.06,y:(Math.random()-.5)*.06};this.alpha=Math.random()*.07+.02;this.leaves=Math.floor(Math.random()*3)+2;this.pulse=Math.random()*Math.PI*2;}update(){this.angle+=this.speed;this.x+=this.drift.x;this.y+=this.drift.y;this.pulse+=.008;if(this.x<-200)this.x=W+200;if(this.x>W+200)this.x=-200;if(this.y<-200)this.y=H+200;if(this.y>H+200)this.y=-200;}draw(){const a=this.alpha+Math.sin(this.pulse)*.015;ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.angle);ctx.strokeStyle=`rgba(56,189,248,${a})`;ctx.lineWidth=.8;ctx.beginPath();ctx.moveTo(0,this.len*.5);ctx.quadraticCurveTo(this.len*.2,0,0,-this.len*.5);ctx.stroke();for(let i=0;i<this.leaves;i++){const t=(i+1)/(this.leaves+1);const sy=this.len*.5-t*this.len;const side=i%2===0?1:-1;ctx.beginPath();ctx.moveTo(0,sy);ctx.quadraticCurveTo(side*this.len*.22,sy-this.len*.12,side*this.len*.08,sy-this.len*.24);ctx.stroke();ctx.save();ctx.translate(side*this.len*.08,sy-this.len*.24);ctx.rotate(side*.6);ctx.scale(1,.45);ctx.beginPath();ctx.arc(0,0,this.len*.07,0,Math.PI*2);ctx.fillStyle=`rgba(56,189,248,${a*.4})`;ctx.fill();ctx.strokeStyle=`rgba(56,189,248,${a})`;ctx.stroke();ctx.restore();}ctx.restore();}}
 for(let i=0;i<90;i++)particles.push(new Particle());
 for(let i=0;i<18;i++)stems.push(new Stem());
-function loop(){
-  ctx.clearRect(0,0,W,H);
-  stems.forEach(s=>{s.update();s.draw();});
-  particles.forEach(p=>{p.update();p.draw();});
-  for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x;const dy=particles[i].y-particles[j].y;const d=Math.sqrt(dx*dx+dy*dy);if(d<80){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(56,189,248,${.04*(1-d/80)})`;ctx.lineWidth=.5;ctx.stroke();}}
-  requestAnimationFrame(loop);
-}
+function loop(){ctx.clearRect(0,0,W,H);stems.forEach(s=>{s.update();s.draw();});particles.forEach(p=>{p.update();p.draw();});for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<80){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(56,189,248,${.04*(1-d/80)})`;ctx.lineWidth=.5;ctx.stroke();}}requestAnimationFrame(loop);}
 loop();
 function openModal(e){if(e)e.preventDefault();document.getElementById('contactModal').classList.add('open');document.body.style.overflow='hidden';}
 function closeModal(){document.getElementById('contactModal').classList.remove('open');document.body.style.overflow='';}
