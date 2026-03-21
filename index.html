@@ -4,11 +4,6 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Dean Information Systems</title>
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="manifest" href="/site.webmanifest">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=DM+Serif+Display:ital@0;1&display=swap');
@@ -61,6 +56,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .scroll-hint{position:absolute;bottom:32px;left:72px;z-index:2;display:flex;align-items:center;gap:10px;color:rgba(148,163,184,0.3);font-size:9px;letter-spacing:4px;text-transform:uppercase;animation:sink 2.6s ease-in-out infinite;}
 .scroll-hint::before{content:'';width:20px;height:1px;background:rgba(148,163,184,0.25);}
 @keyframes sink{0%,100%{transform:translateY(0)}55%{transform:translateY(6px)}}
+
+/* ── Hero floral fixtures ── */
+.hero-floral-center{position:absolute;left:50%;top:50%;width:min(380px,32vw);pointer-events:none;z-index:1;opacity:0;animation:hfcFade 2.8s ease-out 0.4s forwards,heroFloatCenter 10s ease-in-out 3.2s infinite;}
+.hero-floral-top-right{position:absolute;top:90px;right:0;width:min(320px,28vw);pointer-events:none;z-index:1;opacity:0;animation:hfsFade 2.8s ease-out 0.7s forwards,heroFloatAlt 12s ease-in-out 3.5s infinite;}
+.hero-floral-bottom-right{position:absolute;bottom:50px;right:0;width:min(280px,24vw);pointer-events:none;z-index:1;opacity:0;animation:hfsFade 2.8s ease-out 1.0s forwards,heroFloat 14s ease-in-out 4s infinite;}
+@keyframes hfcFade{from{opacity:0;transform:translate(-50%,-50%) scale(0.93);}to{opacity:1;transform:translate(-50%,-50%) scale(1);}}
+@keyframes hfsFade{from{opacity:0;transform:scale(0.93);}to{opacity:1;transform:scale(1);}}
+@keyframes heroFloatCenter{0%,100%{transform:translate(-50%,-50%) translateY(0);}50%{transform:translate(-50%,-50%) translateY(-7px);}}
+@keyframes heroFloat{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-7px) rotate(0.4deg);}}
+@keyframes heroFloatAlt{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-5px) rotate(-0.3deg);}}
+@media(max-width:1024px){.hero-floral-center,.hero-floral-top-right,.hero-floral-bottom-right{display:none;}}
+
 .section-inner{max-width:1160px;margin:0 auto;}
 .label-tag{display:inline-flex;align-items:center;gap:8px;font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--blue-elec);margin-bottom:16px;}
 .label-tag::before{content:'';width:18px;height:1px;background:var(--blue-elec);opacity:0.6;}
@@ -213,15 +220,10 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
   .cta-grid{grid-template-columns:1fr;gap:48px;}
   footer{padding:20px 24px;flex-direction:column;text-align:center;}
   .scroll-hint{display:none;}
-  /* table: hide generic builder column on tablet */
   .vs-table thead th:nth-child(3),.vs-table tbody td:nth-child(3){display:none;}
 }
-
 @media(max-width:640px){
-  /* NAV */
   nav{padding:12px 20px;}
-
-  /* HERO */
   .hero{padding:88px 20px 60px;}
   .hero h1{font-size:2.4rem;letter-spacing:-0.5px;}
   .hero-sub{font-size:.9rem;}
@@ -230,52 +232,31 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
   .btn-ghost{text-align:center;padding:12px 0;font-size:11px;}
   .hero-stats{grid-template-columns:1fr 1fr;}
   .hero-vet-badge{font-size:9px;letter-spacing:1px;padding:11px 14px;}
-
-  /* MOBILE NAV */
   .mobile-nav a{font-size:13px;letter-spacing:4px;padding:20px 0;}
   .mobile-nav-cta{width:80%;text-align:center;justify-content:center;font-size:12px;padding:15px 20px;}
-
-  /* SECTIONS */
   #advantage,#services,#process,#contact,#versus{padding:60px 20px;}
   .label-tag{font-size:8px;letter-spacing:4px;}
   .adv-grid{grid-template-columns:1fr;}
   .adv-card{padding:32px 24px;}
-  .adv-header-left h2,
-  .vs-header-left h2,
-  .process-header-left h2,
-  .cta-left h2{font-size:clamp(1.7rem,7vw,2.4rem);}
-
-  /* SERVICES */
+  .adv-header-left h2,.vs-header-left h2,.process-header-left h2,.cta-left h2{font-size:clamp(1.7rem,7vw,2.4rem);}
   .svc-header-row{flex-direction:column;align-items:flex-start;gap:16px;}
   .svc-header-sub{text-align:left;max-width:100%;font-size:.875rem;}
   .svc-card{padding:28px 22px;}
   .svc-tag{font-size:7px;letter-spacing:3px;}
-
-  /* VS TABLE — single column on small screens */
   .vs-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
   .vs-table thead th:nth-child(3),.vs-table tbody td:nth-child(3){display:table-cell;}
   .vs-table thead th,.vs-table tbody td{padding:14px 12px;font-size:.78rem;}
   .vs-table thead th:first-child{width:28%;}
-
-  /* PROCESS */
   .process-track{grid-template-columns:1fr;}
   .step{border-right:none;border-bottom:1px solid rgba(56,189,248,0.07);padding:28px 20px;}
-
-  /* FORM */
   .form-row{grid-template-columns:1fr;}
   .contact-form{padding:24px 20px;gap:12px;}
-  .form-group input,
-  .form-group select,
-  .form-group textarea{padding:12px 14px;font-size:16px;} /* 16px prevents iOS zoom */
+  .form-group input,.form-group select,.form-group textarea{padding:12px 14px;font-size:16px;}
   .btn-submit{padding:15px 20px;font-size:12px;letter-spacing:1.5px;}
   .form-success{padding:40px 20px;}
-
-  /* MODAL */
   .modal-box{padding:40px 24px 32px;}
   .contact-row{padding:14px 14px;}
   .contact-row-value{font-size:.85rem;}
-
-  /* FOOTER */
   footer{padding:20px;gap:10px;font-size:10px;}
   .footer-brand,.footer-copy{font-size:9px;}
 }
@@ -363,6 +344,93 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
     </div>
   </div>
   <div class="scroll-hint">Scroll to explore</div>
+
+  <!-- CENTER-LEFT: botanical compass rose -->
+  <svg class="hero-floral-center" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="210" cy="210" r="198" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4 8" opacity="0.13"/>
+    <circle cx="210" cy="210" r="168" stroke="#38bdf8" stroke-width="0.4" opacity="0.08"/>
+    <line x1="210" y1="12"  x2="210" y2="408" stroke="#38bdf8" stroke-width="0.5" opacity="0.09"/>
+    <line x1="12"  y1="210" x2="408" y2="210" stroke="#38bdf8" stroke-width="0.5" opacity="0.09"/>
+    <line x1="62"  y1="62"  x2="358" y2="358" stroke="#38bdf8" stroke-width="0.35" opacity="0.06"/>
+    <line x1="358" y1="62"  x2="62"  y2="358" stroke="#38bdf8" stroke-width="0.35" opacity="0.06"/>
+    <circle cx="210" cy="210" r="96"  stroke="#38bdf8" stroke-width="0.6" opacity="0.11"/>
+    <circle cx="210" cy="210" r="52"  stroke="#38bdf8" stroke-width="0.6" fill="rgba(56,189,248,0.02)" opacity="0.16"/>
+    <ellipse cx="210" cy="134" rx="13" ry="54" fill="rgba(56,189,248,0.05)" stroke="#38bdf8" stroke-width="0.85" opacity="0.5"/>
+    <ellipse cx="210" cy="286" rx="13" ry="54" fill="rgba(56,189,248,0.05)" stroke="#38bdf8" stroke-width="0.85" opacity="0.5"/>
+    <ellipse cx="134" cy="210" rx="54" ry="13" fill="rgba(56,189,248,0.05)" stroke="#38bdf8" stroke-width="0.85" opacity="0.5"/>
+    <ellipse cx="286" cy="210" rx="54" ry="13" fill="rgba(56,189,248,0.05)" stroke="#38bdf8" stroke-width="0.85" opacity="0.5"/>
+    <ellipse cx="155" cy="155" rx="13" ry="50" transform="rotate(-45 155 155)" fill="rgba(56,189,248,0.03)" stroke="#38bdf8" stroke-width="0.65" opacity="0.36"/>
+    <ellipse cx="265" cy="155" rx="13" ry="50" transform="rotate(45 265 155)"  fill="rgba(56,189,248,0.03)" stroke="#38bdf8" stroke-width="0.65" opacity="0.36"/>
+    <ellipse cx="155" cy="265" rx="13" ry="50" transform="rotate(45 155 265)"  fill="rgba(56,189,248,0.03)" stroke="#38bdf8" stroke-width="0.65" opacity="0.36"/>
+    <ellipse cx="265" cy="265" rx="13" ry="50" transform="rotate(-45 265 265)" fill="rgba(56,189,248,0.03)" stroke="#38bdf8" stroke-width="0.65" opacity="0.36"/>
+    <path d="M210 158 C210 158 197 136 190 110 C183 82 193 60 210 57" stroke="#38bdf8" stroke-width="0.85" fill="none" opacity="0.32"/>
+    <ellipse cx="190" cy="110" rx="21" ry="10" transform="rotate(-30 190 110)" stroke="#38bdf8" stroke-width="0.65" fill="rgba(56,189,248,0.04)" opacity="0.38"/>
+    <ellipse cx="200" cy="82"  rx="16" ry="8"  transform="rotate(15 200 82)"  stroke="#38bdf8" stroke-width="0.55" fill="rgba(56,189,248,0.03)" opacity="0.32"/>
+    <circle cx="210" cy="57" r="5" stroke="#38bdf8" stroke-width="0.75" fill="rgba(56,189,248,0.1)" opacity="0.46"/>
+    <path d="M210 262 C210 262 223 284 230 310 C237 338 227 360 210 363" stroke="#38bdf8" stroke-width="0.85" fill="none" opacity="0.32"/>
+    <ellipse cx="230" cy="310" rx="21" ry="10" transform="rotate(30 230 310)"  stroke="#38bdf8" stroke-width="0.65" fill="rgba(56,189,248,0.04)" opacity="0.38"/>
+    <ellipse cx="220" cy="338" rx="16" ry="8"  transform="rotate(-15 220 338)" stroke="#38bdf8" stroke-width="0.55" fill="rgba(56,189,248,0.03)" opacity="0.32"/>
+    <circle cx="210" cy="363" r="5" stroke="#38bdf8" stroke-width="0.75" fill="rgba(56,189,248,0.1)" opacity="0.46"/>
+    <path d="M158 210 C158 210 136 197 110 190 C82 183 60 193 57 210" stroke="#38bdf8" stroke-width="0.85" fill="none" opacity="0.32"/>
+    <ellipse cx="110" cy="190" rx="10" ry="21" transform="rotate(-30 110 190)" stroke="#38bdf8" stroke-width="0.65" fill="rgba(56,189,248,0.04)" opacity="0.38"/>
+    <circle cx="57" cy="210" r="5" stroke="#38bdf8" stroke-width="0.75" fill="rgba(56,189,248,0.1)" opacity="0.46"/>
+    <path d="M262 210 C262 210 284 223 310 230 C338 237 360 227 363 210" stroke="#38bdf8" stroke-width="0.85" fill="none" opacity="0.32"/>
+    <ellipse cx="310" cy="230" rx="10" ry="21" transform="rotate(30 310 230)" stroke="#38bdf8" stroke-width="0.65" fill="rgba(56,189,248,0.04)" opacity="0.38"/>
+    <circle cx="363" cy="210" r="5" stroke="#38bdf8" stroke-width="0.75" fill="rgba(56,189,248,0.1)" opacity="0.46"/>
+    <circle cx="210" cy="210" r="18" stroke="#38bdf8" stroke-width="0.9" fill="rgba(56,189,248,0.06)" opacity="0.55"/>
+    <circle cx="210" cy="210" r="8"  stroke="#38bdf8" stroke-width="0.9" fill="rgba(56,189,248,0.12)" opacity="0.65"/>
+    <circle cx="210" cy="210" r="3"  fill="rgba(56,189,248,0.5)" opacity="0.75"/>
+    <g stroke="#38bdf8" stroke-width="0.5" opacity="0.16">
+      <line x1="210" y1="14"  x2="210" y2="22"/><line x1="210" y1="398" x2="210" y2="406"/>
+      <line x1="14"  y1="210" x2="22"  y2="210"/><line x1="398" y1="210" x2="406" y2="210"/>
+      <line x1="71"  y1="71"  x2="77"  y2="77"/><line x1="343" y1="71"  x2="349" y2="77"/>
+      <line x1="71"  y1="349" x2="77"  y2="343"/><line x1="343" y1="349" x2="349" y2="343"/>
+    </g>
+  </svg>
+
+  <!-- TOP-RIGHT: three vertical sprigs -->
+  <svg class="hero-floral-top-right" viewBox="0 0 320 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="78" x2="320" y2="78" stroke="#38bdf8" stroke-width="0.4" opacity="0.1"/>
+    <path d="M68 138 C68 138 62 108 56 86 C50 62 58 40 68 32" stroke="#38bdf8" stroke-width="0.9" fill="none" opacity="0.38"/>
+    <ellipse cx="56" cy="86" rx="19" ry="9" transform="rotate(-26 56 86)" stroke="#38bdf8" stroke-width="0.7" fill="rgba(56,189,248,0.04)" opacity="0.42"/>
+    <ellipse cx="62" cy="60" rx="14" ry="7" transform="rotate(12 62 60)"  stroke="#38bdf8" stroke-width="0.6" fill="rgba(56,189,248,0.03)" opacity="0.36"/>
+    <circle cx="68" cy="32" r="5" stroke="#38bdf8" stroke-width="0.75" fill="rgba(56,189,248,0.09)" opacity="0.5"/>
+    <path d="M160 148 C160 148 152 112 146 84 C140 54 148 22 160 12" stroke="#38bdf8" stroke-width="1" fill="none" opacity="0.44"/>
+    <ellipse cx="146" cy="84" rx="22" ry="10" transform="rotate(-28 146 84)" stroke="#38bdf8" stroke-width="0.75" fill="rgba(56,189,248,0.05)" opacity="0.46"/>
+    <ellipse cx="153" cy="54" rx="17" ry="8" transform="rotate(13 153 54)"  stroke="#38bdf8" stroke-width="0.65" fill="rgba(56,189,248,0.04)" opacity="0.38"/>
+    <circle cx="160" cy="12" r="5.5" stroke="#38bdf8" stroke-width="0.85" fill="rgba(56,189,248,0.12)" opacity="0.55"/>
+    <circle cx="160" cy="12" r="2.2" fill="rgba(56,189,248,0.42)" opacity="0.65"/>
+    <path d="M252 136 C252 136 246 108 240 86 C234 62 242 42 252 34" stroke="#38bdf8" stroke-width="0.9" fill="none" opacity="0.38"/>
+    <ellipse cx="240" cy="86" rx="19" ry="9" transform="rotate(-26 240 86)" stroke="#38bdf8" stroke-width="0.7" fill="rgba(56,189,248,0.04)" opacity="0.42"/>
+    <ellipse cx="246" cy="60" rx="14" ry="7" transform="rotate(12 246 60)"  stroke="#38bdf8" stroke-width="0.6" fill="rgba(56,189,248,0.03)" opacity="0.36"/>
+    <circle cx="252" cy="34" r="5" stroke="#38bdf8" stroke-width="0.75" fill="rgba(56,189,248,0.09)" opacity="0.5"/>
+    <path d="M68 114 C100 104 130 110 160 103 C190 96 222 106 252 98" stroke="#38bdf8" stroke-width="0.5" fill="none" opacity="0.12" stroke-dasharray="3 6"/>
+    <circle cx="68"  cy="138" r="2" fill="rgba(56,189,248,0.22)" opacity="0.45"/>
+    <circle cx="160" cy="148" r="2" fill="rgba(56,189,248,0.22)" opacity="0.45"/>
+    <circle cx="252" cy="136" r="2" fill="rgba(56,189,248,0.22)" opacity="0.45"/>
+  </svg>
+
+  <!-- BOTTOM-RIGHT: horizontal wreath arc -->
+  <svg class="hero-floral-bottom-right" viewBox="0 0 280 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 152 C36 114 72 86 140 80 C208 74 246 96 270 124" stroke="#38bdf8" stroke-width="1" fill="none" opacity="0.36"/>
+    <path d="M48 124 C48 124 38 104 32 86 C26 66 32 48 44 40" stroke="#38bdf8" stroke-width="0.85" fill="none" opacity="0.36"/>
+    <ellipse cx="32" cy="86" rx="16" ry="8" transform="rotate(-28 32 86)" stroke="#38bdf8" stroke-width="0.65" fill="rgba(56,189,248,0.04)" opacity="0.4"/>
+    <ellipse cx="38" cy="63" rx="12" ry="6" transform="rotate(13 38 63)"  stroke="#38bdf8" stroke-width="0.55" fill="rgba(56,189,248,0.03)" opacity="0.34"/>
+    <circle cx="44" cy="40" r="4.5" stroke="#38bdf8" stroke-width="0.72" fill="rgba(56,189,248,0.09)" opacity="0.48"/>
+    <path d="M140 80 C140 80 134 58 132 38 C130 18 138 5 146 2" stroke="#38bdf8" stroke-width="0.9" fill="none" opacity="0.4"/>
+    <ellipse cx="132" cy="38" rx="17" ry="8" transform="rotate(-20 132 38)" stroke="#38bdf8" stroke-width="0.65" fill="rgba(56,189,248,0.05)" opacity="0.43"/>
+    <ellipse cx="138" cy="18" rx="13" ry="6" transform="rotate(10 138 18)"  stroke="#38bdf8" stroke-width="0.55" fill="rgba(56,189,248,0.03)" opacity="0.36"/>
+    <circle cx="146" cy="2"  r="4.5" stroke="#38bdf8" stroke-width="0.72" fill="rgba(56,189,248,0.11)" opacity="0.5"/>
+    <circle cx="146" cy="2"  r="1.8" fill="rgba(56,189,248,0.42)" opacity="0.62"/>
+    <path d="M232 100 C232 100 242 80 248 62 C254 42 246 24 236 18" stroke="#38bdf8" stroke-width="0.85" fill="none" opacity="0.36"/>
+    <ellipse cx="248" cy="62" rx="16" ry="8" transform="rotate(28 248 62)"  stroke="#38bdf8" stroke-width="0.65" fill="rgba(56,189,248,0.04)" opacity="0.4"/>
+    <ellipse cx="242" cy="40" rx="12" ry="6" transform="rotate(-13 242 40)" stroke="#38bdf8" stroke-width="0.55" fill="rgba(56,189,248,0.03)" opacity="0.34"/>
+    <circle cx="236" cy="18" r="4.5" stroke="#38bdf8" stroke-width="0.72" fill="rgba(56,189,248,0.09)" opacity="0.48"/>
+    <ellipse cx="92"  cy="87" rx="9" ry="4.5" transform="rotate(-14 92 87)"  stroke="#38bdf8" stroke-width="0.55" fill="rgba(56,189,248,0.03)" opacity="0.32"/>
+    <ellipse cx="190" cy="83" rx="9" ry="4.5" transform="rotate(10 190 83)"  stroke="#38bdf8" stroke-width="0.55" fill="rgba(56,189,248,0.03)" opacity="0.32"/>
+    <circle cx="10"  cy="152" r="2" fill="rgba(56,189,248,0.2)" opacity="0.44"/>
+    <circle cx="270" cy="124" r="2" fill="rgba(56,189,248,0.2)" opacity="0.44"/>
+  </svg>
 </section>
 
 <section id="advantage">
@@ -536,12 +604,8 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
 <script>
 (function(){ emailjs.init({publicKey:"C3dhaIQj0sAr8XxMf"}); })();
 
-/* Back to top */
 var btt = document.getElementById('backToTop');
-window.addEventListener('scroll', function() {
-  if (window.scrollY > 400) { btt.classList.add('visible'); }
-  else { btt.classList.remove('visible'); }
-});
+window.addEventListener('scroll', function() { btt.classList.toggle('visible', window.scrollY > 400); });
 
 function handleBizType() {
   var v = document.getElementById('bizType').value;
@@ -560,346 +624,74 @@ function submitForm() {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
   if (bizType === 'Other' && !other) { alert('Please describe your business.'); return; }
   var btn = document.getElementById('submitBtn');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
+  btn.disabled = true; btn.textContent = 'Sending...';
   emailjs.send('service_ufkowjm', 'template_2wmbmsj', {
-    to_email:     'management@deaninformationsystems.com',
-    from_name:    'Dean IS Sales',
-    reply_to:     email,
-    first_name:   firstName,
-    last_name:    lastName,
-    client_email: email,
-    phone:        phone,
-    business:     biz,
-    biz_type:     bizType,
-    description:  (bizType === 'Other') ? other : 'N/A'
+    to_email:'management@deaninformationsystems.com', from_name:'Dean IS Sales', reply_to:email,
+    first_name:firstName, last_name:lastName, client_email:email, phone:phone,
+    business:biz, biz_type:bizType, description:(bizType==='Other')?other:'N/A'
   }).then(function() {
     document.getElementById('contactForm').style.display = 'none';
     document.getElementById('formSuccess').style.display = 'flex';
   }).catch(function(err) {
     console.error('EmailJS error:', err);
-    btn.disabled = false;
-    btn.textContent = 'Submit';
+    btn.disabled = false; btn.textContent = 'Submit';
     alert('Something went wrong. Please try again or call us directly at (615) 651-3603.');
   });
 }
 
-function openModal(e) { if (e) e.preventDefault(); document.getElementById('contactModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeModal() { document.getElementById('contactModal').classList.remove('open'); document.body.style.overflow = ''; }
-document.getElementById('contactModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeModal(); closeMobileNav(); } });
-function openMobileNav() { var n = document.getElementById('mobileNav'); n.style.display = 'flex'; requestAnimationFrame(function(){ n.classList.add('open'); }); document.body.style.overflow = 'hidden'; }
-function closeMobileNav() { var n = document.getElementById('mobileNav'); n.classList.remove('open'); setTimeout(function(){ if (!n.classList.contains('open')) n.style.display = 'none'; }, 300); document.body.style.overflow = ''; }
+function openModal(e) { if(e) e.preventDefault(); document.getElementById('contactModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal() { document.getElementById('contactModal').classList.remove('open'); document.body.style.overflow=''; }
+document.getElementById('contactModal').addEventListener('click', function(e) { if(e.target===this) closeModal(); });
+document.addEventListener('keydown', function(e) { if(e.key==='Escape'){ closeModal(); closeMobileNav(); } });
+function openMobileNav() { var n=document.getElementById('mobileNav'); n.style.display='flex'; requestAnimationFrame(function(){ n.classList.add('open'); }); document.body.style.overflow='hidden'; }
+function closeMobileNav() { var n=document.getElementById('mobileNav'); n.classList.remove('open'); setTimeout(function(){ if(!n.classList.contains('open')) n.style.display='none'; },300); document.body.style.overflow=''; }
 
 /* ── CANVAS ── */
-var canvas = document.getElementById('bgCanvas');
-var ctx    = canvas.getContext('2d');
-var W, H, gridLines = [];
-var EXPLODE_DUR = 1.2;
-var SETTLE_DUR  = 3.5;
-var CANVAS_FADE = 2.0;
-var startTime   = null;
-
-function easeOutExpo(t)  { return t >= 1 ? 1 : 1 - Math.pow(2, -10 * t); }
-function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
-function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
-
-function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; buildGrid(); }
-window.addEventListener('resize', resize);
-
-function buildGrid() {
-  gridLines = [];
-  for (var x = 0; x < W + 80; x += 80) gridLines.push({type:'v', pos:x, alpha:Math.random()*.04+.015});
-  for (var y = 0; y < H + 80; y += 80) gridLines.push({type:'h', pos:y, alpha:Math.random()*.04+.015});
-}
-
-function drawGrid(p) {
-  var f = Math.min(1, p * 1.6);
-  for (var i = 0; i < gridLines.length; i++) {
-    var g = gridLines[i];
-    ctx.beginPath();
-    ctx.strokeStyle = 'rgba(56,189,248,' + (g.alpha * f) + ')';
-    ctx.lineWidth = 0.5;
-    if (g.type === 'v') { ctx.moveTo(g.pos, 0); ctx.lineTo(g.pos, H); }
-    else                { ctx.moveTo(0, g.pos); ctx.lineTo(W, g.pos); }
-    ctx.stroke();
-  }
-}
-
-/* Particle */
-function Particle(tx, ty) {
-  this.x        = (tx !== undefined) ? tx : Math.random() * W;
-  this.y        = (ty !== undefined) ? ty : Math.random() * H;
-  this.r        = Math.random() * 2.8 + 0.4;
-  this.baseAlpha= Math.random() * 0.35 + 0.08;
-  this.pulse    = Math.random() * Math.PI * 2;
-  this.speedX   = (Math.random() - 0.5) * 0.22;
-  this.speedY   = (Math.random() - 0.5) * 0.22;
-  this.fadeIn   = Math.random() * 2.5; /* each particle fades in at a random time 0–2.5s */
-}
-Particle.prototype.update = function(p) {
-  this.pulse += 0.014;
-  this.x += this.speedX;
-  this.y += this.speedY;
-  if (this.x < -10 || this.x > W + 10 || this.y < -10 || this.y > H + 10) {
-    this.x = Math.random() * W;
-    this.y = Math.random() * H;
-  }
-};
-Particle.prototype.draw = function(elapsed) {
-  /* elapsed = seconds since start */
-  var fade = easeOutCubic(Math.min(1, Math.max(0, (elapsed - this.fadeIn) / 1.4)));
-  var a    = (this.baseAlpha + Math.sin(this.pulse) * 0.07) * fade;
-  if (a <= 0.001) return;
-  ctx.beginPath();
-  ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-  ctx.fillStyle = 'rgba(56,189,248,' + a + ')';
-  ctx.fill();
-};
-
-/* Stem */
-function Stem(tx, ty) {
-  this.targetX  = (tx !== undefined) ? tx : Math.random() * W;
-  this.targetY  = (ty !== undefined) ? ty : Math.random() * H;
-  var a         = Math.random() * Math.PI * 2;
-  this.bvx      = Math.cos(a) * (Math.random() * 5 + 2);
-  this.bvy      = Math.sin(a) * (Math.random() * 5 + 2);
-  this.originX  = W / 2;
-  this.originY  = H / 2;
-  this.x        = this.originX;
-  this.y        = this.originY;
-  this.len      = Math.random() * 140 + 70;
-  this.angle    = Math.random() * Math.PI * 2;
-  this.speed    = (Math.random() - 0.5) * 0.004;
-  this.driftX   = (Math.random() - 0.5) * 0.07;
-  this.driftY   = (Math.random() - 0.5) * 0.07;
-  this.baseAlpha= Math.random() * 0.1 + 0.03;
-  this.leaves   = Math.floor(Math.random() * 4) + 2;
-  this.pulse    = Math.random() * Math.PI * 2;
-}
-Stem.prototype.update = function(p) {
-  this.angle += this.speed;
-  this.pulse += 0.009;
-  if (p < 1) {
-    var ep = Math.min(1, p / EXPLODE_DUR);
-    var sp = Math.max(0, (p - EXPLODE_DUR) / (SETTLE_DUR - EXPLODE_DUR));
-    var b  = easeOutQuart(ep);
-    var s  = easeOutCubic(Math.min(1, sp));
-    var bx = this.originX + this.bvx * b * Math.max(W, H) * 0.14;
-    var by = this.originY + this.bvy * b * Math.max(W, H) * 0.14;
-    this.x = bx + (this.targetX - bx) * s;
-    this.y = by + (this.targetY - by) * s;
-  } else {
-    this.x += this.driftX;
-    this.y += this.driftY;
-    if (this.x < -200) this.x = W + 200;
-    if (this.x > W + 200) this.x = -200;
-    if (this.y < -200) this.y = H + 200;
-    if (this.y > H + 200) this.y = -200;
-  }
-};
-Stem.prototype.draw = function(p) {
-  var f = Math.min(1, p / EXPLODE_DUR * 1.8);
-  var a = (this.baseAlpha + Math.sin(this.pulse) * 0.02) * f;
-  ctx.save();
-  ctx.translate(this.x, this.y);
-  ctx.rotate(this.angle);
-  ctx.strokeStyle = 'rgba(56,189,248,' + a + ')';
-  ctx.lineWidth = 0.9;
-  ctx.beginPath();
-  ctx.moveTo(0, this.len * 0.5);
-  ctx.quadraticCurveTo(this.len * 0.2, 0, 0, -this.len * 0.5);
-  ctx.stroke();
-  for (var i = 0; i < this.leaves; i++) {
-    var t    = (i + 1) / (this.leaves + 1);
-    var sy   = this.len * 0.5 - t * this.len;
-    var side = (i % 2 === 0) ? 1 : -1;
-    ctx.beginPath();
-    ctx.moveTo(0, sy);
-    ctx.quadraticCurveTo(side * this.len * 0.22, sy - this.len * 0.12, side * this.len * 0.08, sy - this.len * 0.24);
-    ctx.stroke();
-    ctx.save();
-    ctx.translate(side * this.len * 0.08, sy - this.len * 0.24);
-    ctx.rotate(side * 0.6);
-    ctx.scale(1, 0.45);
-    ctx.beginPath();
-    ctx.arc(0, 0, this.len * 0.07, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(56,189,248,' + (a * 0.35) + ')';
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(56,189,248,' + a + ')';
-    ctx.stroke();
-    ctx.restore();
-  }
-  ctx.restore();
-};
-
-/* Hexagon */
-function Hexagon(tx, ty) {
-  this.targetX  = (tx !== undefined) ? tx : Math.random() * W;
-  this.targetY  = (ty !== undefined) ? ty : Math.random() * H;
-  var a         = Math.random() * Math.PI * 2;
-  this.bvx      = Math.cos(a) * (Math.random() * 7 + 3);
-  this.bvy      = Math.sin(a) * (Math.random() * 7 + 3);
-  this.originX  = W / 2;
-  this.originY  = H / 2;
-  this.x        = this.originX;
-  this.y        = this.originY;
-  this.r        = Math.random() * 28 + 10;
-  this.angle    = Math.random() * Math.PI * 2;
-  this.rotSpeed = (Math.random() - 0.5) * 0.004;
-  this.dx       = (Math.random() - 0.5) * 0.12;
-  this.dy       = (Math.random() - 0.5) * 0.12;
-  this.baseAlpha= Math.random() * 0.07 + 0.02;
-  this.pulse    = Math.random() * Math.PI * 2;
-}
-Hexagon.prototype.update = function(p) {
-  this.angle += this.rotSpeed;
-  this.pulse += 0.011;
-  if (p < 1) {
-    var ep = Math.min(1, p / EXPLODE_DUR);
-    var sp = Math.max(0, (p - EXPLODE_DUR) / (SETTLE_DUR - EXPLODE_DUR));
-    var b  = easeOutQuart(ep);
-    var s  = easeOutCubic(Math.min(1, sp));
-    var bx = this.originX + this.bvx * b * Math.max(W, H) * 0.16;
-    var by = this.originY + this.bvy * b * Math.max(W, H) * 0.16;
-    this.x = bx + (this.targetX - bx) * s;
-    this.y = by + (this.targetY - by) * s;
-  } else {
-    this.x += this.dx;
-    this.y += this.dy;
-    if (this.x < -60 || this.x > W + 60 || this.y < -60 || this.y > H + 60) {
-      this.x = Math.random() * W;
-      this.y = Math.random() * H;
-    }
-  }
-};
-Hexagon.prototype.draw = function(p) {
-  var f = Math.min(1, p / EXPLODE_DUR * 1.6);
-  var a = (this.baseAlpha + Math.sin(this.pulse) * 0.025) * f;
-  ctx.save();
-  ctx.translate(this.x, this.y);
-  ctx.rotate(this.angle);
-  ctx.beginPath();
-  for (var i = 0; i < 6; i++) {
-    var ag = i * Math.PI / 3;
-    if (i === 0) ctx.moveTo(this.r * Math.cos(ag), this.r * Math.sin(ag));
-    else         ctx.lineTo(this.r * Math.cos(ag), this.r * Math.sin(ag));
-  }
-  ctx.closePath();
-  ctx.strokeStyle = 'rgba(56,189,248,' + a + ')';
-  ctx.lineWidth = 0.8;
-  ctx.stroke();
-  ctx.fillStyle = 'rgba(56,189,248,' + (a * 0.18) + ')';
-  ctx.fill();
-  ctx.restore();
-};
-
-/* Ring */
-function Ring(tx, ty) {
-  this.targetX  = (tx !== undefined) ? tx : Math.random() * W;
-  this.targetY  = (ty !== undefined) ? ty : Math.random() * H;
-  var a         = Math.random() * Math.PI * 2;
-  this.bvx      = Math.cos(a) * (Math.random() * 8 + 4);
-  this.bvy      = Math.sin(a) * (Math.random() * 8 + 4);
-  this.originX  = W / 2;
-  this.originY  = H / 2;
-  this.x        = this.originX;
-  this.y        = this.originY;
-  this.r        = Math.random() * 45 + 15;
-  this.r2       = this.r * (Math.random() * 0.4 + 0.5);
-  this.baseAlpha= Math.random() * 0.06 + 0.015;
-  this.pulse    = Math.random() * Math.PI * 2;
-  this.dx       = (Math.random() - 0.5) * 0.09;
-  this.dy       = (Math.random() - 0.5) * 0.09;
-  this.angle    = 0;
-  this.rotSpeed = (Math.random() - 0.5) * 0.003;
-}
-Ring.prototype.update = function(p) {
-  this.pulse += 0.01;
-  this.angle += this.rotSpeed;
-  if (p < 1) {
-    var ep = Math.min(1, p / EXPLODE_DUR);
-    var sp = Math.max(0, (p - EXPLODE_DUR) / (SETTLE_DUR - EXPLODE_DUR));
-    var b  = easeOutQuart(ep);
-    var s  = easeOutCubic(Math.min(1, sp));
-    var bx = this.originX + this.bvx * b * Math.max(W, H) * 0.17;
-    var by = this.originY + this.bvy * b * Math.max(W, H) * 0.17;
-    this.x = bx + (this.targetX - bx) * s;
-    this.y = by + (this.targetY - by) * s;
-  } else {
-    this.x += this.dx;
-    this.y += this.dy;
-    if (this.x < -100 || this.x > W + 100 || this.y < -100 || this.y > H + 100) {
-      this.x = Math.random() * W;
-      this.y = Math.random() * H;
-    }
-  }
-};
-Ring.prototype.draw = function(p) {
-  var f = Math.min(1, p / EXPLODE_DUR * 1.7);
-  var a = (this.baseAlpha + Math.sin(this.pulse) * 0.02) * f;
-  ctx.save();
-  ctx.translate(this.x, this.y);
-  ctx.rotate(this.angle);
-  ctx.strokeStyle = 'rgba(56,189,248,' + a + ')';
-  ctx.lineWidth = 0.7;
-  ctx.beginPath(); ctx.arc(0, 0, this.r,  0, Math.PI * 2); ctx.stroke();
-  ctx.beginPath(); ctx.arc(0, 0, this.r2, 0, Math.PI * 2); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(-this.r, 0); ctx.lineTo(this.r, 0); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(0, -this.r); ctx.lineTo(0, this.r); ctx.stroke();
-  ctx.restore();
-};
-
-function mkTX() { return Math.random() * W; }
-function mkTY(b) { return b ? H * 0.5 + Math.random() * H * 0.5 : Math.random() * H; }
-
-var particles = [];
-var stems     = [];
-var hexagons  = [];
-var rings     = [];
-
+var canvas=document.getElementById('bgCanvas'), ctx=canvas.getContext('2d'), W, H, gridLines=[];
+var EXPLODE_DUR=1.2, SETTLE_DUR=3.5, CANVAS_FADE=2.0, startTime=null;
+function easeOutExpo(t){return t>=1?1:1-Math.pow(2,-10*t);}
+function easeOutCubic(t){return 1-Math.pow(1-t,3);}
+function easeOutQuart(t){return 1-Math.pow(1-t,4);}
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;buildGrid();}
+window.addEventListener('resize',resize);
+function buildGrid(){gridLines=[];for(var x=0;x<W+80;x+=80)gridLines.push({type:'v',pos:x,alpha:Math.random()*.04+.015});for(var y=0;y<H+80;y+=80)gridLines.push({type:'h',pos:y,alpha:Math.random()*.04+.015});}
+function drawGrid(p){var f=Math.min(1,p*1.6);for(var i=0;i<gridLines.length;i++){var g=gridLines[i];ctx.beginPath();ctx.strokeStyle='rgba(56,189,248,'+(g.alpha*f)+')';ctx.lineWidth=0.5;if(g.type==='v'){ctx.moveTo(g.pos,0);ctx.lineTo(g.pos,H);}else{ctx.moveTo(0,g.pos);ctx.lineTo(W,g.pos);}ctx.stroke();}}
+function Particle(tx,ty){this.x=(tx!==undefined)?tx:Math.random()*W;this.y=(ty!==undefined)?ty:Math.random()*H;this.r=Math.random()*2.8+0.4;this.baseAlpha=Math.random()*.35+.08;this.pulse=Math.random()*Math.PI*2;this.speedX=(Math.random()-.5)*.22;this.speedY=(Math.random()-.5)*.22;this.fadeIn=Math.random()*2.5;}
+Particle.prototype.update=function(p){this.pulse+=.014;this.x+=this.speedX;this.y+=this.speedY;if(this.x<-10||this.x>W+10||this.y<-10||this.y>H+10){this.x=Math.random()*W;this.y=Math.random()*H;}};
+Particle.prototype.draw=function(elapsed){var fade=easeOutCubic(Math.min(1,Math.max(0,(elapsed-this.fadeIn)/1.4)));var a=(this.baseAlpha+Math.sin(this.pulse)*.07)*fade;if(a<=.001)return;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle='rgba(56,189,248,'+a+')';ctx.fill();};
+function Stem(tx,ty){this.targetX=(tx!==undefined)?tx:Math.random()*W;this.targetY=(ty!==undefined)?ty:Math.random()*H;var a=Math.random()*Math.PI*2;this.bvx=Math.cos(a)*(Math.random()*5+2);this.bvy=Math.sin(a)*(Math.random()*5+2);this.originX=W/2;this.originY=H/2;this.x=this.originX;this.y=this.originY;this.len=Math.random()*140+70;this.angle=Math.random()*Math.PI*2;this.speed=(Math.random()-.5)*.004;this.driftX=(Math.random()-.5)*.07;this.driftY=(Math.random()-.5)*.07;this.baseAlpha=Math.random()*.1+.03;this.leaves=Math.floor(Math.random()*4)+2;this.pulse=Math.random()*Math.PI*2;}
+Stem.prototype.update=function(p){this.angle+=this.speed;this.pulse+=.009;if(p<1){var ep=Math.min(1,p/EXPLODE_DUR);var sp=Math.max(0,(p-EXPLODE_DUR)/(SETTLE_DUR-EXPLODE_DUR));var b=easeOutQuart(ep);var s=easeOutCubic(Math.min(1,sp));var bx=this.originX+this.bvx*b*Math.max(W,H)*.14;var by=this.originY+this.bvy*b*Math.max(W,H)*.14;this.x=bx+(this.targetX-bx)*s;this.y=by+(this.targetY-by)*s;}else{this.x+=this.driftX;this.y+=this.driftY;if(this.x<-200)this.x=W+200;if(this.x>W+200)this.x=-200;if(this.y<-200)this.y=H+200;if(this.y>H+200)this.y=-200;}};
+Stem.prototype.draw=function(p){var f=Math.min(1,p/EXPLODE_DUR*1.8);var a=(this.baseAlpha+Math.sin(this.pulse)*.02)*f;ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.angle);ctx.strokeStyle='rgba(56,189,248,'+a+')';ctx.lineWidth=0.9;ctx.beginPath();ctx.moveTo(0,this.len*.5);ctx.quadraticCurveTo(this.len*.2,0,0,-this.len*.5);ctx.stroke();for(var i=0;i<this.leaves;i++){var t=(i+1)/(this.leaves+1);var sy=this.len*.5-t*this.len;var side=(i%2===0)?1:-1;ctx.beginPath();ctx.moveTo(0,sy);ctx.quadraticCurveTo(side*this.len*.22,sy-this.len*.12,side*this.len*.08,sy-this.len*.24);ctx.stroke();ctx.save();ctx.translate(side*this.len*.08,sy-this.len*.24);ctx.rotate(side*.6);ctx.scale(1,.45);ctx.beginPath();ctx.arc(0,0,this.len*.07,0,Math.PI*2);ctx.fillStyle='rgba(56,189,248,'+(a*.35)+')';ctx.fill();ctx.strokeStyle='rgba(56,189,248,'+a+')';ctx.stroke();ctx.restore();}ctx.restore();};
+function Hexagon(tx,ty){this.targetX=(tx!==undefined)?tx:Math.random()*W;this.targetY=(ty!==undefined)?ty:Math.random()*H;var a=Math.random()*Math.PI*2;this.bvx=Math.cos(a)*(Math.random()*7+3);this.bvy=Math.sin(a)*(Math.random()*7+3);this.originX=W/2;this.originY=H/2;this.x=this.originX;this.y=this.originY;this.r=Math.random()*28+10;this.angle=Math.random()*Math.PI*2;this.rotSpeed=(Math.random()-.5)*.004;this.dx=(Math.random()-.5)*.12;this.dy=(Math.random()-.5)*.12;this.baseAlpha=Math.random()*.07+.02;this.pulse=Math.random()*Math.PI*2;}
+Hexagon.prototype.update=function(p){this.angle+=this.rotSpeed;this.pulse+=.011;if(p<1){var ep=Math.min(1,p/EXPLODE_DUR);var sp=Math.max(0,(p-EXPLODE_DUR)/(SETTLE_DUR-EXPLODE_DUR));var b=easeOutQuart(ep);var s=easeOutCubic(Math.min(1,sp));var bx=this.originX+this.bvx*b*Math.max(W,H)*.16;var by=this.originY+this.bvy*b*Math.max(W,H)*.16;this.x=bx+(this.targetX-bx)*s;this.y=by+(this.targetY-by)*s;}else{this.x+=this.dx;this.y+=this.dy;if(this.x<-60||this.x>W+60||this.y<-60||this.y>H+60){this.x=Math.random()*W;this.y=Math.random()*H;}}};
+Hexagon.prototype.draw=function(p){var f=Math.min(1,p/EXPLODE_DUR*1.6);var a=(this.baseAlpha+Math.sin(this.pulse)*.025)*f;ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.angle);ctx.beginPath();for(var i=0;i<6;i++){var ag=i*Math.PI/3;if(i===0)ctx.moveTo(this.r*Math.cos(ag),this.r*Math.sin(ag));else ctx.lineTo(this.r*Math.cos(ag),this.r*Math.sin(ag));}ctx.closePath();ctx.strokeStyle='rgba(56,189,248,'+a+')';ctx.lineWidth=0.8;ctx.stroke();ctx.fillStyle='rgba(56,189,248,'+(a*.18)+')';ctx.fill();ctx.restore();};
+function Ring(tx,ty){this.targetX=(tx!==undefined)?tx:Math.random()*W;this.targetY=(ty!==undefined)?ty:Math.random()*H;var a=Math.random()*Math.PI*2;this.bvx=Math.cos(a)*(Math.random()*8+4);this.bvy=Math.sin(a)*(Math.random()*8+4);this.originX=W/2;this.originY=H/2;this.x=this.originX;this.y=this.originY;this.r=Math.random()*45+15;this.r2=this.r*(Math.random()*.4+.5);this.baseAlpha=Math.random()*.06+.015;this.pulse=Math.random()*Math.PI*2;this.dx=(Math.random()-.5)*.09;this.dy=(Math.random()-.5)*.09;this.angle=0;this.rotSpeed=(Math.random()-.5)*.003;}
+Ring.prototype.update=function(p){this.pulse+=.01;this.angle+=this.rotSpeed;if(p<1){var ep=Math.min(1,p/EXPLODE_DUR);var sp=Math.max(0,(p-EXPLODE_DUR)/(SETTLE_DUR-EXPLODE_DUR));var b=easeOutQuart(ep);var s=easeOutCubic(Math.min(1,sp));var bx=this.originX+this.bvx*b*Math.max(W,H)*.17;var by=this.originY+this.bvy*b*Math.max(W,H)*.17;this.x=bx+(this.targetX-bx)*s;this.y=by+(this.targetY-by)*s;}else{this.x+=this.dx;this.y+=this.dy;if(this.x<-100||this.x>W+100||this.y<-100||this.y>H+100){this.x=Math.random()*W;this.y=Math.random()*H;}}};
+Ring.prototype.draw=function(p){var f=Math.min(1,p/EXPLODE_DUR*1.7);var a=(this.baseAlpha+Math.sin(this.pulse)*.02)*f;ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.angle);ctx.strokeStyle='rgba(56,189,248,'+a+')';ctx.lineWidth=0.7;ctx.beginPath();ctx.arc(0,0,this.r,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.arc(0,0,this.r2,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.moveTo(-this.r,0);ctx.lineTo(this.r,0);ctx.stroke();ctx.beginPath();ctx.moveTo(0,-this.r);ctx.lineTo(0,this.r);ctx.stroke();ctx.restore();};
+function mkTX(){return Math.random()*W;}
+function mkTY(b){return b?H*.5+Math.random()*H*.5:Math.random()*H;}
+var particles=[],stems=[],hexagons=[],rings=[];
 resize();
-
-for (var i = 0; i < 160; i++) particles.push(new Particle(mkTX(), mkTY()));
-for (var i = 0; i < 80;  i++) particles.push(new Particle(mkTX(), mkTY(true)));
-for (var i = 0; i < 28;  i++) stems.push(new Stem(mkTX(), mkTY()));
-for (var i = 0; i < 16;  i++) stems.push(new Stem(mkTX(), mkTY(true)));
-for (var i = 0; i < 22;  i++) hexagons.push(new Hexagon(mkTX(), mkTY()));
-for (var i = 0; i < 14;  i++) hexagons.push(new Hexagon(mkTX(), mkTY(true)));
-for (var i = 0; i < 16;  i++) rings.push(new Ring(mkTX(), mkTY()));
-for (var i = 0; i < 12;  i++) rings.push(new Ring(mkTX(), mkTY(true)));
-
-function loop(ts) {
-  if (!startTime) startTime = ts;
-  var elapsed = (ts - startTime) / 1000;
-  var normP   = elapsed / SETTLE_DUR;
-
-  /* Smoothly fade the entire canvas in over CANVAS_FADE seconds */
-  var canvasAlpha = Math.min(0.82, easeOutCubic(Math.min(1, elapsed / CANVAS_FADE)) * 0.82);
-  canvas.style.opacity = canvasAlpha;
-
-  ctx.clearRect(0, 0, W, H);
+for(var i=0;i<160;i++)particles.push(new Particle(mkTX(),mkTY()));
+for(var i=0;i<80;i++) particles.push(new Particle(mkTX(),mkTY(true)));
+for(var i=0;i<28;i++) stems.push(new Stem(mkTX(),mkTY()));
+for(var i=0;i<16;i++) stems.push(new Stem(mkTX(),mkTY(true)));
+for(var i=0;i<22;i++) hexagons.push(new Hexagon(mkTX(),mkTY()));
+for(var i=0;i<14;i++) hexagons.push(new Hexagon(mkTX(),mkTY(true)));
+for(var i=0;i<16;i++) rings.push(new Ring(mkTX(),mkTY()));
+for(var i=0;i<12;i++) rings.push(new Ring(mkTX(),mkTY(true)));
+function loop(ts){
+  if(!startTime)startTime=ts;
+  var elapsed=(ts-startTime)/1000;
+  var normP=elapsed/SETTLE_DUR;
+  canvas.style.opacity=Math.min(0.82,easeOutCubic(Math.min(1,elapsed/CANVAS_FADE))*.82);
+  ctx.clearRect(0,0,W,H);
   drawGrid(normP);
-  for (var i = 0; i < rings.length;     i++) { rings[i].update(normP);     rings[i].draw(normP); }
-  for (var i = 0; i < hexagons.length;  i++) { hexagons[i].update(normP);  hexagons[i].draw(normP); }
-  for (var i = 0; i < stems.length;     i++) { stems[i].update(normP);     stems[i].draw(normP); }
-  for (var i = 0; i < particles.length; i++) { particles[i].update(normP); particles[i].draw(normP); }
-  for (var i = 0; i < particles.length; i++) {
-    for (var j = i + 1; j < particles.length; j++) {
-      var dx = particles[i].x - particles[j].x;
-      var dy = particles[i].y - particles[j].y;
-      var d  = Math.sqrt(dx * dx + dy * dy);
-      if (d < 90) {
-        var fade = Math.min(1, normP * 1.4);
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = 'rgba(56,189,248,' + (0.07 * (1 - d / 90) * fade) + ')';
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-    }
-  }
+  for(var i=0;i<rings.length;i++){rings[i].update(normP);rings[i].draw(normP);}
+  for(var i=0;i<hexagons.length;i++){hexagons[i].update(normP);hexagons[i].draw(normP);}
+  for(var i=0;i<stems.length;i++){stems[i].update(normP);stems[i].draw(normP);}
+  for(var i=0;i<particles.length;i++){particles[i].update(normP);particles[i].draw(elapsed);}
+  for(var i=0;i<particles.length;i++){for(var j=i+1;j<particles.length;j++){var dx=particles[i].x-particles[j].x;var dy=particles[i].y-particles[j].y;var d=Math.sqrt(dx*dx+dy*dy);if(d<90){var fade=Math.min(1,normP*1.4);ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='rgba(56,189,248,'+(0.07*(1-d/90)*fade)+')';ctx.lineWidth=0.5;ctx.stroke();}}}
   requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);
