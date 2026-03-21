@@ -32,16 +32,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .mobile-nav a:hover{color:var(--white);}
 .mobile-nav-cta{margin-top:28px;padding:13px 32px;border-radius:3px;background:var(--blue-elec);color:var(--navy);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;}
 
-/* ── HERO ── */
 .hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:120px 0 80px;overflow:hidden;}
 .hero-left{position:relative;z-index:3;padding:0 48px 0 72px;}
 .hero-right{position:relative;z-index:3;display:flex;flex-direction:column;align-items:flex-start;padding:0 64px 0 32px;border-left:1px solid rgba(56,189,248,0.08);}
-
-/* stats and badge use glass so flower shows through */
-.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;width:100%;background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.08);margin-bottom:40px;}
-.stat{background:rgba(8,15,30,0.55);backdrop-filter:blur(12px);padding:28px 24px;}
-.hero-vet-badge{display:flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid rgba(56,189,248,0.12);border-radius:3px;background:rgba(8,15,30,0.5);backdrop-filter:blur(12px);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(56,189,248,0.55);width:100%;}
-
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--blue-elec);}
 .hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--blue-elec);opacity:0.5;}
 .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(3rem,5.5vw,5.2rem);font-weight:400;line-height:1.08;letter-spacing:-1px;color:var(--white);}
@@ -54,24 +47,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .btn-primary:hover{background:var(--blue-light);box-shadow:0 12px 40px rgba(56,189,248,0.35);transform:translateY(-2px);}
 .btn-ghost{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;cursor:pointer;background:none;border:none;transition:color .2s;}
 .btn-ghost:hover{color:var(--white);}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;width:100%;background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.08);margin-bottom:40px;}
+.stat{background:rgba(8,15,30,0.5);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:28px 24px;}
 .stat-num{font-family:'DM Serif Display',serif;font-size:2.6rem;font-weight:400;color:var(--white);line-height:1;margin-bottom:4px;}
 .stat-num sup{font-family:'Inter',sans-serif;font-size:.8rem;color:var(--blue-elec);font-weight:700;}
 .stat-label{font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--dim);}
+.hero-vet-badge{display:flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid rgba(56,189,248,0.12);border-radius:3px;background:rgba(8,15,30,0.45);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(56,189,248,0.55);width:100%;}
 .hero-vet-badge svg{width:14px;height:14px;stroke:rgba(56,189,248,0.55);flex-shrink:0;}
 .scroll-hint{position:absolute;bottom:32px;left:72px;z-index:2;display:flex;align-items:center;gap:10px;color:rgba(148,163,184,0.3);font-size:9px;letter-spacing:4px;text-transform:uppercase;animation:sink 2.6s ease-in-out infinite;}
 .scroll-hint::before{content:'';width:20px;height:1px;background:rgba(148,163,184,0.25);}
 @keyframes sink{0%,100%{transform:translateY(0)}55%{transform:translateY(6px)}}
 
-/* ── FLORAL FIXTURES ── */
-.hero-floral-center{position:absolute;left:50%;top:50%;width:clamp(420px,44vw,680px);pointer-events:none;z-index:1;opacity:0;animation:hfcFade 3s ease-out 0.3s forwards,heroFloatCenter 12s ease-in-out 3.3s infinite;}
-.hero-floral-top-right{position:absolute;top:70px;right:0;width:clamp(300px,34vw,560px);pointer-events:none;z-index:1;opacity:0;animation:hfsFade 2.8s ease-out 0.7s forwards,heroFloatAlt 12s ease-in-out 3.5s infinite;}
-.hero-floral-bottom-right{position:absolute;bottom:30px;right:0;width:clamp(280px,30vw,500px);pointer-events:none;z-index:1;opacity:0;animation:hfsFade 2.8s ease-out 1.0s forwards,heroFloat 14s ease-in-out 4s infinite;}
-@keyframes hfcFade{from{opacity:0;transform:translate(-50%,-50%) scale(0.9);}to{opacity:1;transform:translate(-50%,-50%) scale(1);}}
-@keyframes hfsFade{from{opacity:0;transform:scale(0.93);}to{opacity:1;transform:scale(1);}}
-@keyframes heroFloatCenter{0%,100%{transform:translate(-50%,-50%) translateY(0);}50%{transform:translate(-50%,-50%) translateY(-10px);}}
-@keyframes heroFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
-@keyframes heroFloatAlt{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
-@media(max-width:1024px){.hero-floral-center,.hero-floral-top-right,.hero-floral-bottom-right{display:none;}}
+/* The full-hero floral overlay — sits behind text, covers entire hero */
+.hero-floral-full{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0;animation:floralFadeIn 3.5s ease-out 0.5s forwards;}
+@keyframes floralFadeIn{from{opacity:0;}to{opacity:1;}}
 
 .section-inner{max-width:1160px;margin:0 auto;}
 .label-tag{display:inline-flex;align-items:center;gap:8px;font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--blue-elec);margin-bottom:16px;}
@@ -171,7 +160,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 #otherField{display:none;}
 .btn-submit{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 28px;border-radius:3px;background:var(--blue-elec);color:var(--navy);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;transition:all .22s;box-shadow:0 8px 32px rgba(56,189,248,0.2);width:100%;margin-top:4px;}
 .btn-submit:hover{background:var(--blue-light);}
-.btn-submit:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+.btn-submit:disabled{opacity:0.5;cursor:not-allowed;}
 .form-success{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:56px 36px;border:1px solid rgba(56,189,248,0.15);background:rgba(56,189,248,0.03);border-radius:2px;gap:16px;}
 .form-success svg{width:48px;height:48px;}
 .form-success h3{font-family:'DM Serif Display',serif;font-size:1.6rem;font-weight:400;color:var(--white);}
@@ -210,6 +199,7 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
 #backToTop svg{width:16px;height:16px;stroke:var(--blue-elec);}
 @media(max-width:640px){#backToTop{bottom:20px;right:16px;width:38px;height:38px;}}
 @media(max-width:1024px){
+  .hero-floral-full{display:none;}
   nav{padding:14px 24px;}
   .nav-links,.nav-cta{display:none;}
   .mobile-menu-btn{display:flex;}
@@ -240,7 +230,6 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
   .adv-grid{grid-template-columns:1fr;}
   .adv-card{padding:32px 24px;}
   .svc-header-row{flex-direction:column;align-items:flex-start;gap:16px;}
-  .svc-header-sub{text-align:left;max-width:100%;}
   .svc-card{padding:28px 22px;}
   .vs-table{display:block;overflow-x:auto;}
   .vs-table thead th:nth-child(3),.vs-table tbody td:nth-child(3){display:table-cell;}
@@ -250,7 +239,6 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
   .form-row{grid-template-columns:1fr;}
   .contact-form{padding:24px 20px;gap:12px;}
   .form-group input,.form-group select,.form-group textarea{padding:12px 14px;font-size:16px;}
-  .btn-submit{padding:15px 20px;}
   .modal-box{padding:40px 24px 32px;}
   footer{padding:20px;gap:10px;}
 }
@@ -258,7 +246,6 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
 </head>
 <body>
 <canvas id="bgCanvas"></canvas>
-
 <button id="backToTop" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
@@ -312,6 +299,368 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
 </nav>
 
 <section class="hero">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FULL-HERO SVG — flower at center, tendrils radiate across
+       the entire hero viewport. viewBox matches hero proportions.
+       Flower center is at 50% x, ~48% y of the hero.
+       ═══════════════════════════════════════════════════════════ -->
+  <svg class="hero-floral-full" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- fade-out gradient for tendrils — bright at flower, fades to nothing -->
+      <linearGradient id="tendrilL" x1="1" y1="0" x2="0" y2="0">
+        <stop offset="0%"   stop-color="#38bdf8" stop-opacity="0.55"/>
+        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="tendrilR" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%"   stop-color="#38bdf8" stop-opacity="0.55"/>
+        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="tendrilU" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0%"   stop-color="#38bdf8" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="tendrilD" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"   stop-color="#38bdf8" stop-opacity="0.45"/>
+        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+      </linearGradient>
+      <!-- muted rose companions -->
+      <linearGradient id="roseL" x1="1" y1="0" x2="0" y2="0">
+        <stop offset="0%"   stop-color="#a03030" stop-opacity="0.45"/>
+        <stop offset="100%" stop-color="#a03030" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="roseR" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%"   stop-color="#a03030" stop-opacity="0.45"/>
+        <stop offset="100%" stop-color="#a03030" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="roseDR" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%"   stop-color="#a03030" stop-opacity="0.4"/>
+        <stop offset="100%" stop-color="#a03030" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="roseDL" x1="1" y1="0" x2="0" y2="1">
+        <stop offset="0%"   stop-color="#a03030" stop-opacity="0.4"/>
+        <stop offset="100%" stop-color="#a03030" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="ambientBloom" cx="50%" cy="48%" r="28%">
+        <stop offset="0%"   stop-color="#38bdf8" stop-opacity="0.1"/>
+        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="pistilRed" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"   stop-color="#c0392b" stop-opacity="0.6"/>
+        <stop offset="60%"  stop-color="#8b1a1a" stop-opacity="0.2"/>
+        <stop offset="100%" stop-color="#8b1a1a" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="glow4" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="glow8" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="glow2" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="redGlow" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <!-- stroke path fading via clip/mask trick — use gradient strokes on paths -->
+    </defs>
+
+    <!-- FLOWER CENTER: 700, 432 -->
+
+    <!-- soft ambient bloom -->
+    <ellipse cx="700" cy="432" rx="380" ry="340" fill="url(#ambientBloom)"/>
+
+    <!-- ═══════════════════════════════════════════
+         RADIATING TENDRILS — organic vine lines
+         sweeping from flower center out to all edges,
+         matching the magenta reference paths.
+         Each is a gentle cubic bezier.
+         Stroke uses URL gradients to fade at tips.
+         ═══════════════════════════════════════════ -->
+
+    <!-- UPPER-LEFT tendril cluster -->
+    <path d="M700,432 C680,400 640,360 590,320 C540,280 470,240 380,200 C290,160 180,120 60,80"
+          stroke="url(#tendrilL)" stroke-width="1.2" fill="none" opacity="0.7"/>
+    <!-- upper-left rose companion — runs just below, slight offset -->
+    <path d="M700,432 C678,402 636,364 584,326 C532,286 460,248 368,210 C276,172 164,134 44,94"
+          stroke="url(#roseL)" stroke-width="0.7" fill="none" opacity="0.55"/>
+    <path d="M700,432 C670,395 620,355 560,315 C490,268 400,225 300,185 C200,148 100,118 0,95"
+          stroke="url(#tendrilL)" stroke-width="0.7" fill="none" opacity="0.45"/>
+    <!-- upper-left secondary rose companion -->
+    <path d="M700,432 C668,397 616,359 554,319 C482,272 390,229 288,190 C186,153 86,123 -14,100"
+          stroke="url(#roseL)" stroke-width="0.45" fill="none" opacity="0.35"/>
+    <!-- small leaf on upper-left tendril -->
+    <path d="M560,318 C548,308 536,298 530,285 C524,272 528,260 538,258 C548,256 560,266 564,280 C568,294 566,308 560,318Z"
+          fill="rgba(56,189,248,0.06)" stroke="#38bdf8" stroke-width="0.8" opacity="0.5"/>
+    <path d="M560,318 C552,308 544,296 540,282" stroke="#38bdf8" stroke-width="0.5" stroke-linecap="round" opacity="0.35"/>
+    <!-- leaf on far-left arm -->
+    <path d="M390,202 C378,192 366,180 362,166 C358,152 364,140 374,140 C384,140 394,152 396,166 C398,180 396,192 390,202Z"
+          fill="rgba(56,189,248,0.05)" stroke="#38bdf8" stroke-width="0.7" opacity="0.45"/>
+
+    <!-- UPPER-RIGHT tendril cluster -->
+    <path d="M700,432 C720,400 760,360 810,320 C860,280 930,240 1020,200 C1110,160 1220,120 1340,75"
+          stroke="url(#tendrilR)" stroke-width="1.2" fill="none" opacity="0.7"/>
+    <!-- upper-right rose companion -->
+    <path d="M700,432 C722,402 764,364 816,326 C868,286 940,248 1032,210 C1124,172 1236,134 1356,89"
+          stroke="url(#roseR)" stroke-width="0.7" fill="none" opacity="0.55"/>
+    <path d="M700,432 C730,395 780,355 840,315 C910,268 1000,225 1100,185 C1200,148 1300,118 1400,95"
+          stroke="url(#tendrilR)" stroke-width="0.7" fill="none" opacity="0.45"/>
+    <!-- upper-right secondary rose -->
+    <path d="M700,432 C732,397 784,359 846,319 C918,272 1008,229 1110,190 C1212,153 1312,123 1414,100"
+          stroke="url(#roseR)" stroke-width="0.45" fill="none" opacity="0.35"/>
+    <!-- leaf on upper-right tendril -->
+    <path d="M840,318 C852,308 864,298 870,285 C876,272 872,260 862,258 C852,256 840,266 836,280 C832,294 834,308 840,318Z"
+          fill="rgba(56,189,248,0.06)" stroke="#38bdf8" stroke-width="0.8" opacity="0.5"/>
+    <path d="M840,318 C848,308 856,296 860,282" stroke="#38bdf8" stroke-width="0.5" stroke-linecap="round" opacity="0.35"/>
+    <path d="M1010,202 C1022,192 1034,180 1038,166 C1042,152 1036,140 1026,140 C1016,140 1006,152 1004,166 C1002,180 1004,192 1010,202Z"
+          fill="rgba(56,189,248,0.05)" stroke="#38bdf8" stroke-width="0.7" opacity="0.45"/>
+
+    <!-- RIGHT tendril — sweeps across the right panel, past stats -->
+    <path d="M700,432 C760,428 840,425 930,422 C1020,419 1120,418 1230,420 C1310,422 1370,425 1400,430"
+          stroke="url(#tendrilR)" stroke-width="1.4" fill="none" opacity="0.65"/>
+    <!-- right rose companion — runs just above -->
+    <path d="M700,432 C762,426 842,421 932,418 C1022,415 1122,414 1232,416 C1312,418 1372,421 1400,426"
+          stroke="url(#roseR)" stroke-width="0.8" fill="none" opacity="0.5"/>
+    <path d="M700,432 C770,440 860,450 960,458 C1060,466 1170,468 1280,462 C1340,458 1380,452 1400,448"
+          stroke="url(#tendrilR)" stroke-width="0.8" fill="none" opacity="0.4"/>
+    <!-- lower right rose companion -->
+    <path d="M700,432 C772,442 862,453 962,462 C1062,470 1172,473 1282,467 C1342,463 1382,457 1400,454"
+          stroke="url(#roseR)" stroke-width="0.5" fill="none" opacity="0.32"/>
+    <!-- small buds on right tendril -->
+    <path d="M930,422 C930,414 932,406 936,402 C940,398 946,400 948,406 C950,412 948,420 944,424 C940,428 934,428 930,422Z"
+          fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="0.7" opacity="0.5"/>
+    <path d="M1120,420 C1120,412 1122,404 1126,400 C1130,396 1136,398 1138,404 C1140,410 1138,418 1134,422 C1130,426 1124,426 1120,420Z"
+          fill="rgba(56,189,248,0.06)" stroke="#38bdf8" stroke-width="0.65" opacity="0.45"/>
+
+    <!-- LEFT tendril — sweeps left toward text -->
+    <path d="M700,432 C640,428 560,425 470,422 C380,419 280,418 170,420 C90,422 30,426 0,430"
+          stroke="url(#tendrilL)" stroke-width="1.2" fill="none" opacity="0.55"/>
+    <!-- left rose companion — runs just above -->
+    <path d="M700,432 C638,426 558,421 468,418 C378,415 278,414 168,416 C88,418 28,422 0,426"
+          stroke="url(#roseL)" stroke-width="0.7" fill="none" opacity="0.42"/>
+    <path d="M700,432 C630,440 540,450 440,458 C340,466 230,468 120,462 C60,458 20,452 0,448"
+          stroke="url(#tendrilL)" stroke-width="0.7" fill="none" opacity="0.35"/>
+    <!-- lower left rose companion -->
+    <path d="M700,432 C632,442 542,453 442,462 C342,470 232,473 122,467 C62,463 22,457 0,454"
+          stroke="url(#roseL)" stroke-width="0.45" fill="none" opacity="0.28"/>
+
+    <!-- LOWER-RIGHT tendril — sweeps down and right -->
+    <path d="M700,432 C720,480 760,540 820,590 C880,640 960,680 1060,710 C1160,740 1280,755 1400,760"
+          stroke="url(#tendrilR)" stroke-width="1.1" fill="none" opacity="0.55"/>
+    <!-- lower-right rose companion — runs alongside, slight offset -->
+    <path d="M700,432 C722,478 764,536 826,584 C888,634 970,673 1072,702 C1174,731 1294,745 1400,752"
+          stroke="url(#roseDR)" stroke-width="0.65" fill="none" opacity="0.45"/>
+    <!-- leaf on lower-right tendril -->
+    <path d="M820,592 C832,580 846,570 854,556 C862,542 858,528 848,526 C838,524 826,534 820,548 C814,562 814,578 820,592Z"
+          fill="rgba(56,189,248,0.06)" stroke="#38bdf8" stroke-width="0.75" opacity="0.48"/>
+    <path d="M820,592 C826,578 832,564 836,550" stroke="#38bdf8" stroke-width="0.45" stroke-linecap="round" opacity="0.32"/>
+
+    <!-- LOWER-LEFT tendril -->
+    <path d="M700,432 C670,480 630,540 580,590 C530,640 466,680 390,710 C314,740 220,758 100,768"
+          stroke="url(#tendrilL)" stroke-width="1.1" fill="none" opacity="0.5"/>
+    <!-- lower-left rose companion -->
+    <path d="M700,432 C672,478 634,536 586,584 C538,632 476,671 402,700 C328,729 236,746 116,757"
+          stroke="url(#roseDL)" stroke-width="0.65" fill="none" opacity="0.42"/>
+    <!-- leaf on lower-left -->
+    <path d="M580,592 C568,580 554,570 546,556 C538,542 542,528 552,526 C562,524 574,534 580,548 C586,562 586,578 580,592Z"
+          fill="rgba(56,189,248,0.06)" stroke="#38bdf8" stroke-width="0.75" opacity="0.45"/>
+
+    <!-- fine secondary tendrils — thinner, more delicate -->
+    <path d="M700,432 C690,410 670,380 640,348 C610,316 570,286 520,262 C460,234 380,220 280,215"
+          stroke="#38bdf8" stroke-width="0.5" fill="none" opacity="0.25"/>
+    <path d="M700,432 C692,412 670,384 638,354 C606,320 564,292 512,268 C450,240 368,226 266,222"
+          stroke="#a03030" stroke-width="0.35" fill="none" opacity="0.22"/>
+    <path d="M700,432 C710,410 730,380 760,348 C790,316 830,286 880,262 C940,234 1020,220 1120,215"
+          stroke="#38bdf8" stroke-width="0.5" fill="none" opacity="0.25"/>
+    <path d="M700,432 C712,412 730,384 762,354 C794,320 834,292 886,268 C948,240 1028,226 1130,222"
+          stroke="#a03030" stroke-width="0.35" fill="none" opacity="0.22"/>
+    <path d="M700,432 C705,460 712,500 724,540 C736,580 754,618 780,648 C810,682 850,706 900,720"
+          stroke="#38bdf8" stroke-width="0.45" fill="none" opacity="0.2"/>
+    <path d="M700,432 C707,458 716,498 730,538 C744,578 764,614 792,642 C824,676 866,699 918,712"
+          stroke="#a03030" stroke-width="0.32" fill="none" opacity="0.18"/>
+    <path d="M700,432 C695,460 688,500 676,540 C664,580 646,618 620,648 C590,682 550,706 500,720"
+          stroke="#38bdf8" stroke-width="0.45" fill="none" opacity="0.2"/>
+    <path d="M700,432 C693,458 684,498 670,538 C656,578 636,616 608,644 C576,678 534,700 482,714"
+          stroke="#a03030" stroke-width="0.32" fill="none" opacity="0.18"/>
+
+    <!-- scattered tiny leaf-buds along tendrils -->
+    <ellipse cx="460" cy="280" rx="12" ry="6" transform="rotate(-40 460 280)" fill="rgba(56,189,248,0.05)" stroke="#38bdf8" stroke-width="0.6" opacity="0.4"/>
+    <ellipse cx="310" cy="220" rx="10" ry="5" transform="rotate(-35 310 220)" fill="rgba(56,189,248,0.04)" stroke="#38bdf8" stroke-width="0.55" opacity="0.35"/>
+    <ellipse cx="940" cy="280" rx="12" ry="6" transform="rotate(40 940 280)" fill="rgba(56,189,248,0.05)" stroke="#38bdf8" stroke-width="0.6" opacity="0.4"/>
+    <ellipse cx="1090" cy="220" rx="10" ry="5" transform="rotate(35 1090 220)" fill="rgba(56,189,248,0.04)" stroke="#38bdf8" stroke-width="0.55" opacity="0.35"/>
+    <ellipse cx="980" cy="450" rx="11" ry="5" transform="rotate(5 980 450)" fill="rgba(56,189,248,0.05)" stroke="#38bdf8" stroke-width="0.6" opacity="0.38"/>
+    <ellipse cx="1200" cy="445" rx="10" ry="4.5" transform="rotate(-3 1200 445)" fill="rgba(56,189,248,0.04)" stroke="#38bdf8" stroke-width="0.55" opacity="0.32"/>
+
+    <!-- ═══════════════════════
+         THE FLOWER — centered
+         at 700, 432
+         ═══════════════════════ -->
+
+    <!-- stem -->
+    <path d="M700,552 C697,530 694,508 693,488 C692,468 694,450 700,436" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <!-- stem highlight -->
+    <path d="M701,552 C698,530 695,508 694,488" stroke="#38bdf8" stroke-width="0.5" stroke-linecap="round" opacity="0.22"/>
+
+    <!-- left leaf -->
+    <path d="M696,502 C682,494 664,482 650,468 C638,456 632,440 638,430 C644,420 656,420 666,428 C676,436 684,450 690,466 C694,476 696,490 696,502Z"
+          fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.1" opacity="0.65" filter="url(#glow2)"/>
+    <!-- left leaf midrib -->
+    <path d="M696,502 C682,492 664,480 652,466 C640,454 634,440 640,430" stroke="#38bdf8" stroke-width="0.7" stroke-linecap="round" opacity="0.5"/>
+    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.28">
+      <path d="M686,496 C676,484 664,474 654,462" stroke-width="0.45"/>
+      <path d="M676,488 C666,476 656,466 648,454" stroke-width="0.42"/>
+      <path d="M666,478 C658,466 650,456 644,444" stroke-width="0.38"/>
+    </g>
+
+    <!-- right leaf -->
+    <path d="M703,510 C718,500 736,486 750,470 C762,456 768,440 762,430 C756,420 744,420 734,428 C724,436 716,452 710,468 C706,480 704,496 703,510Z"
+          fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="1" opacity="0.6" filter="url(#glow2)"/>
+    <path d="M703,510 C718,498 736,484 748,468 C760,454 766,438 760,428" stroke="#38bdf8" stroke-width="0.65" stroke-linecap="round" opacity="0.46"/>
+    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.25">
+      <path d="M713,504 C724,490 738,476 750,462" stroke-width="0.42"/>
+      <path d="M722,494 C732,480 744,466 754,452" stroke-width="0.38"/>
+    </g>
+
+    <!-- calyx / sepals -->
+    <path d="M700,436 C692,428 680,420 670,410 C662,402 660,392 666,386 C672,380 682,382 688,390 C694,398 698,416 700,428Z"
+          fill="rgba(56,189,248,0.09)" stroke="#38bdf8" stroke-width="0.9" opacity="0.6"/>
+    <path d="M700,436 C694,426 686,414 680,402 C674,390 674,378 682,374 C690,370 700,378 702,390 C704,402 702,420 700,430Z"
+          fill="rgba(56,189,248,0.09)" stroke="#38bdf8" stroke-width="0.9" opacity="0.6"/>
+    <path d="M700,436 C708,428 720,420 730,410 C738,402 740,392 734,386 C728,380 718,382 712,390 C706,398 702,416 700,428Z"
+          fill="rgba(56,189,248,0.09)" stroke="#38bdf8" stroke-width="0.9" opacity="0.6"/>
+    <path d="M700,436 C706,426 714,414 720,402 C726,390 726,378 718,374 C710,370 700,378 698,390 C696,402 698,420 700,430Z"
+          fill="rgba(56,189,248,0.09)" stroke="#38bdf8" stroke-width="0.9" opacity="0.6"/>
+    <path d="M700,436 C698,424 698,410 700,398 C702,386 706,376 710,376 C714,376 716,386 714,398 C712,410 706,424 700,436Z"
+          fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="0.85" opacity="0.55"/>
+
+    <!-- OUTER PETALS — 7, tight organic shapes, well-contained -->
+    <!-- Petal top -->
+    <path d="M700,432 C696,416 690,394 686,372 C682,350 682,326 688,310 C692,298 698,292 702,294 C706,296 710,306 710,322 C710,342 706,368 703,392 C701,408 700,422 700,432Z"
+          fill="rgba(56,189,248,0.13)" stroke="#38bdf8" stroke-width="1.3" opacity="0.88" filter="url(#glow2)"/>
+    <path d="M700,432 C698,414 694,390 692,366 C690,344 692,320 696,306" stroke="#38bdf8" stroke-width="0.7" stroke-linecap="round" opacity="0.55"/>
+    <path d="M697,420 C694,400 690,376 688,354" stroke="#38bdf8" stroke-width="0.4" stroke-linecap="round" opacity="0.32"/>
+    <path d="M703,418 C705,398 706,374 706,352" stroke="#38bdf8" stroke-width="0.4" stroke-linecap="round" opacity="0.3"/>
+
+    <!-- Petal upper-right -->
+    <path d="M700,432 C708,422 722,406 736,390 C750,374 764,356 772,340 C778,328 778,316 772,310 C766,304 756,306 746,316 C734,328 722,346 714,366 C707,382 703,408 700,422 C700,426 700,430 700,432Z"
+          fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1.3" opacity="0.85" filter="url(#glow2)"/>
+    <path d="M700,432 C710,420 724,404 738,388 C752,372 766,354 774,338 C780,326 780,314 774,308" stroke="#38bdf8" stroke-width="0.7" stroke-linecap="round" opacity="0.52"/>
+    <path d="M704,426 C714,412 728,394 742,378" stroke="#38bdf8" stroke-width="0.4" stroke-linecap="round" opacity="0.3"/>
+
+    <!-- Petal right -->
+    <path d="M700,432 C710,430 726,428 742,428 C758,428 774,426 784,420 C792,414 794,404 788,398 C782,392 770,390 756,394 C742,398 728,408 716,420 C708,426 703,430 700,432Z"
+          fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1.3" opacity="0.82" filter="url(#glow2)"/>
+    <path d="M700,432 C712,430 728,428 744,428 C760,428 776,426 786,420 C794,414 796,402 790,396" stroke="#38bdf8" stroke-width="0.65" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Petal lower-right -->
+    <path d="M700,432 C706,440 714,452 720,466 C726,480 728,494 724,506 C720,516 712,520 704,516 C696,512 692,500 692,486 C692,472 696,456 700,444 C700,440 700,436 700,432Z"
+          fill="rgba(56,189,248,0.11)" stroke="#38bdf8" stroke-width="1.2" opacity="0.8"/>
+    <path d="M700,432 C706,442 714,454 720,468 C726,482 728,496 724,508 C720,518 712,522 704,518" stroke="#38bdf8" stroke-width="0.6" stroke-linecap="round" opacity="0.48"/>
+
+    <!-- Petal lower-left -->
+    <path d="M700,432 C694,440 686,452 680,466 C674,480 672,494 676,506 C680,516 688,520 696,516 C704,512 708,500 708,486 C708,472 704,456 700,444 C700,440 700,436 700,432Z"
+          fill="rgba(56,189,248,0.11)" stroke="#38bdf8" stroke-width="1.2" opacity="0.8"/>
+
+    <!-- Petal left -->
+    <path d="M700,432 C690,430 674,428 658,428 C642,428 626,426 616,420 C608,414 606,404 612,398 C618,392 630,390 644,394 C658,398 672,408 684,420 C692,426 697,430 700,432Z"
+          fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1.3" opacity="0.82" filter="url(#glow2)"/>
+    <path d="M700,432 C688,430 672,428 656,428 C640,428 624,426 614,420 C606,414 604,402 610,396" stroke="#38bdf8" stroke-width="0.65" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Petal upper-left -->
+    <path d="M700,432 C692,422 678,406 664,390 C650,374 636,356 628,340 C622,328 622,316 628,310 C634,304 644,306 654,316 C666,328 678,346 686,366 C693,382 697,408 700,422 C700,426 700,430 700,432Z"
+          fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1.3" opacity="0.85" filter="url(#glow2)"/>
+    <path d="M700,432 C690,420 676,404 662,388 C648,372 634,354 626,338 C620,326 620,314 626,308" stroke="#38bdf8" stroke-width="0.7" stroke-linecap="round" opacity="0.52"/>
+    <path d="M696,426 C686,412 672,394 658,378" stroke="#38bdf8" stroke-width="0.4" stroke-linecap="round" opacity="0.3"/>
+
+    <!-- INNER LAYER PETALS — shorter, slightly offset -->
+    <path d="M700,432 C697,420 693,404 692,388 C691,374 694,360 698,354 C700,350 703,350 705,354 C708,360 710,374 709,388 C708,404 704,420 700,432Z"
+          fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1" opacity="0.72"/>
+    <path d="M700,432 C706,424 714,412 720,400 C726,388 728,376 724,368 C721,362 716,361 711,366 C706,372 702,384 701,398 C700,410 700,422 700,432Z"
+          fill="rgba(56,189,248,0.09)" stroke="#38bdf8" stroke-width="1" opacity="0.68"/>
+    <path d="M700,432 C708,428 718,422 726,414 C734,406 738,396 734,390 C730,384 722,384 714,390 C707,396 702,410 700,422 C700,427 700,430 700,432Z"
+          fill="rgba(56,189,248,0.09)" stroke="#38bdf8" stroke-width="1" opacity="0.66"/>
+    <path d="M700,432 C703,438 706,448 706,458 C706,468 702,476 698,476 C694,476 690,468 690,458 C690,448 694,438 700,432Z"
+          fill="rgba(56,189,248,0.09)" stroke="#38bdf8" stroke-width="1" opacity="0.66"/>
+    <path d="M700,432 C692,428 682,422 674,414 C666,406 662,396 666,390 C670,384 678,384 686,390 C693,396 698,410 700,422 C700,427 700,430 700,432Z"
+          fill="rgba(56,189,248,0.09)" stroke="#38bdf8" stroke-width="1" opacity="0.66"/>
+    <path d="M700,432 C694,424 686,412 680,400 C674,388 672,376 676,368 C679,362 684,361 689,366 C694,372 698,384 699,398 C700,410 700,422 700,432Z"
+          fill="rgba(56,189,248,0.09)" stroke="#38bdf8" stroke-width="1" opacity="0.68"/>
+    <path d="M700,432 C703,420 707,404 708,388 C709,374 706,360 702,354 C700,350 697,350 695,354 C692,360 690,374 691,388 C692,404 696,420 700,432Z"
+          fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1" opacity="0.72"/>
+
+    <!-- STAMENS — 16 fine filaments -->
+    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.7" filter="url(#glow2)">
+      <line x1="700" y1="416" x2="700" y2="398" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="707" y2="399" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="713" y2="403" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="717" y2="410" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="718" y2="417" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="716" y2="424" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="711" y2="430" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="703" y2="434" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="700" y2="435" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="697" y2="434" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="689" y2="430" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="684" y2="424" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="682" y2="417" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="683" y2="410" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="687" y2="403" stroke-width="0.85"/>
+      <line x1="700" y1="416" x2="693" y2="399" stroke-width="0.85"/>
+    </g>
+    <!-- anther dots — deep rose, very subtle — the only warmth on the page -->
+    <g filter="url(#redGlow)">
+      <circle cx="700" cy="397" r="2.2" fill="#b83232" opacity="0.75"/>
+      <circle cx="708" cy="398" r="2"   fill="#a52828" opacity="0.72"/>
+      <circle cx="714" cy="402" r="2"   fill="#b83232" opacity="0.7"/>
+      <circle cx="718" cy="409" r="2"   fill="#a02020" opacity="0.7"/>
+      <circle cx="719" cy="417" r="2"   fill="#b83232" opacity="0.7"/>
+      <circle cx="717" cy="425" r="2"   fill="#a52828" opacity="0.7"/>
+      <circle cx="712" cy="431" r="2"   fill="#b83232" opacity="0.7"/>
+      <circle cx="704" cy="435" r="2"   fill="#a02020" opacity="0.7"/>
+      <circle cx="700" cy="436" r="2.2" fill="#b83232" opacity="0.75"/>
+      <circle cx="696" cy="435" r="2"   fill="#a52828" opacity="0.7"/>
+      <circle cx="688" cy="431" r="2"   fill="#b83232" opacity="0.7"/>
+      <circle cx="683" cy="425" r="2"   fill="#a02020" opacity="0.7"/>
+      <circle cx="681" cy="417" r="2"   fill="#b83232" opacity="0.7"/>
+      <circle cx="682" cy="409" r="2"   fill="#a52828" opacity="0.7"/>
+      <circle cx="686" cy="402" r="2"   fill="#b83232" opacity="0.7"/>
+      <circle cx="692" cy="398" r="2"   fill="#a02020" opacity="0.7"/>
+    </g>
+
+    <!-- PISTIL — deep rose center, ethereal not loud -->
+    <circle cx="700" cy="416" r="22" fill="url(#pistilRed)" opacity="0.6" filter="url(#glow8)"/>
+    <circle cx="700" cy="416" r="14" fill="rgba(56,189,248,0.1)"  stroke="#38bdf8" stroke-width="1.1" opacity="0.65" filter="url(#glow4)"/>
+    <circle cx="700" cy="416" r="8"  fill="rgba(56,189,248,0.18)" stroke="#38bdf8" stroke-width="1.2" opacity="0.78" filter="url(#glow2)"/>
+    <!-- rose inner — delicate, not neon -->
+    <circle cx="700" cy="416" r="4"  fill="rgba(160,40,40,0.55)"  stroke="rgba(200,80,80,0.7)" stroke-width="0.8" filter="url(#redGlow)" opacity="0.85"/>
+    <circle cx="700" cy="416" r="1.5" fill="rgba(255,200,200,0.8)" opacity="0.9"/>
+
+    <!-- ═══════════════════════════════════════
+         HIDDEN "aaron" — botanical node marks
+         along the main stem, reads as natural
+         bark texture / field annotations
+         ═══════════════════════════════════════ -->
+    <g transform="translate(698,538)" stroke="#38bdf8" stroke-width="0.65" stroke-linecap="round" opacity="0.24">
+      <line x1="-4" y1="6" x2="0" y2="-6"/><line x1="0" y1="-6" x2="4" y2="6"/><line x1="-2.5" y1="1" x2="2.5" y2="1"/>
+    </g>
+    <g transform="translate(700,524)" stroke="#38bdf8" stroke-width="0.6" stroke-linecap="round" opacity="0.22">
+      <line x1="-4" y1="6" x2="0" y2="-6"/><line x1="0" y1="-6" x2="4" y2="6"/><line x1="-2.5" y1="1" x2="2.5" y2="1"/>
+    </g>
+    <!-- R on left leaf -->
+    <g transform="translate(656,462)" stroke="#38bdf8" stroke-width="0.55" stroke-linecap="round" opacity="0.2">
+      <line x1="-3" y1="-6" x2="-3" y2="6"/><path d="M-3,-6 C1,-6 4,-4 4,-1 C4,2 1,3 -3,3" fill="none"/><line x1="-3" y1="3" x2="4" y2="6"/>
+    </g>
+    <!-- O on right leaf -->
+    <g transform="translate(748,462)" stroke="#38bdf8" stroke-width="0.55" stroke-linecap="round" opacity="0.19">
+      <ellipse cx="0" cy="0" rx="4" ry="6" fill="none"/>
+    </g>
+    <!-- N near calyx -->
+    <g transform="translate(700,444)" stroke="#38bdf8" stroke-width="0.55" stroke-linecap="round" opacity="0.2">
+      <line x1="-3" y1="5" x2="-3" y2="-5"/><line x1="-3" y1="-5" x2="3" y2="5"/><line x1="3" y1="5" x2="3" y2="-5"/>
+    </g>
+
+  </svg>
+
   <div class="hero-left">
     <div class="hero-eyebrow">Veteran-Owned and Operated</div>
     <h1>Secure<br>your <span class="gradient-word">digital</span><br><span class="italic-serif">foundation.</span></h1>
@@ -338,379 +687,6 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
     </div>
   </div>
   <div class="scroll-hint">Scroll to explore</div>
-
-  <!-- ═══════════════════════════════════════════════════
-       GRAND BOTANICAL FLOWER — hallmark of the site
-       Real flower anatomy: roots, stem, leaves, calyx,
-       layered petals with veins, stamens, pistil.
-       Red accents on pistil & stamen tips only.
-       Hidden "aaron" as botanical annotation marks.
-       ═══════════════════════════════════════════════════ -->
-  <svg class="hero-floral-center" viewBox="0 0 600 640" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="ambientGlow" cx="50%" cy="46%" r="42%">
-        <stop offset="0%"   stop-color="#38bdf8" stop-opacity="0.13"/>
-        <stop offset="70%"  stop-color="#38bdf8" stop-opacity="0.04"/>
-        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
-      </radialGradient>
-      <radialGradient id="pistilGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%"   stop-color="#ff4444" stop-opacity="0.5"/>
-        <stop offset="100%" stop-color="#ff4444" stop-opacity="0"/>
-      </radialGradient>
-      <radialGradient id="outerPetal" cx="50%" cy="95%" r="70%">
-        <stop offset="0%"   stop-color="#38bdf8" stop-opacity="0.22"/>
-        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.04"/>
-      </radialGradient>
-      <radialGradient id="innerPetal" cx="50%" cy="95%" r="70%">
-        <stop offset="0%"   stop-color="#38bdf8" stop-opacity="0.16"/>
-        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.03"/>
-      </radialGradient>
-      <filter id="bigGlow" x="-40%" y="-40%" width="180%" height="180%">
-        <feGaussianBlur stdDeviation="5" result="b"/>
-        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-      <filter id="midGlow" x="-25%" y="-25%" width="150%" height="150%">
-        <feGaussianBlur stdDeviation="3" result="b"/>
-        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-      <filter id="softGlow" x="-15%" y="-15%" width="130%" height="130%">
-        <feGaussianBlur stdDeviation="1.8" result="b"/>
-        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-      <filter id="redGlow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="6" result="b"/>
-        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-    </defs>
-
-    <!-- ambient atmosphere -->
-    <ellipse cx="300" cy="295" rx="240" ry="260" fill="url(#ambientGlow)"/>
-
-    <!-- ── ROOTS ── fine tendrils at base -->
-    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.28">
-      <path d="M300 620 C298 610 294 598 288 590 C280 580 268 576 260 572" stroke-width="0.8"/>
-      <path d="M288 590 C282 584 274 580 264 582 C256 584 250 590 248 596" stroke-width="0.5"/>
-      <path d="M280 582 C274 576 270 568 272 560" stroke-width="0.4"/>
-      <path d="M300 620 C302 610 306 598 312 590 C320 580 332 576 340 572" stroke-width="0.8"/>
-      <path d="M312 590 C318 584 326 580 336 582 C344 584 350 590 352 596" stroke-width="0.5"/>
-      <path d="M320 582 C326 576 330 568 328 560" stroke-width="0.4"/>
-      <path d="M300 620 C300 608 300 595 300 585 C300 574 302 564 306 558" stroke-width="0.7"/>
-      <path d="M306 558 C310 550 316 546 322 548" stroke-width="0.4"/>
-      <path d="M306 558 C302 550 298 544 296 538" stroke-width="0.4"/>
-    </g>
-
-    <!-- ── MAIN STEM ── with natural curve and secondary branch -->
-    <!-- shadow/depth stroke -->
-    <path d="M300 590 C296 555 290 518 288 482 C286 448 290 415 296 385 C300 362 302 340 300 315" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round" opacity="0.08"/>
-    <!-- main stem -->
-    <path d="M300 590 C296 555 290 518 288 482 C286 448 290 415 296 385 C300 362 302 340 300 315" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-    <!-- stem highlight -->
-    <path d="M301 590 C297 555 291 518 289 482 C287 448 291 415 297 385" stroke="#38bdf8" stroke-width="0.5" stroke-linecap="round" opacity="0.25"/>
-
-    <!-- side branch left — small bud -->
-    <path d="M290 490 C278 478 262 468 248 460 C236 452 228 444 228 434" stroke="#38bdf8" stroke-width="1.1" stroke-linecap="round" opacity="0.48"/>
-    <!-- bud on side branch -->
-    <path d="M228 434 C224 422 224 410 228 402 C232 394 238 392 242 396 C246 400 246 412 242 422 C238 430 232 434 228 434Z" fill="rgba(56,189,248,0.09)" stroke="#38bdf8" stroke-width="1" opacity="0.55"/>
-    <!-- bud sepal -->
-    <path d="M228 434 C222 428 218 420 220 412 C222 406 228 404 232 408" stroke="#38bdf8" stroke-width="0.8" fill="none" opacity="0.42"/>
-    <path d="M228 434 C234 428 238 420 236 412" stroke="#38bdf8" stroke-width="0.8" fill="none" opacity="0.38"/>
-    <!-- bud tip -->
-    <circle cx="235" cy="396" r="2.5" fill="rgba(56,189,248,0.3)" stroke="#38bdf8" stroke-width="0.6" opacity="0.5"/>
-
-    <!-- side branch right -->
-    <path d="M294 450 C306 438 322 428 338 422 C352 416 362 408 364 398" stroke="#38bdf8" stroke-width="1" stroke-linecap="round" opacity="0.42"/>
-    <!-- small leaf on right branch -->
-    <path d="M364 398 C370 386 374 372 370 362 C366 352 358 350 352 356 C346 362 344 374 348 384 C352 392 360 396 364 398Z" fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="0.85" opacity="0.5"/>
-    <path d="M364 398 C362 386 360 374 358 364" stroke="#38bdf8" stroke-width="0.5" stroke-linecap="round" opacity="0.35"/>
-
-    <!-- ── LARGE LEAVES ── -->
-    <!-- LEFT LEAF — large, detailed -->
-    <path d="M292 500 C274 490 250 476 228 458 C208 440 192 416 190 394 C188 374 196 358 210 352 C224 346 242 352 256 364 C270 376 280 396 286 418 C290 434 292 460 292 480 C292 490 292 496 292 500Z" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.2" stroke-linejoin="round" opacity="0.65" filter="url(#softGlow)"/>
-    <!-- left leaf midrib -->
-    <path d="M292 500 C274 488 252 474 232 456 C214 440 198 418 194 396" stroke="#38bdf8" stroke-width="0.85" stroke-linecap="round" opacity="0.55"/>
-    <!-- left leaf veins — 6 pairs -->
-    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.32">
-      <path d="M278 493 C268 480 254 468 240 458" stroke-width="0.5"/>
-      <path d="M264 484 C254 472 242 460 230 450" stroke-width="0.5"/>
-      <path d="M252 472 C242 460 232 448 222 438" stroke-width="0.45"/>
-      <path d="M240 458 C232 446 224 434 216 422" stroke-width="0.45"/>
-      <path d="M228 442 C222 430 216 418 212 406" stroke-width="0.4"/>
-      <path d="M218 424 C214 412 210 400 208 388" stroke-width="0.38"/>
-    </g>
-    <!-- leaf edge serrations — tiny notches -->
-    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.22">
-      <path d="M256 364 C252 360 248 358 244 360" stroke-width="0.5"/>
-      <path d="M240 356 C236 352 232 352 228 354" stroke-width="0.45"/>
-      <path d="M224 356 C218 354 214 356 210 360" stroke-width="0.45"/>
-      <path d="M204 368 C200 366 196 368 194 372" stroke-width="0.4"/>
-    </g>
-
-    <!-- RIGHT LEAF — slightly different angle, smaller -->
-    <path d="M304 520 C322 508 346 492 368 472 C388 452 402 426 402 404 C402 384 392 370 378 366 C364 362 348 370 336 382 C322 396 314 416 308 440 C304 458 304 486 304 506 C304 512 304 518 304 520Z" fill="rgba(56,189,248,0.07)" stroke="#38bdf8" stroke-width="1.1" stroke-linejoin="round" opacity="0.6" filter="url(#softGlow)"/>
-    <!-- right leaf midrib -->
-    <path d="M304 520 C322 506 346 490 366 470 C386 450 400 424 400 402" stroke="#38bdf8" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
-    <!-- right leaf veins -->
-    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.28">
-      <path d="M316 512 C328 498 346 484 362 470" stroke-width="0.5"/>
-      <path d="M328 502 C340 488 356 474 370 460" stroke-width="0.48"/>
-      <path d="M340 490 C350 476 364 462 376 448" stroke-width="0.44"/>
-      <path d="M350 476 C360 462 372 448 382 434" stroke-width="0.42"/>
-      <path d="M360 460 C370 446 380 432 388 418" stroke-width="0.4"/>
-    </g>
-
-    <!-- ── CALYX / SEPALS ── 5 pointed, fan outward -->
-    <!-- sepal 1 — straight up-left -->
-    <path d="M300 318 C288 308 272 296 260 280 C250 266 248 250 256 242 C262 236 272 238 280 248 C288 258 294 274 298 290 C299 298 300 308 300 318Z" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1" opacity="0.62"/>
-    <path d="M300 318 C290 306 276 294 264 280 C254 268 252 252 258 244" stroke="#38bdf8" stroke-width="0.55" stroke-linecap="round" opacity="0.38"/>
-    <!-- sepal 2 — left -->
-    <path d="M300 318 C284 314 264 308 248 298 C234 288 226 274 230 262 C234 252 246 250 258 256 C270 262 282 278 290 296 C294 306 298 312 300 318Z" fill="rgba(56,189,248,0.09)" stroke="#38bdf8" stroke-width="1" opacity="0.58"/>
-    <path d="M300 318 C284 312 266 306 250 296 C236 286 228 274 232 262" stroke="#38bdf8" stroke-width="0.5" stroke-linecap="round" opacity="0.35"/>
-    <!-- sepal 3 — straight up-right -->
-    <path d="M300 318 C312 308 328 296 340 280 C350 266 352 250 344 242 C338 236 328 238 320 248 C312 258 306 274 302 290 C301 298 300 308 300 318Z" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1" opacity="0.62"/>
-    <path d="M300 318 C310 306 324 294 336 280 C346 268 348 252 342 244" stroke="#38bdf8" stroke-width="0.55" stroke-linecap="round" opacity="0.38"/>
-    <!-- sepal 4 — right -->
-    <path d="M300 318 C316 314 336 308 352 298 C366 288 374 274 370 262 C366 252 354 250 342 256 C330 262 318 278 310 296 C306 306 302 312 300 318Z" fill="rgba(56,189,248,0.09)" stroke="#38bdf8" stroke-width="1" opacity="0.58"/>
-    <!-- sepal 5 — center small -->
-    <path d="M300 318 C296 306 294 290 296 274 C298 260 304 250 308 250 C312 250 316 260 314 276 C312 290 306 306 300 318Z" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="0.9" opacity="0.52"/>
-
-    <!-- ── OUTER PETALS — 7 petals, organic bezier shapes ── -->
-    <!-- Petal 1 — top center, leans slightly right -->
-    <path d="M300 316 C296 292 288 258 282 226 C276 194 274 160 280 136 C284 120 292 112 300 112 C308 112 316 120 320 136 C326 160 324 194 318 226 C312 258 304 292 300 316Z" fill="url(#outerPetal)" stroke="#38bdf8" stroke-width="1.4" opacity="0.85" filter="url(#softGlow)"/>
-    <!-- p1 midvein -->
-    <path d="M300 316 C298 290 294 256 290 224 C286 194 284 162 288 138" stroke="#38bdf8" stroke-width="0.75" stroke-linecap="round" opacity="0.6"/>
-    <!-- p1 side veins -->
-    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.35">
-      <path d="M297 300 C292 276 286 250 282 224" stroke-width="0.5"/>
-      <path d="M303 300 C306 276 308 250 310 224" stroke-width="0.5"/>
-      <path d="M294 280 C290 258 286 234 284 210" stroke-width="0.42"/>
-      <path d="M306 278 C309 256 312 232 314 208" stroke-width="0.42"/>
-      <path d="M291 258 C288 238 286 216 286 196" stroke-width="0.38"/>
-    </g>
-
-    <!-- Petal 2 — upper right, sweeps wide -->
-    <path d="M300 316 C314 300 336 274 358 248 C378 224 398 200 412 182 C422 168 426 154 420 144 C414 134 402 132 390 138 C374 146 356 164 340 186 C322 210 308 244 300 274 C299 286 299 302 300 316Z" fill="url(#outerPetal)" stroke="#38bdf8" stroke-width="1.4" opacity="0.82" filter="url(#softGlow)"/>
-    <path d="M300 316 C316 300 338 274 360 248 C380 224 400 200 414 182 C424 168 426 154 420 144" stroke="#38bdf8" stroke-width="0.75" stroke-linecap="round" opacity="0.58"/>
-    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.32">
-      <path d="M305 308 C320 290 342 264 364 238" stroke-width="0.5"/>
-      <path d="M310 298 C326 280 348 254 368 228" stroke-width="0.48"/>
-      <path d="M315 286 C332 268 352 242 372 216" stroke-width="0.42"/>
-    </g>
-
-    <!-- Petal 3 — right, points outward -->
-    <path d="M300 316 C318 312 346 310 372 308 C396 306 420 300 438 288 C452 278 458 264 452 252 C446 240 430 236 412 240 C392 246 368 260 348 278 C328 296 312 310 300 316Z" fill="url(#outerPetal)" stroke="#38bdf8" stroke-width="1.4" opacity="0.78" filter="url(#softGlow)"/>
-    <path d="M300 316 C320 312 348 310 374 308 C398 306 422 300 440 288 C454 278 460 264 452 252" stroke="#38bdf8" stroke-width="0.75" stroke-linecap="round" opacity="0.55"/>
-    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.3">
-      <path d="M306 312 C328 308 356 304 382 300" stroke-width="0.5"/>
-      <path d="M310 306 C332 300 360 294 386 288" stroke-width="0.45"/>
-    </g>
-
-    <!-- Petal 4 — lower right -->
-    <path d="M300 316 C316 324 338 340 356 358 C374 376 388 398 390 416 C392 432 386 444 376 446 C364 448 350 438 338 420 C324 400 312 372 306 346 C302 332 300 320 300 316Z" fill="url(#outerPetal)" stroke="#38bdf8" stroke-width="1.4" opacity="0.78" filter="url(#softGlow)"/>
-    <path d="M300 316 C316 326 338 342 356 360 C374 378 388 400 390 418 C392 434 386 446 376 448" stroke="#38bdf8" stroke-width="0.75" stroke-linecap="round" opacity="0.55"/>
-    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.3">
-      <path d="M304 322 C320 332 340 350 358 368" stroke-width="0.5"/>
-      <path d="M307 330 C322 342 340 360 356 378" stroke-width="0.45"/>
-    </g>
-
-    <!-- Petal 5 — lower left -->
-    <path d="M300 316 C284 324 262 340 244 358 C226 376 212 398 210 416 C208 432 214 444 224 446 C236 448 250 438 262 420 C276 400 288 372 294 346 C298 332 300 320 300 316Z" fill="url(#outerPetal)" stroke="#38bdf8" stroke-width="1.4" opacity="0.78" filter="url(#softGlow)"/>
-    <path d="M300 316 C284 326 262 342 244 360 C226 378 212 400 210 418 C208 434 214 446 224 448" stroke="#38bdf8" stroke-width="0.75" stroke-linecap="round" opacity="0.55"/>
-    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.3">
-      <path d="M296 322 C280 332 260 350 242 368" stroke-width="0.5"/>
-      <path d="M293 330 C278 342 260 360 244 378" stroke-width="0.45"/>
-    </g>
-
-    <!-- Petal 6 — left -->
-    <path d="M300 316 C282 312 254 310 228 308 C204 306 180 300 162 288 C148 278 142 264 148 252 C154 240 170 236 188 240 C208 246 232 260 252 278 C272 296 288 310 300 316Z" fill="url(#outerPetal)" stroke="#38bdf8" stroke-width="1.4" opacity="0.78" filter="url(#softGlow)"/>
-    <path d="M300 316 C280 312 252 310 226 308 C202 306 178 300 160 288 C146 278 140 264 148 252" stroke="#38bdf8" stroke-width="0.75" stroke-linecap="round" opacity="0.55"/>
-    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.3">
-      <path d="M294 312 C272 308 244 304 218 300" stroke-width="0.5"/>
-      <path d="M290 306 C268 300 240 294 214 288" stroke-width="0.45"/>
-    </g>
-
-    <!-- Petal 7 — upper left -->
-    <path d="M300 316 C286 300 264 274 242 248 C222 224 202 200 188 182 C178 168 174 154 180 144 C186 134 198 132 210 138 C226 146 244 164 260 186 C278 210 292 244 300 274 C301 286 301 302 300 316Z" fill="url(#outerPetal)" stroke="#38bdf8" stroke-width="1.4" opacity="0.82" filter="url(#softGlow)"/>
-    <path d="M300 316 C284 300 262 274 240 248 C220 224 200 200 186 182 C176 168 172 154 180 144" stroke="#38bdf8" stroke-width="0.75" stroke-linecap="round" opacity="0.58"/>
-    <g stroke="#38bdf8" stroke-linecap="round" opacity="0.32">
-      <path d="M295 308 C280 290 258 264 236 238" stroke-width="0.5"/>
-      <path d="M290 298 C274 280 252 254 232 228" stroke-width="0.45"/>
-    </g>
-
-    <!-- ── INNER PETAL LAYER — 7 shorter, brighter ── -->
-    <path d="M300 316 C296 298 290 272 286 248 C282 224 282 200 288 182 C292 170 298 164 302 166 C308 168 312 178 312 196 C312 218 308 248 304 274 C302 290 301 304 300 316Z" fill="url(#innerPetal)" stroke="#38bdf8" stroke-width="1.1" opacity="0.72"/>
-    <path d="M300 316 C308 302 322 278 334 256 C346 234 358 212 364 196 C370 182 370 170 364 164 C358 158 348 160 338 170 C326 182 314 202 308 226 C303 244 300 278 300 296 C300 306 300 312 300 316Z" fill="url(#innerPetal)" stroke="#38bdf8" stroke-width="1.1" opacity="0.7"/>
-    <path d="M300 316 C312 310 330 302 348 296 C364 290 380 282 388 270 C396 260 394 248 386 242 C376 236 360 240 344 250 C328 262 314 280 306 298 C302 308 300 312 300 316Z" fill="url(#innerPetal)" stroke="#38bdf8" stroke-width="1.1" opacity="0.68"/>
-    <path d="M300 316 C308 320 322 330 334 342 C346 356 354 370 352 382 C350 394 340 398 330 394 C318 388 308 372 304 356 C301 344 300 326 300 316Z" fill="url(#innerPetal)" stroke="#38bdf8" stroke-width="1.1" opacity="0.68"/>
-    <path d="M300 316 C292 320 278 330 266 342 C254 356 246 370 248 382 C250 394 260 398 270 394 C282 388 292 372 296 356 C299 344 300 326 300 316Z" fill="url(#innerPetal)" stroke="#38bdf8" stroke-width="1.1" opacity="0.68"/>
-    <path d="M300 316 C288 310 270 302 252 296 C236 290 220 282 212 270 C204 260 206 248 214 242 C224 236 240 240 256 250 C272 262 286 280 294 298 C298 308 300 312 300 316Z" fill="url(#innerPetal)" stroke="#38bdf8" stroke-width="1.1" opacity="0.68"/>
-    <path d="M300 316 C292 302 278 278 266 256 C254 234 242 212 236 196 C230 182 230 170 236 164 C242 158 252 160 262 170 C274 182 286 202 292 226 C297 244 300 278 300 296 C300 306 300 312 300 316Z" fill="url(#innerPetal)" stroke="#38bdf8" stroke-width="1.1" opacity="0.7"/>
-
-    <!-- ── STAMENS — 18 radiating, varied lengths ── -->
-    <g opacity="0.75" filter="url(#softGlow)">
-      <!-- stamen filaments -->
-      <g stroke="#38bdf8" stroke-linecap="round">
-        <line x1="300" y1="296" x2="300" y2="264" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="309" y2="265" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="317" y2="269" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="323" y2="276" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="326" y2="285" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="326" y2="295" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="323" y2="305" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="317" y2="314" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="309" y2="320" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="300" y2="323" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="291" y2="320" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="283" y2="314" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="277" y2="305" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="274" y2="295" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="274" y2="285" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="277" y2="276" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="283" y2="269" stroke-width="0.9"/>
-        <line x1="300" y1="296" x2="291" y2="265" stroke-width="0.9"/>
-      </g>
-      <!-- anther tips — tiny red dots, the only red on the page -->
-      <g filter="url(#redGlow)">
-        <circle cx="300" cy="263" r="2.8" fill="#e03030" opacity="0.9"/>
-        <circle cx="310" cy="264" r="2.5" fill="#d42828" opacity="0.88"/>
-        <circle cx="318" cy="268" r="2.5" fill="#e03030" opacity="0.85"/>
-        <circle cx="324" cy="275" r="2.5" fill="#cc2424" opacity="0.85"/>
-        <circle cx="327" cy="284" r="2.5" fill="#e03030" opacity="0.85"/>
-        <circle cx="327" cy="295" r="2.5" fill="#d42828" opacity="0.85"/>
-        <circle cx="324" cy="306" r="2.5" fill="#e03030" opacity="0.85"/>
-        <circle cx="318" cy="315" r="2.5" fill="#cc2424" opacity="0.85"/>
-        <circle cx="310" cy="321" r="2.5" fill="#e03030" opacity="0.85"/>
-        <circle cx="300" cy="324" r="2.8" fill="#d42828" opacity="0.9"/>
-        <circle cx="290" cy="321" r="2.5" fill="#e03030" opacity="0.85"/>
-        <circle cx="282" cy="315" r="2.5" fill="#cc2424" opacity="0.85"/>
-        <circle cx="276" cy="306" r="2.5" fill="#e03030" opacity="0.85"/>
-        <circle cx="273" cy="295" r="2.5" fill="#d42828" opacity="0.85"/>
-        <circle cx="273" cy="284" r="2.5" fill="#e03030" opacity="0.85"/>
-        <circle cx="276" cy="275" r="2.5" fill="#cc2424" opacity="0.85"/>
-        <circle cx="282" cy="268" r="2.5" fill="#e03030" opacity="0.85"/>
-        <circle cx="290" cy="264" r="2.5" fill="#d42828" opacity="0.85"/>
-      </g>
-    </g>
-
-    <!-- ── PISTIL — center, glowing ── -->
-    <!-- red glow bloom -->
-    <circle cx="300" cy="294" r="28" fill="url(#pistilGlow)" opacity="0.45" filter="url(#bigGlow)"/>
-    <!-- pistil rings -->
-    <circle cx="300" cy="294" r="20" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.2" opacity="0.65" filter="url(#midGlow)"/>
-    <circle cx="300" cy="294" r="13" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1.4" opacity="0.78" filter="url(#softGlow)"/>
-    <circle cx="300" cy="294" r="7"  fill="rgba(180,30,30,0.35)" stroke="#e03030" stroke-width="1.2" opacity="0.88" filter="url(#redGlow)"/>
-    <circle cx="300" cy="294" r="3"  fill="#ff5555" opacity="0.96"/>
-    <circle cx="300" cy="294" r="1.2" fill="#ffffff" opacity="0.7"/>
-
-    <!-- ══════════════════════════════════════
-         HIDDEN "aaron" as botanical field
-         annotation marks along the stem —
-         reads as natural bark/node texture.
-         ══════════════════════════════════════ -->
-    <!-- A — stem node mark at ~y=555 -->
-    <g transform="translate(299,556)" stroke="#38bdf8" stroke-width="0.7" stroke-linecap="round" opacity="0.26">
-      <line x1="-5" y1="7"  x2="0" y2="-7"/>
-      <line x1="0"  y1="-7" x2="5" y2="7"/>
-      <line x1="-3" y1="1"  x2="3" y2="1"/>
-    </g>
-    <!-- A — second node mark at ~y=572 -->
-    <g transform="translate(302,572)" stroke="#38bdf8" stroke-width="0.65" stroke-linecap="round" opacity="0.24">
-      <line x1="-5" y1="7"  x2="0" y2="-7"/>
-      <line x1="0"  y1="-7" x2="5" y2="7"/>
-      <line x1="-3" y1="1"  x2="3" y2="1"/>
-    </g>
-    <!-- R — left leaf vein fork near base -->
-    <g transform="translate(220,442)" stroke="#38bdf8" stroke-width="0.6" stroke-linecap="round" opacity="0.22">
-      <line x1="-4" y1="-7" x2="-4" y2="7"/>
-      <path d="M-4,-7 C1,-7 5,-4 5,-1 C5,2 1,3 -4,3" fill="none"/>
-      <line x1="-4" y1="3" x2="5" y2="7"/>
-    </g>
-    <!-- O — right leaf knot -->
-    <g transform="translate(372,414)" stroke="#38bdf8" stroke-width="0.6" stroke-linecap="round" opacity="0.21">
-      <ellipse cx="0" cy="0" rx="5" ry="7" fill="none"/>
-    </g>
-    <!-- N — stem node near calyx -->
-    <g transform="translate(296,360)" stroke="#38bdf8" stroke-width="0.6" stroke-linecap="round" opacity="0.22">
-      <line x1="-4" y1="7"  x2="-4" y2="-7"/>
-      <line x1="-4" y1="-7" x2="4"  y2="7"/>
-      <line x1="4"  y1="7"  x2="4"  y2="-7"/>
-    </g>
-
-  </svg>
-
-  <!-- TOP-RIGHT: five vertical sprigs -->
-  <svg class="hero-floral-top-right" viewBox="0 0 520 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <filter id="sprigGlow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    </defs>
-    <line x1="0" y1="160" x2="520" y2="160" stroke="#38bdf8" stroke-width="0.5" opacity="0.13"/>
-    <line x1="0" y1="155" x2="520" y2="155" stroke="#38bdf8" stroke-width="0.3" stroke-dasharray="2 8" opacity="0.08"/>
-    <path d="M52 185 C50 155 44 125 38 98 C32 68 40 38 52 24" stroke="#38bdf8" stroke-width="1.1" fill="none" opacity="0.55"/>
-    <ellipse cx="38" cy="98"  rx="24" ry="12" transform="rotate(-28 38 98)"  stroke="#38bdf8" stroke-width="0.85" fill="rgba(56,189,248,0.06)" opacity="0.55"/>
-    <ellipse cx="64" cy="98"  rx="20" ry="10" transform="rotate(24 64 98)"   stroke="#38bdf8" stroke-width="0.75" fill="rgba(56,189,248,0.05)" opacity="0.48"/>
-    <ellipse cx="44" cy="64"  rx="17" ry="8"  transform="rotate(-16 44 64)"  stroke="#38bdf8" stroke-width="0.65" fill="rgba(56,189,248,0.04)" opacity="0.4"/>
-    <circle cx="52" cy="24" r="6" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.14)" opacity="0.65" filter="url(#sprigGlow)"/>
-    <circle cx="52" cy="24" r="2.5" fill="#38bdf8" opacity="0.55"/>
-    <path d="M156 190 C153 155 146 118 140 86 C134 52 142 18 156 6" stroke="#38bdf8" stroke-width="1.2" fill="none" opacity="0.6"/>
-    <ellipse cx="140" cy="86"  rx="26" ry="13" transform="rotate(-30 140 86)"  stroke="#38bdf8" stroke-width="0.9"  fill="rgba(56,189,248,0.07)" opacity="0.58"/>
-    <ellipse cx="170" cy="86"  rx="22" ry="11" transform="rotate(26 170 86)"   stroke="#38bdf8" stroke-width="0.8"  fill="rgba(56,189,248,0.06)" opacity="0.52"/>
-    <ellipse cx="146" cy="52"  rx="19" ry="9"  transform="rotate(-18 146 52)"  stroke="#38bdf8" stroke-width="0.7"  fill="rgba(56,189,248,0.04)" opacity="0.44"/>
-    <circle cx="156" cy="6"  r="7"   stroke="#38bdf8" stroke-width="1.1" fill="rgba(56,189,248,0.16)" opacity="0.7" filter="url(#sprigGlow)"/>
-    <circle cx="156" cy="6"  r="2.8" fill="#38bdf8" opacity="0.6"/>
-    <path d="M260 195 C257 158 249 116 243 80 C237 42 246 10 260 2" stroke="#38bdf8" stroke-width="1.4" fill="none" opacity="0.65"/>
-    <ellipse cx="243" cy="80"  rx="28" ry="14" transform="rotate(-32 243 80)"  stroke="#38bdf8" stroke-width="1"    fill="rgba(56,189,248,0.08)" opacity="0.62"/>
-    <ellipse cx="276" cy="80"  rx="24" ry="12" transform="rotate(28 276 80)"   stroke="#38bdf8" stroke-width="0.9"  fill="rgba(56,189,248,0.07)" opacity="0.55"/>
-    <ellipse cx="249" cy="46"  rx="21" ry="10" transform="rotate(-20 249 46)"  stroke="#38bdf8" stroke-width="0.8"  fill="rgba(56,189,248,0.05)" opacity="0.48"/>
-    <circle cx="260" cy="2"  r="8"   stroke="#38bdf8" stroke-width="1.2" fill="rgba(56,189,248,0.18)" opacity="0.75" filter="url(#sprigGlow)"/>
-    <circle cx="260" cy="2"  r="3.2" fill="#38bdf8" opacity="0.65"/>
-    <path d="M364 190 C361 155 354 118 348 86 C342 52 350 18 364 6" stroke="#38bdf8" stroke-width="1.2" fill="none" opacity="0.6"/>
-    <ellipse cx="348" cy="86"  rx="26" ry="13" transform="rotate(-30 348 86)"  stroke="#38bdf8" stroke-width="0.9"  fill="rgba(56,189,248,0.07)" opacity="0.58"/>
-    <ellipse cx="378" cy="86"  rx="22" ry="11" transform="rotate(26 378 86)"   stroke="#38bdf8" stroke-width="0.8"  fill="rgba(56,189,248,0.06)" opacity="0.52"/>
-    <circle cx="364" cy="6"  r="7"   stroke="#38bdf8" stroke-width="1.1" fill="rgba(56,189,248,0.16)" opacity="0.7" filter="url(#sprigGlow)"/>
-    <circle cx="364" cy="6"  r="2.8" fill="#38bdf8" opacity="0.6"/>
-    <path d="M468 185 C466 155 460 125 454 98 C448 68 456 38 468 24" stroke="#38bdf8" stroke-width="1.1" fill="none" opacity="0.55"/>
-    <ellipse cx="454" cy="98"  rx="24" ry="12" transform="rotate(-28 454 98)"  stroke="#38bdf8" stroke-width="0.85" fill="rgba(56,189,248,0.06)" opacity="0.55"/>
-    <ellipse cx="480" cy="98"  rx="20" ry="10" transform="rotate(24 480 98)"   stroke="#38bdf8" stroke-width="0.75" fill="rgba(56,189,248,0.05)" opacity="0.48"/>
-    <circle cx="468" cy="24" r="6" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.14)" opacity="0.65" filter="url(#sprigGlow)"/>
-    <circle cx="468" cy="24" r="2.5" fill="#38bdf8" opacity="0.55"/>
-    <path d="M52 148 C104 134 156 142 208 135 C260 128 312 138 364 132 C400 127 434 138 468 132" stroke="#38bdf8" stroke-width="0.6" fill="none" opacity="0.15" stroke-dasharray="3 7"/>
-    <circle cx="52"  cy="185" r="2.5" fill="#38bdf8" opacity="0.38"/>
-    <circle cx="156" cy="190" r="2.5" fill="#38bdf8" opacity="0.38"/>
-    <circle cx="260" cy="195" r="2.5" fill="#38bdf8" opacity="0.38"/>
-    <circle cx="364" cy="190" r="2.5" fill="#38bdf8" opacity="0.38"/>
-    <circle cx="468" cy="185" r="2.5" fill="#38bdf8" opacity="0.38"/>
-  </svg>
-
-  <!-- BOTTOM-RIGHT: wide branching wreath arc -->
-  <svg class="hero-floral-bottom-right" viewBox="0 0 460 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <filter id="wreathGlow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    </defs>
-    <path d="M10 188 C50 144 100 112 230 102 C360 92 410 118 450 152" stroke="#38bdf8" stroke-width="1.3" fill="none" opacity="0.48"/>
-    <path d="M10 188 C50 152 100 124 230 114 C360 104 410 128 450 160" stroke="#38bdf8" stroke-width="0.5" fill="none" opacity="0.14" stroke-dasharray="2 8"/>
-    <path d="M60 162 C56 136 48 110 42 84 C36 56 44 28 56 16" stroke="#38bdf8" stroke-width="1.1" fill="none" opacity="0.52"/>
-    <ellipse cx="42" cy="84"  rx="21" ry="10" transform="rotate(-30 42 84)"  stroke="#38bdf8" stroke-width="0.85" fill="rgba(56,189,248,0.06)" opacity="0.54"/>
-    <ellipse cx="66" cy="84"  rx="18" ry="9"  transform="rotate(26 66 84)"   stroke="#38bdf8" stroke-width="0.75" fill="rgba(56,189,248,0.05)" opacity="0.47"/>
-    <ellipse cx="48" cy="54"  rx="15" ry="7"  transform="rotate(-18 48 54)"  stroke="#38bdf8" stroke-width="0.65" fill="rgba(56,189,248,0.04)" opacity="0.4"/>
-    <circle cx="56" cy="16" r="6" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.14)" opacity="0.65" filter="url(#wreathGlow)"/>
-    <circle cx="56" cy="16" r="2.5" fill="#38bdf8" opacity="0.55"/>
-    <path d="M230 102 C226 74 220 46 216 20 C213 4 220 -6 230 -10" stroke="#38bdf8" stroke-width="1.3" fill="none" opacity="0.56"/>
-    <ellipse cx="216" cy="20"  rx="24" ry="12" transform="rotate(-22 216 20)"  stroke="#38bdf8" stroke-width="0.9"  fill="rgba(56,189,248,0.07)" opacity="0.56"/>
-    <ellipse cx="244" cy="20"  rx="20" ry="10" transform="rotate(18 244 20)"   stroke="#38bdf8" stroke-width="0.8"  fill="rgba(56,189,248,0.06)" opacity="0.5"/>
-    <ellipse cx="220" cy="-8"  rx="17" ry="8"  transform="rotate(-12 220 -8)"  stroke="#38bdf8" stroke-width="0.7"  fill="rgba(56,189,248,0.04)" opacity="0.42"/>
-    <circle cx="230" cy="-10" r="7"   stroke="#38bdf8" stroke-width="1.1" fill="rgba(56,189,248,0.18)" opacity="0.72" filter="url(#wreathGlow)"/>
-    <circle cx="230" cy="-10" r="2.8" fill="#38bdf8" opacity="0.62"/>
-    <path d="M400 136 C406 110 414 84 420 58 C426 30 418 8 406 -2" stroke="#38bdf8" stroke-width="1.1" fill="none" opacity="0.52"/>
-    <ellipse cx="420" cy="58"  rx="21" ry="10" transform="rotate(30 420 58)"  stroke="#38bdf8" stroke-width="0.85" fill="rgba(56,189,248,0.06)" opacity="0.54"/>
-    <ellipse cx="396" cy="58"  rx="18" ry="9"  transform="rotate(-26 396 58)" stroke="#38bdf8" stroke-width="0.75" fill="rgba(56,189,248,0.05)" opacity="0.47"/>
-    <circle cx="406" cy="-2" r="6" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.14)" opacity="0.65" filter="url(#wreathGlow)"/>
-    <circle cx="406" cy="-2" r="2.5" fill="#38bdf8" opacity="0.55"/>
-    <ellipse cx="130" cy="114" rx="12" ry="6" transform="rotate(-14 130 114)" stroke="#38bdf8" stroke-width="0.7" fill="rgba(56,189,248,0.04)" opacity="0.4"/>
-    <ellipse cx="330" cy="104" rx="12" ry="6" transform="rotate(10 330 104)"  stroke="#38bdf8" stroke-width="0.7" fill="rgba(56,189,248,0.04)" opacity="0.4"/>
-    <circle cx="130" cy="114" r="2" fill="#38bdf8" opacity="0.3"/>
-    <circle cx="330" cy="104" r="2" fill="#38bdf8" opacity="0.3"/>
-    <circle cx="10"  cy="188" r="3" fill="#38bdf8" opacity="0.35"/>
-    <circle cx="450" cy="152" r="3" fill="#38bdf8" opacity="0.35"/>
-  </svg>
 </section>
 
 <section id="advantage">
@@ -725,21 +701,9 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
       </div>
     </div>
     <div class="adv-grid">
-      <div class="adv-card">
-        <span class="adv-num">01 / Discipline</span>
-        <div class="adv-icon-wrap"><svg viewBox="0 0 48 48" fill="none"><ellipse cx="24" cy="9" rx="4" ry="7" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1"/><ellipse cx="24" cy="39" rx="4" ry="7" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1"/><ellipse cx="9" cy="24" rx="7" ry="4" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1"/><ellipse cx="39" cy="24" rx="7" ry="4" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1"/><circle cx="24" cy="24" r="6" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1.2"/><circle cx="24" cy="24" r="2.5" fill="rgba(56,189,248,0.4)" stroke="#38bdf8" stroke-width="1"/></svg></div>
-        <p>Precision applied to every project. No shortcuts, no compromises. Every deliverable meets the standard, period.</p>
-      </div>
-      <div class="adv-card">
-        <span class="adv-num">02 / Precision</span>
-        <div class="adv-icon-wrap"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.05)"/><circle cx="24" cy="24" r="8" stroke="#38bdf8" stroke-width="0.8" fill="none"/><line x1="24" y1="10" x2="24" y2="16" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/><line x1="24" y1="32" x2="24" y2="38" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/><line x1="10" y1="24" x2="16" y2="24" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/><line x1="32" y1="24" x2="38" y2="24" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/><circle cx="24" cy="24" r="2.5" fill="rgba(56,189,248,0.45)" stroke="#38bdf8" stroke-width="1"/></svg></div>
-        <p>Mission-critical engineering habits applied directly to your infrastructure, keeping your systems bulletproof and reliable.</p>
-      </div>
-      <div class="adv-card">
-        <span class="adv-num">03 / Performance</span>
-        <div class="adv-icon-wrap"><svg viewBox="0 0 48 48" fill="none"><path d="M24 42 C24 42 24 30 24 22" stroke="#38bdf8" stroke-width="1.3" stroke-linecap="round"/><path d="M24 30 C24 30 17 26 14 20" stroke="#38bdf8" stroke-width="1.1" stroke-linecap="round"/><path d="M24 25 C24 25 31 21 34 15" stroke="#38bdf8" stroke-width="1.1" stroke-linecap="round"/><ellipse cx="13" cy="18" rx="5" ry="3" transform="rotate(-35 13 18)" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="0.9"/><ellipse cx="35" cy="13" rx="5" ry="3" transform="rotate(-35 35 13)" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="0.9"/><ellipse cx="24" cy="14" rx="3.5" ry="6" fill="rgba(56,189,248,0.13)" stroke="#38bdf8" stroke-width="1"/><circle cx="24" cy="14" r="3" fill="rgba(56,189,248,0.3)" stroke="#38bdf8" stroke-width="1"/></svg></div>
-        <p>Results-driven mindset forged under real pressure. Deadlines are honored, the process is transparent, and outcomes are measurable.</p>
-      </div>
+      <div class="adv-card"><span class="adv-num">01 / Discipline</span><div class="adv-icon-wrap"><svg viewBox="0 0 48 48" fill="none"><ellipse cx="24" cy="9" rx="4" ry="7" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1"/><ellipse cx="24" cy="39" rx="4" ry="7" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1"/><ellipse cx="9" cy="24" rx="7" ry="4" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1"/><ellipse cx="39" cy="24" rx="7" ry="4" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1"/><circle cx="24" cy="24" r="6" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1.2"/><circle cx="24" cy="24" r="2.5" fill="rgba(56,189,248,0.4)" stroke="#38bdf8" stroke-width="1"/></svg></div><p>Precision applied to every project. No shortcuts, no compromises. Every deliverable meets the standard, period.</p></div>
+      <div class="adv-card"><span class="adv-num">02 / Precision</span><div class="adv-icon-wrap"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.05)"/><circle cx="24" cy="24" r="8" stroke="#38bdf8" stroke-width="0.8" fill="none"/><line x1="24" y1="10" x2="24" y2="16" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/><line x1="24" y1="32" x2="24" y2="38" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/><line x1="10" y1="24" x2="16" y2="24" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/><line x1="32" y1="24" x2="38" y2="24" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/><circle cx="24" cy="24" r="2.5" fill="rgba(56,189,248,0.45)" stroke="#38bdf8" stroke-width="1"/></svg></div><p>Mission-critical engineering habits applied directly to your infrastructure, keeping your systems bulletproof and reliable.</p></div>
+      <div class="adv-card"><span class="adv-num">03 / Performance</span><div class="adv-icon-wrap"><svg viewBox="0 0 48 48" fill="none"><path d="M24 42 C24 42 24 30 24 22" stroke="#38bdf8" stroke-width="1.3" stroke-linecap="round"/><path d="M24 30 C24 30 17 26 14 20" stroke="#38bdf8" stroke-width="1.1" stroke-linecap="round"/><path d="M24 25 C24 25 31 21 34 15" stroke="#38bdf8" stroke-width="1.1" stroke-linecap="round"/><ellipse cx="13" cy="18" rx="5" ry="3" transform="rotate(-35 13 18)" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="0.9"/><ellipse cx="35" cy="13" rx="5" ry="3" transform="rotate(-35 35 13)" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="0.9"/><ellipse cx="24" cy="14" rx="3.5" ry="6" fill="rgba(56,189,248,0.13)" stroke="#38bdf8" stroke-width="1"/><circle cx="24" cy="14" r="3" fill="rgba(56,189,248,0.3)" stroke="#38bdf8" stroke-width="1"/></svg></div><p>Results-driven mindset forged under real pressure. Deadlines are honored, the process is transparent, and outcomes are measurable.</p></div>
     </div>
   </div>
 </section>
@@ -816,9 +780,9 @@ footer{background:#040a14;border-top:1px solid rgba(56,189,248,0.06);padding:24p
       <div class="process-header-right">A clear, no-nonsense path from first conversation to full deployment, with you informed every step of the way.</div>
     </div>
     <div class="process-track">
-      <div class="step"><span class="step-num-label">Step 01</span><div class="step-icon"><svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="22" stroke="#38bdf8" stroke-width="0.8" fill="none" stroke-dasharray="3 4"/><circle cx="30" cy="30" r="14" stroke="#38bdf8" stroke-width="0.7" fill="rgba(56,189,248,0.04)"/><circle cx="30" cy="30" r="6" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.1)"/><circle cx="30" cy="30" r="2" fill="rgba(56,189,248,0.7)"/><line x1="30" y1="30" x2="30" y2="8" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/><circle cx="43" cy="18" r="2.5" fill="rgba(56,189,248,0.5)" stroke="#38bdf8" stroke-width="0.8"/></svg></div><h4>Discovery Call</h4><p>Assess your current digital posture, goals, and vulnerabilities in a free 30-minute session.</p></div>
+      <div class="step"><span class="step-num-label">Step 01</span><div class="step-icon"><svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="22" stroke="#38bdf8" stroke-width="0.8" fill="none" stroke-dasharray="3 4"/><circle cx="30" cy="30" r="14" stroke="#38bdf8" stroke-width="0.7" fill="rgba(56,189,248,0.04)"/><circle cx="30" cy="30" r="6" stroke="#38bdf8" stroke-width="1" fill="rgba(56,189,248,0.1)"/><circle cx="30" cy="30" r="2" fill="rgba(56,189,248,0.7)"/><line x1="30" y1="30" x2="30" y2="8" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/><circle cx="43" cy="18" r="2.5" fill="rgba(56,189,248,0.5)" stroke="#38bdf8" stroke-width="0.8"/><line x1="30" y1="8" x2="30" y2="11" stroke="#38bdf8" stroke-width="1" stroke-linecap="round"/><line x1="49" y1="30" x2="52" y2="30" stroke="#38bdf8" stroke-width="1" stroke-linecap="round"/></svg></div><h4>Discovery Call</h4><p>Assess your current digital posture, goals, and vulnerabilities in a free 30-minute session.</p></div>
       <div class="step"><span class="step-num-label">Step 02</span><div class="step-icon"><svg viewBox="0 0 60 60" fill="none"><path d="M14 16 Q14 10 20 10 L46 10 Q52 10 52 16 L52 50 Q52 56 46 56 L20 56 Q14 56 14 50 Z" fill="rgba(56,189,248,0.06)" stroke="#38bdf8" stroke-width="1.1"/><path d="M38 10 L38 20 L52 20" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="1" stroke-linejoin="round"/><line x1="20" y1="28" x2="44" y2="28" stroke="#38bdf8" stroke-width="0.9" stroke-linecap="round"/><line x1="20" y1="34" x2="44" y2="34" stroke="#38bdf8" stroke-width="0.9" stroke-linecap="round"/><line x1="20" y1="40" x2="36" y2="40" stroke="#38bdf8" stroke-width="0.9" stroke-linecap="round"/><polyline points="20,22 23,25 28,19" stroke="#38bdf8" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><h4>Mission Brief</h4><p>A tailored proposal outlining scope, timeline, and deliverables. No fluff, just the plan.</p></div>
-      <div class="step"><span class="step-num-label">Step 03</span><div class="step-icon"><svg viewBox="0 0 60 60" fill="none"><path d="M30 8 C30 8 20 20 20 34 L30 40 L40 34 C40 20 30 8 30 8Z" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.2" stroke-linejoin="round"/><path d="M24 34 L20 46 L30 42 L40 46 L36 34" fill="rgba(56,189,248,0.06)" stroke="#38bdf8" stroke-width="1" stroke-linejoin="round"/><circle cx="30" cy="26" r="4" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1"/><circle cx="30" cy="26" r="1.5" fill="rgba(56,189,248,0.55)"/></svg></div><h4>Deployment</h4><p>Precision execution of all agreed deliverables with regular status updates throughout.</p></div>
+      <div class="step"><span class="step-num-label">Step 03</span><div class="step-icon"><svg viewBox="0 0 60 60" fill="none"><path d="M30 8 C30 8 20 20 20 34 L30 40 L40 34 C40 20 30 8 30 8Z" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.2" stroke-linejoin="round"/><path d="M24 34 L20 46 L30 42 L40 46 L36 34" fill="rgba(56,189,248,0.06)" stroke="#38bdf8" stroke-width="1" stroke-linejoin="round"/><circle cx="30" cy="26" r="4" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1"/><circle cx="30" cy="26" r="1.5" fill="rgba(56,189,248,0.55)"/><line x1="30" y1="50" x2="30" y2="56" stroke="#38bdf8" stroke-width="0.9" stroke-linecap="round" opacity="0.6"/></svg></div><h4>Deployment</h4><p>Precision execution of all agreed deliverables with regular status updates throughout.</p></div>
       <div class="step"><span class="step-num-label">Step 04</span><div class="step-icon"><svg viewBox="0 0 60 60" fill="none"><rect x="10" y="38" width="8" height="12" rx="1.5" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1"/><rect x="22" y="28" width="8" height="22" rx="1.5" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1"/><rect x="34" y="18" width="8" height="32" rx="1.5" fill="rgba(56,189,248,0.2)" stroke="#38bdf8" stroke-width="1"/><line x1="8" y1="51" x2="52" y2="51" stroke="#38bdf8" stroke-width="1" stroke-linecap="round"/><circle cx="46" cy="12" r="5" stroke="#38bdf8" stroke-width="0.9" fill="rgba(56,189,248,0.1)"/><circle cx="46" cy="12" r="2" fill="rgba(56,189,248,0.55)"/><ellipse cx="46" cy="5" rx="2" ry="4" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.7"/><ellipse cx="53" cy="12" rx="4" ry="2" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="0.7"/></svg></div><h4>Debrief and Scale</h4><p>Review outcomes, measure results, and execute the next mission to keep your business advancing.</p></div>
     </div>
   </div>
@@ -903,7 +867,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal(
 function openMobileNav(){var n=document.getElementById('mobileNav');n.style.display='flex';requestAnimationFrame(function(){n.classList.add('open');});document.body.style.overflow='hidden';}
 function closeMobileNav(){var n=document.getElementById('mobileNav');n.classList.remove('open');setTimeout(function(){if(!n.classList.contains('open'))n.style.display='none';},300);document.body.style.overflow='';}
 
-/* ── CANVAS ── */
 var canvas=document.getElementById('bgCanvas'),ctx=canvas.getContext('2d'),W,H,gridLines=[];
 var EXPLODE_DUR=1.2,SETTLE_DUR=3.5,CANVAS_FADE=2.0,startTime=null;
 function easeOutCubic(t){return 1-Math.pow(1-t,3);}
@@ -940,8 +903,7 @@ function loop(ts){
   if(!startTime)startTime=ts;
   var elapsed=(ts-startTime)/1000,normP=elapsed/SETTLE_DUR;
   canvas.style.opacity=Math.min(0.82,easeOutCubic(Math.min(1,elapsed/CANVAS_FADE))*.82);
-  ctx.clearRect(0,0,W,H);
-  drawGrid(normP);
+  ctx.clearRect(0,0,W,H);drawGrid(normP);
   for(var i=0;i<rings.length;i++){rings[i].update(normP);rings[i].draw(normP);}
   for(var i=0;i<hexagons.length;i++){hexagons[i].update(normP);hexagons[i].draw(normP);}
   for(var i=0;i<stems.length;i++){stems[i].update(normP);stems[i].draw(normP);}
