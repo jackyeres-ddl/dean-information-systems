@@ -17,6 +17,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg0);color:var(--txt);font-family:'Barlow Condensed',sans-serif;overflow-x:hidden;}
+html,body{max-width:100%;}
 ::-webkit-scrollbar{width:2px;}
 ::-webkit-scrollbar-thumb{background:var(--acc1);}
 
@@ -199,26 +200,42 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
 #btt:hover{border-color:var(--acc2);color:var(--acc2);}
 
 @media(max-width:900px){
-  .panel{min-height:auto;height:auto;padding-top:80px;padding-bottom:80px;}
-  #p0{height:100vh;min-height:100vh;padding:0;}
-  #p1{height:100vh;min-height:100vh;padding:0;}
+  html{scroll-behavior:auto;}
+  body{overflow-x:hidden;}
+  .panel{min-height:auto;height:auto;padding-top:80px;padding-bottom:80px;overflow:visible;}
+  #p0,#p1{height:auto;min-height:100svh;padding:0;}
+  #p0{padding-top:24px;padding-bottom:24px;}
+  #p1{align-items:flex-end;}
   .p2-inner{grid-template-columns:1fr;gap:40px;padding:0 28px;}.p2-rule-v{display:none;}.p2-left{text-align:left;}.p2-num{font-size:8rem;}
   #p3{padding:80px 28px;}
   .svc-item{flex-wrap:wrap;gap:16px;padding:24px 0;}.svc-name{font-size:1.6rem;}.svc-desc{display:block;max-width:100%;text-align:left;flex-basis:100%;padding-left:44px;}.svc-arrow{display:none;}
-  #p4{padding:80px 28px;}.vs-row{grid-template-columns:1fr 1fr;}.vs-cell:last-child,.vs-row.header .vs-cell:last-child{display:none;}
-  .p5-inner{padding:0 28px;}.steps-line{flex-direction:column;gap:40px;}.steps-line::before{display:none;}.step-item{padding:0;display:grid;grid-template-columns:28px 1fr;gap:0 20px;}.step-dot{grid-row:1/4;margin:0;}
+  #p4{padding:80px 28px;}.vs-row{grid-template-columns:minmax(0,1fr);gap:8px;padding:18px 0;}.vs-row.header{display:none;}.vs-cell{padding:0;}.vs-cell.topic{margin-bottom:6px;color:var(--acc2);}.vs-cell.dean,.vs-row .vs-cell:last-child{padding-left:16px;position:relative;}.vs-cell.dean::before,.vs-row .vs-cell:last-child::before{content:'';position:absolute;left:0;top:.7em;width:6px;height:1px;background:var(--acc2);opacity:.55;}
+  .p5-inner{padding:0 28px;}.steps-line{flex-direction:column;gap:40px;}.steps-line::before{display:none;}.step-item{padding:0;display:grid;grid-template-columns:28px 1fr;gap:0 20px;align-items:start;}.step-dot{grid-row:1/4;margin:0;}
   #p6{padding:80px 28px;}.p6-top{flex-direction:column;gap:24px;}.p6-h{font-size:3rem;}.p6-sub{text-align:left;max-width:100%;}.p6-pillars{flex-direction:column;gap:0;}.p6-cta-row{flex-direction:column;align-items:flex-start;gap:20px;}
-  #p7{grid-template-columns:1fr;}.p7-left{min-height:50vh;padding:60px 28px;}.p7-h{font-size:3rem;}.p7-right{padding:48px 28px;}.f2{grid-template-columns:1fr 1fr;gap:16px;}
-  .p1-content{padding:0 28px 60px;max-width:100%;}.p1-h{font-size:3.2rem;letter-spacing:-1px;}.p1-h em{font-size:1.6rem;}.p1-cta{flex-direction:column;align-items:flex-start;gap:16px;}
-  #sidenav{display:none;}
+  #p7{grid-template-columns:1fr;}.p7-left{min-height:44svh;padding:60px 28px 40px;}.p7-h{font-size:3rem;}.p7-right{padding:48px 28px;}.f2{grid-template-columns:1fr 1fr;gap:16px;}
+  .p1-content{padding:0 28px 60px;max-width:100%;}.p1-eyebrow,.p3-label,.p4-label,.p5-label,.p6-label,.p7-label{letter-spacing:4px;}.p1-h{font-size:3.2rem;letter-spacing:-1px;}.p1-h em{font-size:1.6rem;}.p1-cta{flex-direction:column;align-items:flex-start;gap:16px;}
+  .btn-open,.btn-sheet,.btn-submit{width:100%;text-align:center;}
+  .btn-text{padding:8px 0;}
+  .modal-box{padding:40px 24px;}
   footer{padding:20px 28px;flex-direction:column;gap:10px;text-align:center;font-size:10px;}
+  #sidenav{display:none;}
 }
 @media(max-width:480px){
+  .panel{padding-top:64px;padding-bottom:64px;}
+  #p0,#p1{min-height:100dvh;}
+  .p0-scroll{bottom:22px;letter-spacing:3px;}
   .p0-eyebrow{font-size:9px;letter-spacing:4px;padding:0 20px;text-align:center;}
+  .p1-content,.p2-inner,.p5-inner,.p7-right,#p3,#p4,#p6,footer{padding-left:20px;padding-right:20px;}
   .p1-h{font-size:2.6rem;}.p1-h em{font-size:1.4rem;}
   .p2-num{font-size:5rem;}.svc-name{font-size:1.4rem;}
+  .svc-desc{padding-left:0;}
+  .vs-row{padding:16px 0;}
+  .vs-cell.topic{margin-bottom:4px;}
   .p6-h{font-size:2.4rem;}.p7-h{font-size:2.4rem;}
+  .pillar{padding:28px 20px;}
   .f2{grid-template-columns:1fr;}
+  .fg input,.fg select,.fg textarea{font-size:1rem;}
+  .modal-box{width:min(440px,calc(100vw - 24px));padding:32px 20px;}
 }
 </style>
 </head>
