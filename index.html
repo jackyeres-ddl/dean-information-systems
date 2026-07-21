@@ -267,9 +267,15 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
   }
 
   /* ── P1 Identity ── */
+  /* Edge-transparent shade: darkens behind the headline but fades to nothing
+     at the panel top AND bottom, so it never creates a seam with neighbours */
   .p1-vignette{background:
-    linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,.16) 48%,transparent 86%),
-    linear-gradient(to right,rgba(0,0,0,.62) 0%,transparent 72%);}
+    linear-gradient(to top,
+      transparent 0,
+      rgba(3,9,18,.5) 8%,
+      rgba(3,9,18,.5) 30%,
+      rgba(3,9,18,.22) 46%,
+      transparent 62%);}
   .p1-content{padding:0 24px 52px;max-width:100%;}
   .p1-eyebrow{font-size:9px;letter-spacing:4px;margin-bottom:18px;}
   .p1-h{font-size:clamp(2.6rem,9vw,3.8rem);letter-spacing:-1px;line-height:.92;}
