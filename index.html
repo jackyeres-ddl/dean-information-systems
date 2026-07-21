@@ -220,25 +220,27 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
   #p0,#p1{height:auto;min-height:100svh;}
   #sidenav,#btt{display:none;}
 
-  /* ── Gradient backgrounds ── */
-  #p0{padding:0;background:
-    radial-gradient(circle at 50% 28%, rgba(41,163,216,.18), transparent 38%),
-    radial-gradient(circle at 18% 82%, rgba(16,96,160,.16), transparent 30%),
-    linear-gradient(180deg,#020710 0%,#07111f 52%,#0a1728 100%);}
-  #p1{background:
-    radial-gradient(circle at 72% 16%, rgba(41,163,216,.13), transparent 28%),
-    linear-gradient(180deg,#0a1728 0%,#091828 44%,#0a1625 100%);}
-  #p2{background:
-    radial-gradient(circle at 16% 16%, rgba(41,163,216,.09), transparent 28%),
-    linear-gradient(180deg,#0a1625 0%,#0b1829 100%);
-    padding:80px 0;}
+  /* ── Seamless continuous backdrop: one gradient down the whole page,
+        no per-panel color seams. Effects float over it edge-to-edge. ── */
+  body{background:
+    linear-gradient(180deg,
+      #020711 0%, #050f1c 12%, #081524 30%, #0a1930 48%,
+      #081627 66%, #061120 84%, #040c17 100%) no-repeat;}
+  body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(70% 44% at 50% 4%, rgba(41,163,216,.12), transparent 72%),
+      radial-gradient(60% 40% at 88% 46%, rgba(16,96,160,.09), transparent 70%),
+      radial-gradient(55% 38% at 8% 80%, rgba(41,163,216,.07), transparent 70%);}
+  #p0,#p1,#p2,#p3,#p4,#p5,#p6,#p7{background:transparent !important;}
+  #p0{padding:0;}
+  #p2{padding:80px 0;}
   #p3{padding:80px 24px;}
   #p4{padding:80px 24px;}
   #p5{padding:80px 0;}
   #p6{padding:80px 24px;}
-  #p7{padding:0;background:
-    radial-gradient(circle at 80% 12%, rgba(41,163,216,.09), transparent 26%),
-    linear-gradient(180deg,#08131d 0%,#070f18 100%);}
+  #p7{padding:0;}
+  /* keep site content above the effect canvases (fixes flowers over text) */
+  #p4 .mobile-compare,#p5 .mobile-steps{position:relative;z-index:3;}
 
   /* ── P0 Hero ── */
   .p0-eyebrow{
@@ -325,11 +327,13 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
   .mobile-hide{display:none!important;}
   .mobile-only{display:block!important;}
 
-  /* Redesigned comparison cards — feel premium */
-  .mobile-compare{display:flex;flex-direction:column;gap:1px;width:100%;background:var(--acc-line);}
+  /* Soft, floating comparison cards — integrated with the backdrop, not boxed */
+  .mobile-compare{display:flex;flex-direction:column;gap:14px;width:100%;background:transparent;}
   .compare-card{
-    background:var(--bg2);
-    padding:0;
+    background:rgba(10,21,38,.55);
+    border:1px solid var(--acc-line);
+    border-radius:14px;
+    padding:4px 0 10px;
     overflow:hidden;
   }
   .compare-topic{
@@ -338,9 +342,9 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
     color:var(--acc-dim);padding:16px 20px 0;
     margin-bottom:0;
   }
-  .compare-sides{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--acc-line);margin-top:12px;}
+  .compare-sides{display:grid;grid-template-columns:1fr 1fr;gap:0;background:transparent;margin-top:6px;}
   .compare-side{
-    padding:16px;background:var(--bg2);
+    padding:12px 18px;background:transparent;
     position:relative;
   }
   .compare-side::before{display:none;}
@@ -350,10 +354,10 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
   }
   /* Dean side */
   .compare-side:first-child .compare-side-label{color:var(--acc2);}
-  .compare-side:first-child{border-top:2px solid var(--acc2);}
+  .compare-side:first-child{border:0;box-shadow:inset 3px 0 0 rgba(41,163,216,.55);}
   /* Other side */
   .compare-side.alt .compare-side-label{color:rgba(255,255,255,.35);}
-  .compare-side.alt{border-top:2px solid rgba(255,255,255,.12);}
+  .compare-side.alt{border:0;box-shadow:inset 3px 0 0 rgba(255,255,255,.10);}
   .compare-side-value{
     font-family:'Cormorant Garamond',serif;
     font-size:.95rem;line-height:1.55;
@@ -396,13 +400,14 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
   /* Pillars — horizontal scroll on very small, grid on 600+ */
   .p6-pillars{
     display:grid;grid-template-columns:1fr;
-    gap:1px;background:var(--acc-line);margin-bottom:28px;
+    gap:12px;background:transparent;margin-bottom:28px;
   }
   .pillar{
-    padding:24px 20px;
-    background:linear-gradient(180deg,rgba(10,24,38,.94),rgba(7,16,26,.78));
-    border-top:none;
-    border-left:2px solid rgba(41,163,216,.2);
+    padding:22px 20px;
+    background:rgba(10,21,38,.55);
+    border:1px solid var(--acc-line);
+    border-left:2px solid rgba(41,163,216,.5);
+    border-radius:14px;
   }
   .pillar-i{font-size:1.3rem;margin-bottom:8px;}
   .pillar h4{font-size:.9rem;letter-spacing:.5px;margin-bottom:6px;}
@@ -487,8 +492,8 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
   .p2-num{font-size:clamp(4rem,18vw,6rem);}
   .svc-name{font-size:clamp(1.2rem,5.5vw,1.6rem);}
   .compare-sides{grid-template-columns:1fr;}
-  .compare-side:first-child{border-top:2px solid var(--acc2);}
-  .compare-side.alt{border-top:1px solid var(--acc-line);}
+  .compare-side:first-child{border:0;box-shadow:inset 3px 0 0 rgba(41,163,216,.55);}
+  .compare-side.alt{border:0;box-shadow:inset 3px 0 0 rgba(255,255,255,.10);}
   .p6-h{font-size:clamp(2.2rem,8vw,3rem);}
   .p7-left{min-height:38svh;}
   .p7-h{font-size:clamp(2rem,7.5vw,2.6rem);}
