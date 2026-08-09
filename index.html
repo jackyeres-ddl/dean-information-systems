@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Dean Information Systems</title>
+<title>Dean Information Systems | Marketing Agency — Web Design, SEO &amp; Ads in Tennessee</title>
+<meta name="robots" content="index, follow"/>
+<meta name="keywords" content="marketing agency Tennessee, website design, SEO, Google Ads management, Meta ads, veteran-owned marketing"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Barlow+Condensed:wght@200;400;700;900&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet"/>
 
 <link rel="canonical" href="https://www.deaninformationsystems.com/"/>
@@ -39,10 +41,29 @@
   "url": "https://www.deaninformationsystems.com/",
   "logo": "https://www.deaninformationsystems.com/web-app-manifest-512x512.png",
   "image": "https://www.deaninformationsystems.com/web-app-manifest-512x512.png",
-  "description": "Veteran-owned marketing agency in Tennessee providing website design, SEO, and Google & Meta advertising.",
+  "description": "Veteran-owned marketing agency in Tennessee providing website design, SEO, and Google & Meta advertising management.",
   "email": "management@deaninformationsystems.com",
   "telephone": "+1-615-651-3603",
-  "areaServed": "US",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "TN",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    { "@type": "State", "name": "Tennessee" },
+    { "@type": "Country", "name": "United States" }
+  ],
+  "knowsAbout": ["Website Design", "Search Engine Optimization", "Google Ads", "Meta Ads", "Digital Advertising", "Brand Strategy"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Marketing Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Design & Development" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Search Engine Optimization (SEO)" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google & Meta Advertising Management" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand & Creative" } }
+    ]
+  },
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+1-615-651-3603",
@@ -63,6 +84,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 .mobile-only{display:none;}
 .mobile-hide{display:flex;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 html{scroll-behavior:smooth;}
 html,body{scroll-restoration:auto;}
 body{background:var(--bg0);color:var(--txt);font-family:'Barlow Condensed',sans-serif;overflow-x:hidden;}
@@ -587,6 +609,8 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
 </head>
 <body>
 
+<h1 class="sr-only">Dean Information Systems — veteran-owned marketing agency in Tennessee offering website design, SEO, and Google &amp; Meta advertising management.</h1>
+
 <div class="modal-ov" id="modal"><div class="modal-box"><button class="modal-close" onclick="closeModal()">&#215;</button><div class="modal-label">Direct Contact</div><div class="modal-title">Let's talk.</div><div class="modal-sub">We respond within one business day.</div><div class="modal-rule"></div><a class="c-row" href="mailto:management@deaninformationsystems.com"><div class="c-dot"></div><div><div class="c-type">Email</div><div class="c-val">management@deaninformationsystems.com</div></div></a><a class="c-row" href="tel:+16156513603"><div class="c-dot"></div><div><div class="c-type">Phone</div><div class="c-val">(615) 651-3603</div></div></a></div></div>
 
 <nav id="sidenav"><a href="#p0" class="active"><span>Open</span></a><a href="#p1"><span>Identity</span></a><a href="#p2"><span>Ethos</span></a><a href="#p3"><span>Services</span></a><a href="#p4"><span>Why Dean</span></a><a href="#p5"><span>Process</span></a><a href="#p6"><span>Pricing</span></a><a href="#p7"><span>Contact</span></a></nav>
@@ -615,9 +639,9 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
 
 <section class="panel" id="p1"><canvas id="p1canvas"></canvas><div class="p1-vignette"></div><div class="p1-content"><div class="p1-eyebrow">Veteran-Owned &nbsp;·&nbsp; Tennessee</div><div class="p1-h">Marketing<br>that moves<br>the needle.<em>Websites, SEO &amp; ads<br>engineered to convert.</em></div><div class="p1-cta"><button class="btn-open" onclick="document.getElementById('p7').scrollIntoView({behavior:'smooth'})">Let Us Contact You</button><button class="btn-text" onclick="document.getElementById('p3').scrollIntoView({behavior:'smooth'})">What We Do ↓</button></div></div></section>
 
-<section class="panel" id="p2"><canvas id="p2canvas"></canvas><div class="p2-inner"><div class="p2-left"><div class="p2-num">4+</div><div class="p2-label">The Veteran Advantage</div><div class="p2-h">Built to<br><em>perform.</em></div></div><div class="p2-rule-v"></div><div class="p2-right"><p><strong>Years of military service</strong> shaped a work ethic built on precision, accountability, and results.<br/><br/>We bring those qualities to every campaign — <strong>clear reporting, real ownership, and marketing tied to revenue, not vanity metrics.</strong><br/><br/><strong>Discipline. Precision. Performance.</strong> Not buzzwords. A way of operating.</p></div></div></section>
+<section class="panel" id="p2"><canvas id="p2canvas"></canvas><div class="p2-inner"><div class="p2-left"><div class="p2-label">The Veteran Advantage</div><div class="p2-h">Built to<br><em>perform.</em></div></div><div class="p2-rule-v"></div><div class="p2-right"><p><strong>Years of military service</strong> shaped a work ethic built on precision, accountability, and results.<br/><br/>We bring those qualities to every campaign — <strong>clear reporting, real ownership, and marketing tied to revenue, not vanity metrics.</strong><br/><br/><strong>Discipline. Precision. Performance.</strong> Not buzzwords. A way of operating.</p></div></div></section>
 
-<section class="panel" id="p3"><canvas id="p3canvas"></canvas><div class="p3-label">What We Do</div><div class="services-list"><div class="svc-item"><span class="svc-n">01</span><span class="svc-name">Website Design &amp; Build</span><span class="svc-desc">Custom, fast, mobile-first sites built to turn visitors into customers.</span><span class="svc-arrow">→</span></div><div class="svc-item"><span class="svc-n">02</span><span class="svc-name">Search Engine Optimization</span><span class="svc-desc">Get found on Google — technical, on-page, and local SEO that climbs the rankings.</span><span class="svc-arrow">→</span></div><div class="svc-item"><span class="svc-n">03</span><span class="svc-name">Paid Advertising</span><span class="svc-desc">Google &amp; Meta campaigns that put you in front of ready-to-buy customers.</span><span class="svc-arrow">→</span></div><div class="svc-item"><span class="svc-n">04</span><span class="svc-name">Brand &amp; Content</span><span class="svc-desc">Copy, creative, and a consistent brand people actually remember.</span><span class="svc-arrow">→</span></div></div></section>
+<section class="panel" id="p3"><canvas id="p3canvas"></canvas><div class="p3-label">What We Do</div><div class="services-list"><div class="svc-item"><span class="svc-n">01</span><span class="svc-name">Website Design &amp; Build</span><span class="svc-desc">Custom, fast, mobile-first sites built to turn visitors into customers.</span><span class="svc-arrow">→</span></div><div class="svc-item"><span class="svc-n">02</span><span class="svc-name">Search Engine Optimization</span><span class="svc-desc">Get found on Google — technical, on-page, and local SEO that climbs the rankings.</span><span class="svc-arrow">→</span></div><div class="svc-item"><span class="svc-n">03</span><span class="svc-name">Advertising Management</span><span class="svc-desc">Google &amp; Meta campaigns built, managed, and optimized — with clear reporting on every dollar.</span><span class="svc-arrow">→</span></div><div class="svc-item"><span class="svc-n">04</span><span class="svc-name">Brand &amp; Creative</span><span class="svc-desc">Ad creative and consistent branding that people actually remember.</span><span class="svc-arrow">→</span></div></div></section>
 
 <div style="position:relative;">
 <canvas id="vineCanvas"></canvas>
