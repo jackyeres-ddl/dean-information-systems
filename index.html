@@ -4,10 +4,10 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Dean Information Systems</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Barlow+Condensed:wght@200;400;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Barlow+Condensed:wght@200;400;700;900&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet"/>
 
 <link rel="canonical" href="https://www.deaninformationsystems.com/"/>
-<meta name="description" content="Dean Information Systems — veteran-owned IT firm in Tennessee. Network security, custom website design, and web administration with real, direct support."/>
+<meta name="description" content="Dean Information Systems — veteran-owned marketing agency in Tennessee. Website design, SEO, and Google &amp; Meta ads that turn attention into revenue, with real, direct support."/>
 <meta name="theme-color" content="#0a1728"/>
 
 <!-- Favicons / icons -->
@@ -20,26 +20,26 @@
 <!-- Open Graph / social preview -->
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Dean Information Systems"/>
-<meta property="og:title" content="Dean Information Systems — Veteran-Owned IT &amp; Security"/>
-<meta property="og:description" content="Network security, custom website design, and web administration with real, direct support. Veteran-owned, Tennessee."/>
+<meta property="og:title" content="Dean Information Systems — Veteran-Owned Marketing Agency"/>
+<meta property="og:description" content="Website design, SEO, and Google &amp; Meta ads that turn attention into revenue. Real, direct support. Veteran-owned, Tennessee."/>
 <meta property="og:url" content="https://www.deaninformationsystems.com/"/>
 <meta property="og:image" content="https://www.deaninformationsystems.com/web-app-manifest-512x512.png"/>
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Dean Information Systems — Veteran-Owned IT &amp; Security"/>
-<meta name="twitter:description" content="Network security, custom website design, and web administration with real, direct support. Veteran-owned, Tennessee."/>
+<meta name="twitter:title" content="Dean Information Systems — Veteran-Owned Marketing Agency"/>
+<meta name="twitter:description" content="Website design, SEO, and Google &amp; Meta ads that turn attention into revenue. Real, direct support. Veteran-owned, Tennessee."/>
 <meta name="twitter:image" content="https://www.deaninformationsystems.com/web-app-manifest-512x512.png"/>
 
 <!-- Organization structured data — helps Google associate your logo with the brand -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   "name": "Dean Information Systems",
   "alternateName": "Dean IS",
   "url": "https://www.deaninformationsystems.com/",
   "logo": "https://www.deaninformationsystems.com/web-app-manifest-512x512.png",
   "image": "https://www.deaninformationsystems.com/web-app-manifest-512x512.png",
-  "description": "Veteran-owned IT firm in Tennessee providing network security, custom website design, and web administration.",
+  "description": "Veteran-owned marketing agency in Tennessee providing website design, SEO, and Google & Meta advertising.",
   "email": "management@deaninformationsystems.com",
   "telephone": "+1-615-651-3603",
   "areaServed": "US",
@@ -79,6 +79,18 @@ html,body{max-width:100%;}
 #sidenav a:hover span{opacity:1;}
 
 .panel{position:relative;width:100%;min-height:100vh;overflow:hidden;display:flex;}
+
+/* ── MEDIA BACKGROUNDS (real video behind the floral canvas) ── */
+.panel-media{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:var(--bg0);}
+.panel-media video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover;filter:saturate(1.06) contrast(1.02);}
+.panel-scrim{position:absolute;inset:0;z-index:0;pointer-events:none;}
+#p0 .panel-scrim{background:
+  radial-gradient(ellipse 100% 82% at 50% 42%, rgba(4,10,22,.34) 0%, rgba(3,8,17,.72) 60%, rgba(1,4,11,.93) 100%),
+  linear-gradient(to bottom, rgba(2,6,14,.3) 0%, transparent 22%, transparent 74%, rgba(2,5,12,.6) 100%);}
+#p7 .panel-media{background:transparent;}
+#p7 .panel-scrim{background:
+  radial-gradient(ellipse 90% 80% at 40% 44%, rgba(6,14,28,.28) 0%, rgba(5,12,23,.68) 66%, rgba(4,10,20,.9) 100%);}
+@media(prefers-reduced-motion:reduce){.panel-media video{display:none;}}
 
 /* ── P0 HERO ── */
 #p0{background:var(--bg0);align-items:center;justify-content:center;flex-direction:column;height:100vh;}
@@ -285,6 +297,8 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
       radial-gradient(60% 40% at 88% 46%, rgba(16,96,160,.09), transparent 70%),
       radial-gradient(55% 38% at 8% 80%, rgba(41,163,216,.07), transparent 70%);}
   #p0,#p1,#p2,#p3,#p4,#p5,#p6,#p7{background:transparent !important;}
+  /* Video backgrounds are desktop-only — mobile keeps the seamless gradient + floral treatment */
+  .panel-media{display:none !important;}
   #p0{padding:0;}
   #p2{padding:80px 0;}
   #p3{padding:80px 24px;}
@@ -578,78 +592,67 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
 <nav id="sidenav"><a href="#p0" class="active"><span>Open</span></a><a href="#p1"><span>Identity</span></a><a href="#p2"><span>Ethos</span></a><a href="#p3"><span>Services</span></a><a href="#p4"><span>Why Dean</span></a><a href="#p5"><span>Process</span></a><a href="#p6"><span>Pricing</span></a><a href="#p7"><span>Contact</span></a></nav>
 
 <section class="panel" id="p0">
+  <div class="panel-media"><video src="media/hero-ink.mp4" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video></div>
+  <div class="panel-scrim"></div>
   <canvas id="p0canvas"></canvas>
   <div class="p0-eyebrow">Veteran-Owned &amp; Operated &nbsp;·&nbsp; Tennessee</div>
   <div class="p0-logo-wrap">
     <svg viewBox="0 0 424 145" xmlns="http://www.w3.org/2000/svg" style="width:min(500px,88vw);height:auto;">
       <defs>
-        <linearGradient id="gN" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#1565a8"/><stop offset="100%" stop-color="#29a3d8"/></linearGradient>
-        <linearGradient id="gAR" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#aad4f5"/><stop offset="100%" stop-color="#29a3d8"/></linearGradient>
-        <linearGradient id="gTri" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#7ec8f0"/></linearGradient>
+        <linearGradient id="gWord" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#ffffff"/>
+          <stop offset="0.5" stop-color="#eaf5fc"/>
+          <stop offset="0.74" stop-color="#6fc0e9"/>
+          <stop offset="1" stop-color="#1f9ad4"/>
+        </linearGradient>
       </defs>
-      <rect x="0"  y="0"  width="14" height="100" fill="#fff"/>
-      <rect x="0"  y="0"  width="66" height="14"  fill="#fff"/>
-      <rect x="0"  y="86" width="66" height="14"  fill="#fff"/>
-      <rect x="58" y="0"  width="14" height="30"  fill="#fff"/>
-      <rect x="58" y="70" width="14" height="30"  fill="#fff"/>
-      <rect x="68" y="26" width="10" height="48"  fill="#fff"/>
-      <rect x="0"  y="36" width="70" height="10"  fill="rgba(255,255,255,0.68)"/>
-      <rect x="0"  y="54" width="70" height="10"  fill="rgba(255,255,255,0.68)"/>
-      <rect x="106" y="0"  width="14" height="100" fill="#fff"/>
-      <rect x="106" y="0"  width="82" height="14"  fill="#fff"/>
-      <rect x="106" y="43" width="66" height="14"  fill="#fff"/>
-      <rect x="106" y="86" width="82" height="14"  fill="#fff"/>
-      <rect    x="226" y="62" width="60" height="10"  fill="rgba(255,255,255,0.38)"/>
-      <polygon points="212,100 230,100 248,0 230,0"   fill="#fff"/>
-      <polygon points="262,0 280,0 298,100 280,100"   fill="url(#gAR)"/>
-      <polygon points="239,0 271,0 262,54 248,54"     fill="url(#gTri)"/>
-      <rect    x="318" y="0"  width="16" height="100" fill="url(#gN)"/>
-      <rect    x="390" y="0"  width="16" height="100" fill="#29a3d8"/>
-      <polygon points="318,0 340,0 406,100 384,100"   fill="url(#gN)"/>
-      <text x="255" y="132" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-weight="300" font-size="11.5" fill="rgba(255,255,255,0.82)" letter-spacing="8.5" text-anchor="middle">INFORMATION SYSTEMS</text>
+      <text x="212" y="86" text-anchor="middle" font-family="'Montserrat',sans-serif" font-weight="800" font-size="100" letter-spacing="4" fill="url(#gWord)">DEAN</text>
+      <text x="212" y="122" font-family="'Montserrat',sans-serif" font-weight="500" font-size="11" fill="rgba(255,255,255,0.82)" letter-spacing="7" text-anchor="middle">INFORMATION SYSTEMS</text>
     </svg>
   </div>
   <div class="p0-scroll">Scroll</div>
 </section>
 
-<section class="panel" id="p1"><canvas id="p1canvas"></canvas><div class="p1-vignette"></div><div class="p1-content"><div class="p1-eyebrow">Veteran-Owned &nbsp;·&nbsp; Tennessee</div><div class="p1-h">Secure<br>your digital<br>foundation.<em>Strength &amp; beauty<br>in everything we build.</em></div><div class="p1-cta"><button class="btn-open" onclick="document.getElementById('p7').scrollIntoView({behavior:'smooth'})">Let Us Contact You</button><button class="btn-text" onclick="document.getElementById('p3').scrollIntoView({behavior:'smooth'})">Our Services ↓</button></div></div></section>
+<section class="panel" id="p1"><canvas id="p1canvas"></canvas><div class="p1-vignette"></div><div class="p1-content"><div class="p1-eyebrow">Veteran-Owned &nbsp;·&nbsp; Tennessee</div><div class="p1-h">Marketing<br>that moves<br>the needle.<em>Websites, SEO &amp; ads<br>engineered to convert.</em></div><div class="p1-cta"><button class="btn-open" onclick="document.getElementById('p7').scrollIntoView({behavior:'smooth'})">Let Us Contact You</button><button class="btn-text" onclick="document.getElementById('p3').scrollIntoView({behavior:'smooth'})">What We Do ↓</button></div></div></section>
 
-<section class="panel" id="p2"><canvas id="p2canvas"></canvas><div class="p2-inner"><div class="p2-left"><div class="p2-num">4+</div><div class="p2-label">The Veteran Advantage</div><div class="p2-h">Mission-ready.<br><em>Every time.</em></div></div><div class="p2-rule-v"></div><div class="p2-right"><p><strong>Years of military service</strong> shaped a work ethic built on precision, accountability, and results.<br/><br/>We bring those qualities to every client engagement — <strong>no exceptions, no excuses, no shortcuts.</strong><br/><br/><strong>Discipline. Precision. Performance.</strong> Not buzzwords. A way of operating.</p></div></div></section>
+<section class="panel" id="p2"><canvas id="p2canvas"></canvas><div class="p2-inner"><div class="p2-left"><div class="p2-num">4+</div><div class="p2-label">The Veteran Advantage</div><div class="p2-h">Built to<br><em>perform.</em></div></div><div class="p2-rule-v"></div><div class="p2-right"><p><strong>Years of military service</strong> shaped a work ethic built on precision, accountability, and results.<br/><br/>We bring those qualities to every campaign — <strong>clear reporting, real ownership, and marketing tied to revenue, not vanity metrics.</strong><br/><br/><strong>Discipline. Precision. Performance.</strong> Not buzzwords. A way of operating.</p></div></div></section>
 
-<section class="panel" id="p3"><canvas id="p3canvas"></canvas><div class="p3-label">What We Deploy</div><div class="services-list"><div class="svc-item"><span class="svc-n">01</span><span class="svc-name">Network Security</span><span class="svc-desc">Audits, penetration testing, hardened defenses — built for your environment.</span><span class="svc-arrow">→</span></div><div class="svc-item"><span class="svc-n">02</span><span class="svc-name">Site Design &amp; Build</span><span class="svc-desc">Custom sites that load fast, look sharp, and represent your business with authority.</span><span class="svc-arrow">→</span></div><div class="svc-item"><span class="svc-n">03</span><span class="svc-name">Web Administration</span><span class="svc-desc">Ongoing management so your platform stays secure, fast, and always mission-ready.</span><span class="svc-arrow">→</span></div></div></section>
+<section class="panel" id="p3"><canvas id="p3canvas"></canvas><div class="p3-label">What We Do</div><div class="services-list"><div class="svc-item"><span class="svc-n">01</span><span class="svc-name">Website Design &amp; Build</span><span class="svc-desc">Custom, fast, mobile-first sites built to turn visitors into customers.</span><span class="svc-arrow">→</span></div><div class="svc-item"><span class="svc-n">02</span><span class="svc-name">Search Engine Optimization</span><span class="svc-desc">Get found on Google — technical, on-page, and local SEO that climbs the rankings.</span><span class="svc-arrow">→</span></div><div class="svc-item"><span class="svc-n">03</span><span class="svc-name">Paid Advertising</span><span class="svc-desc">Google &amp; Meta campaigns that put you in front of ready-to-buy customers.</span><span class="svc-arrow">→</span></div><div class="svc-item"><span class="svc-n">04</span><span class="svc-name">Brand &amp; Content</span><span class="svc-desc">Copy, creative, and a consistent brand people actually remember.</span><span class="svc-arrow">→</span></div></div></section>
 
 <div style="position:relative;">
 <canvas id="vineCanvas"></canvas>
 <section class="panel" id="p4"><div class="p4-label">Why Dean</div>
 <div class="vs-rows mobile-hide" id="vsRowsDesktop">
-  <div class="vs-row header"><div class="vs-cell topic">What you need</div><div class="vs-cell head-d">Dean IS</div><div class="vs-cell head-o">Wix / Squarespace</div></div>
-  <div class="vs-row"><div class="vs-cell topic">Security</div><div class="vs-cell dean"><span class="chk">✓</span>Custom threat monitoring &amp; penetration testing</div><div class="vs-cell"><span class="crs">—</span>Generic, shared platform security</div></div>
-  <div class="vs-row"><div class="vs-cell topic">Business Email</div><div class="vs-cell dean"><span class="chk">✓</span>Branded email included in your package</div><div class="vs-cell"><span class="crs">—</span>Requires a separate paid subscription</div></div>
-  <div class="vs-row"><div class="vs-cell topic">Data Ownership</div><div class="vs-cell dean"><span class="chk">✓</span>Your data stays yours. Always.</div><div class="vs-cell"><span class="crs">—</span>Platform harvests analytics for advertising</div></div>
-  <div class="vs-row"><div class="vs-cell topic">Human Contact</div><div class="vs-cell dean"><span class="chk">✓</span>A real person. Direct line. No ticket queue.</div><div class="vs-cell"><span class="crs">—</span>Ticket support. Hours to days for a reply.</div></div>
-  <div class="vs-row"><div class="vs-cell topic">Pricing</div><div class="vs-cell dean"><span class="chk">✓</span>Flat scope. No surprise fees. No paywalls.</div><div class="vs-cell"><span class="crs">—</span>Limited base plans. Features cost extra.</div></div>
+  <div class="vs-row header"><div class="vs-cell topic">What you need</div><div class="vs-cell head-d">Dean IS</div><div class="vs-cell head-o">DIY &amp; Big Agencies</div></div>
+  <div class="vs-row"><div class="vs-cell topic">Strategy</div><div class="vs-cell dean"><span class="chk">✓</span>A growth plan built around your goals &amp; market</div><div class="vs-cell"><span class="crs">—</span>Templates, guesswork, or one-size-fits-all</div></div>
+  <div class="vs-row"><div class="vs-cell topic">SEO</div><div class="vs-cell dean"><span class="chk">✓</span>Built in from day one — technical, on-page &amp; local</div><div class="vs-cell"><span class="crs">—</span>An afterthought, or a costly add-on</div></div>
+  <div class="vs-row"><div class="vs-cell topic">Advertising</div><div class="vs-cell dean"><span class="chk">✓</span>Google &amp; Meta managed by a real strategist</div><div class="vs-cell"><span class="crs">—</span>Boosted posts &amp; wasted ad spend</div></div>
+  <div class="vs-row"><div class="vs-cell topic">Reporting</div><div class="vs-cell dean"><span class="chk">✓</span>Clear monthly reports tied to revenue</div><div class="vs-cell"><span class="crs">—</span>Vanity metrics, or no reporting at all</div></div>
+  <div class="vs-row"><div class="vs-cell topic">Human Contact</div><div class="vs-cell dean"><span class="chk">✓</span>A real person. Direct line. No ticket queue.</div><div class="vs-cell"><span class="crs">—</span>Account managers &amp; ticket queues</div></div>
+  <div class="vs-row"><div class="vs-cell topic">Pricing</div><div class="vs-cell dean"><span class="chk">✓</span>Flat scope. No surprise fees. No long contracts.</div><div class="vs-cell"><span class="crs">—</span>Padded retainers &amp; lock-in contracts</div></div>
 </div>
 <div class="mobile-only mobile-compare">
-  <div class="compare-card"><div class="compare-topic">Security</div><div class="compare-sides"><div class="compare-side"><div class="compare-side-label">Dean IS</div><div class="compare-side-value">Custom threat monitoring and penetration testing built for your environment.</div></div><div class="compare-side alt"><div class="compare-side-label">Wix / Squarespace</div><div class="compare-side-value">Generic, shared platform security with far less control.</div></div></div></div>
-  <div class="compare-card"><div class="compare-topic">Business Email</div><div class="compare-sides"><div class="compare-side"><div class="compare-side-label">Dean IS</div><div class="compare-side-value">Branded business email included in your package.</div></div><div class="compare-side alt"><div class="compare-side-label">Wix / Squarespace</div><div class="compare-side-value">Usually requires a separate paid subscription.</div></div></div></div>
-  <div class="compare-card"><div class="compare-topic">Data Ownership</div><div class="compare-sides"><div class="compare-side"><div class="compare-side-label">Dean IS</div><div class="compare-side-value">Your data stays yours. Always.</div></div><div class="compare-side alt"><div class="compare-side-label">Wix / Squarespace</div><div class="compare-side-value">Platform analytics and ecosystem lock-in can limit ownership and flexibility.</div></div></div></div>
-  <div class="compare-card"><div class="compare-topic">Human Contact</div><div class="compare-sides"><div class="compare-side"><div class="compare-side-label">Dean IS</div><div class="compare-side-value">A real person with a direct line. No ticket queue.</div></div><div class="compare-side alt"><div class="compare-side-label">Wix / Squarespace</div><div class="compare-side-value">Ticket-style support with slower response times.</div></div></div></div>
-  <div class="compare-card"><div class="compare-topic">Pricing</div><div class="compare-sides"><div class="compare-side"><div class="compare-side-label">Dean IS</div><div class="compare-side-value">Flat scope, no surprise fees, and no feature paywalls.</div></div><div class="compare-side alt"><div class="compare-side-label">Wix / Squarespace</div><div class="compare-side-value">Lower entry pricing, but features and add-ons often cost extra.</div></div></div></div>
+  <div class="compare-card"><div class="compare-topic">Strategy</div><div class="compare-sides"><div class="compare-side"><div class="compare-side-label">Dean IS</div><div class="compare-side-value">A growth plan built around your goals and your market.</div></div><div class="compare-side alt"><div class="compare-side-label">DIY &amp; Big Agencies</div><div class="compare-side-value">Templates, guesswork, or one-size-fits-all playbooks.</div></div></div></div>
+  <div class="compare-card"><div class="compare-topic">SEO</div><div class="compare-sides"><div class="compare-side"><div class="compare-side-label">Dean IS</div><div class="compare-side-value">Built in from day one — technical, on-page, and local.</div></div><div class="compare-side alt"><div class="compare-side-label">DIY &amp; Big Agencies</div><div class="compare-side-value">An afterthought, or a costly add-on later.</div></div></div></div>
+  <div class="compare-card"><div class="compare-topic">Advertising</div><div class="compare-sides"><div class="compare-side"><div class="compare-side-label">Dean IS</div><div class="compare-side-value">Google and Meta campaigns managed by a real strategist.</div></div><div class="compare-side alt"><div class="compare-side-label">DIY &amp; Big Agencies</div><div class="compare-side-value">Boosted posts and wasted ad spend.</div></div></div></div>
+  <div class="compare-card"><div class="compare-topic">Reporting</div><div class="compare-sides"><div class="compare-side"><div class="compare-side-label">Dean IS</div><div class="compare-side-value">Clear monthly reports tied to real revenue.</div></div><div class="compare-side alt"><div class="compare-side-label">DIY &amp; Big Agencies</div><div class="compare-side-value">Vanity metrics, or no reporting at all.</div></div></div></div>
+  <div class="compare-card"><div class="compare-topic">Human Contact</div><div class="compare-sides"><div class="compare-side"><div class="compare-side-label">Dean IS</div><div class="compare-side-value">A real person with a direct line. No ticket queue.</div></div><div class="compare-side alt"><div class="compare-side-label">DIY &amp; Big Agencies</div><div class="compare-side-value">Account managers and slow ticket queues.</div></div></div></div>
+  <div class="compare-card"><div class="compare-topic">Pricing</div><div class="compare-sides"><div class="compare-side"><div class="compare-side-label">Dean IS</div><div class="compare-side-value">Flat scope, no surprise fees, and no long contracts.</div></div><div class="compare-side alt"><div class="compare-side-label">DIY &amp; Big Agencies</div><div class="compare-side-value">Padded retainers and lock-in contracts.</div></div></div></div>
 </div>
 </section>
 
 <section class="panel" id="p5"><canvas id="p5canvas"></canvas><div class="p5-inner"><div class="p5-label">The Engagement Process</div>
 <div class="steps-line mobile-hide">
-  <div class="step-item"><div class="step-dot"></div><div class="step-n-label">Step 01</div><div class="step-h">Discovery Call</div><p class="step-p">Assess your digital posture, goals, and vulnerabilities. Free. Thirty minutes. No pressure.</p></div>
-  <div class="step-item"><div class="step-dot"></div><div class="step-n-label">Step 02</div><div class="step-h">Mission Brief</div><p class="step-p">A tailored proposal — scope, timeline, deliverables. No fluff. Just the plan.</p></div>
-  <div class="step-item"><div class="step-dot"></div><div class="step-n-label">Step 03</div><div class="step-h">Deployment</div><p class="step-p">Precision execution with regular updates. You always know where things stand.</p></div>
-  <div class="step-item"><div class="step-dot"></div><div class="step-n-label">Step 04</div><div class="step-h">Debrief &amp; Scale</div><p class="step-p">Review, measure, advance. The mission doesn't end at launch.</p></div>
+  <div class="step-item"><div class="step-dot"></div><div class="step-n-label">Step 01</div><div class="step-h">Discovery Call</div><p class="step-p">We learn your business, goals, and audience. Free. Thirty minutes. No pressure.</p></div>
+  <div class="step-item"><div class="step-dot"></div><div class="step-n-label">Step 02</div><div class="step-h">Strategy &amp; Proposal</div><p class="step-p">A tailored plan — scope, timeline, deliverables. No fluff. Just the roadmap.</p></div>
+  <div class="step-item"><div class="step-dot"></div><div class="step-n-label">Step 03</div><div class="step-h">Design &amp; Launch</div><p class="step-p">We build, refine, and launch — with regular updates so you always know where things stand.</p></div>
+  <div class="step-item"><div class="step-dot"></div><div class="step-n-label">Step 04</div><div class="step-h">Grow &amp; Optimize</div><p class="step-p">Track results, refine campaigns, and scale what works. Marketing doesn't end at launch.</p></div>
 </div>
 <div class="mobile-only mobile-steps">
-  <div class="mobile-step"><div class="mobile-step-num">Step 01</div><div class="mobile-step-title">Discovery Call</div><div class="mobile-step-copy">Assess your digital posture, goals, and vulnerabilities. Free. Thirty minutes. No pressure.</div></div>
-  <div class="mobile-step"><div class="mobile-step-num">Step 02</div><div class="mobile-step-title">Mission Brief</div><div class="mobile-step-copy">A tailored proposal with scope, timeline, and deliverables. No fluff. Just the plan.</div></div>
-  <div class="mobile-step"><div class="mobile-step-num">Step 03</div><div class="mobile-step-title">Deployment</div><div class="mobile-step-copy">Precision execution with regular updates so you always know where things stand.</div></div>
-  <div class="mobile-step"><div class="mobile-step-num">Step 04</div><div class="mobile-step-title">Debrief &amp; Scale</div><div class="mobile-step-copy">Review, measure, and advance. The mission does not end at launch.</div></div>
+  <div class="mobile-step"><div class="mobile-step-num">Step 01</div><div class="mobile-step-title">Discovery Call</div><div class="mobile-step-copy">We learn your business, goals, and audience. Free. Thirty minutes. No pressure.</div></div>
+  <div class="mobile-step"><div class="mobile-step-num">Step 02</div><div class="mobile-step-title">Strategy &amp; Proposal</div><div class="mobile-step-copy">A tailored plan with scope, timeline, and deliverables. No fluff. Just the roadmap.</div></div>
+  <div class="mobile-step"><div class="mobile-step-num">Step 03</div><div class="mobile-step-title">Design &amp; Launch</div><div class="mobile-step-copy">We build, refine, and launch with regular updates so you always know where things stand.</div></div>
+  <div class="mobile-step"><div class="mobile-step-num">Step 04</div><div class="mobile-step-title">Grow &amp; Optimize</div><div class="mobile-step-copy">Track results, refine campaigns, and scale what works. Marketing does not end at launch.</div></div>
 </div>
 </div></section>
 </div>
@@ -662,7 +665,7 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
     <div class="p6-pillars">
       <div class="pillar"><span class="pillar-i">i.</span><h4>No Hidden Fees</h4><p>What we quote is what you pay. No fine print.</p></div>
       <div class="pillar"><span class="pillar-i">ii.</span><h4>Flexible Scope</h4><p>Payment plans and phased approaches available.</p></div>
-      <div class="pillar"><span class="pillar-i">iii.</span><h4>Right-Sized</h4><p>No upselling on things you don't need.</p></div>
+      <div class="pillar"><span class="pillar-i">iii.</span><h4>Right-Sized</h4><p>No upselling on channels you don't need.</p></div>
     </div>
     <div class="p6-cta-row"><p class="p6-cta-text">Every service tier, every price — no gatekeeping.</p><a class="btn-sheet" href="pricing-guide.pdf" target="_blank" rel="noopener">View Pricing Sheet</a></div>
   </div>
@@ -670,7 +673,7 @@ footer{background:var(--bg1);padding:24px 72px;display:flex;align-items:center;j
 
 <section class="panel" id="p7">
   <canvas id="p7canvas"></canvas>
-  <div class="p7-left"><div class="p7-vignette"></div><div class="p7-left-content"><div class="p7-label">Ready to Start</div><div class="p7-h">Let us<em>contact you.</em></div><div class="p7-direct"><a class="p7-link" href="mailto:management@deaninformationsystems.com"><div class="p7-link-dot"></div>management@deaninformationsystems.com</a><a class="p7-link" href="tel:+16156513603"><div class="p7-link-dot"></div>(615) 651-3603</a></div></div></div>
+  <div class="p7-left"><div class="panel-media"><video src="media/hero-ink.mp4" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video></div><div class="panel-scrim"></div><div class="p7-vignette"></div><div class="p7-left-content"><div class="p7-label">Ready to Start</div><div class="p7-h">Let us<em>contact you.</em></div><div class="p7-direct"><a class="p7-link" href="mailto:management@deaninformationsystems.com"><div class="p7-link-dot"></div>management@deaninformationsystems.com</a><a class="p7-link" href="tel:+16156513603"><div class="p7-link-dot"></div>(615) 651-3603</a></div></div></div>
   <div class="p7-right"><div class="form-wrap" id="contactForm"><div class="f2"><div class="fg"><label>First Name</label><input type="text" id="fn" placeholder="Jane" autocomplete="given-name"/></div><div class="fg"><label>Last Name</label><input type="text" id="ln" placeholder="Smith" autocomplete="family-name"/></div></div><div class="fg"><label>Email</label><input type="email" id="em" placeholder="jane@yourbusiness.com" autocomplete="email"/></div><div class="fg"><label>Phone</label><input type="tel" id="ph" placeholder="(615) 555-0100" autocomplete="tel"/></div><div class="fg"><label>Business</label><input type="text" id="bz" placeholder="Acme Co." autocomplete="organization"/></div><div class="fg"><label>Industry</label><select id="bt" onchange="hBt()"><option value="" disabled selected>Select your industry</option><option>Retail</option><option>Restaurant / Food and Beverage</option><option>Healthcare / Medical</option><option>Legal / Professional Services</option><option>Construction / Trades</option><option>Real Estate</option><option>Technology</option><option>Non-Profit</option><option>Education</option><option>Fitness / Wellness</option><option>Creative / Marketing Agency</option><option>Other</option></select></div><div class="fg" id="otherField"><label>Describe your business</label><textarea id="od" placeholder="Tell us a little about what you do..."></textarea></div><button class="btn-submit" id="subBtn" onclick="submitForm()">Send Message</button></div><div class="form-success" id="formSuccess"><h3>Thank you.</h3><p>We'll be in touch within one business day.</p></div></div>
 </section>
 
@@ -687,8 +690,96 @@ var mob=window.innerWidth<=900;
 var reduceMotion=mob||(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 function sRng(s){return function(){s=(s*16807)%2147483647;return(s-1)/2147483646;};}
 
-var COLS=[[220,20,60],[255,20,100],[200,30,140],[160,30,200],[100,40,220],[40,120,230],[230,60,80],[255,80,150],[180,20,180],[80,50,200]];
+/* Cohesive on-brand botanical palette — mostly blues with two restrained warm accents,
+   so the florals read hand-arranged rather than randomly generated. */
+var COLS=[[41,163,216],[76,156,238],[160,214,255],[120,170,235],[90,130,205],[90,200,215],[130,190,245],[184,222,255],[232,205,150],[206,150,168]];
 function cs(c,a){return'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')';}
+
+/* ── REAL FLOWER SPRITES ──
+   Photographic blue blooms shot on black. We knock the black out to transparency
+   (luminance → alpha) and auto-crop to a tight bloom, then draw them through the
+   same grow/bloom system as the vector florals. Desktop only. */
+var FLORAL_SPRITES=[],spritesReady=false;
+(function(){
+  if(window.innerWidth<=900)return; // mobile keeps the lean vector florals
+  var SV='?v=3'; // bump to force-refresh sprite images past browser cache
+  var SRC=['media/flowers/f1.jpg'+SV,'media/flowers/f2.jpg'+SV,'media/flowers/f3.jpg'+SV,'media/flowers/f4.jpg'+SV,'media/flowers/f5.jpg'+SV,'media/flowers/f6.jpg'+SV,'media/flowers/f7.jpg'+SV];
+  var loaded=0;
+  function proc(img){
+    var w=img.naturalWidth,h=img.naturalHeight;if(!w||!h)return null;
+    var c=document.createElement('canvas');c.width=w;c.height=h;var x=c.getContext('2d');
+    x.drawImage(img,0,0);
+    var id;try{id=x.getImageData(0,0,w,h);}catch(e){return null;}
+    var d=id.data,lo=22,hi=82;
+    var colCount=new Int32Array(w),rowCount=new Int32Array(h),found=false;
+    for(var yy=0;yy<h;yy++){for(var xx=0;xx<w;xx++){
+      var i=(yy*w+xx)<<2,lum=d[i]*0.299+d[i+1]*0.587+d[i+2]*0.114;
+      var a=lum<=lo?0:(lum>=hi?255:((lum-lo)/(hi-lo)*255)|0);
+      if(a>0&&d[i+1]>d[i]+8&&d[i+1]>d[i+2]+8)a=0; // knock out all green (leaves/stems) — no green allowed
+      d[i+3]=a;
+      if(a>60){colCount[xx]++;rowCount[yy]++;found=true;}
+    }}
+    x.putImageData(id,0,0);
+    /* Density-based crop: ignore rows/cols whose bright coverage is a small fraction of
+       the peak — trims thin stalks and stray leaves, keeping only the dense flower head. */
+    var maxC=0,maxR=0,k,minX,minY,maxX,maxY;
+    for(k=0;k<w;k++)if(colCount[k]>maxC)maxC=colCount[k];
+    for(k=0;k<h;k++)if(rowCount[k]>maxR)maxR=rowCount[k];
+    if(!found||maxC===0||maxR===0){minX=0;minY=0;maxX=w-1;maxY=h-1;}
+    else{
+      var ct=maxC*0.22,rt=maxR*0.22;
+      minX=0;while(minX<w-1&&colCount[minX]<ct)minX++;
+      maxX=w-1;while(maxX>minX&&colCount[maxX]<ct)maxX--;
+      minY=0;while(minY<h-1&&rowCount[minY]<rt)minY++;
+      maxY=h-1;while(maxY>minY&&rowCount[maxY]<rt)maxY--;
+      var pad=(Math.max(maxX-minX,maxY-minY)*0.03)|0;
+      minX=Math.max(0,minX-pad);minY=Math.max(0,minY-pad);maxX=Math.min(w-1,maxX+pad);maxY=Math.min(h-1,maxY+pad);
+    }
+    var cw=maxX-minX+1,ch=maxY-minY+1;
+    var c2=document.createElement('canvas');c2.width=cw;c2.height=ch;
+    var m2=c2.getContext('2d');
+    m2.drawImage(c,minX,minY,cw,ch,0,0,cw,ch);
+    /* Elliptical edge-fade: keep only the central bloom, fade anything reaching the
+       frame edges (stalks, stray leaves, cluster tails) to full transparency. */
+    m2.globalCompositeOperation='destination-in';
+    m2.save();
+    m2.translate(cw/2,ch/2);m2.scale(cw/2,ch/2);
+    var mg=m2.createRadialGradient(0,0,0,0,0,1);
+    mg.addColorStop(0,'rgba(0,0,0,1)');
+    mg.addColorStop(0.66,'rgba(0,0,0,1)');
+    mg.addColorStop(1,'rgba(0,0,0,0)');
+    m2.fillStyle=mg;m2.fillRect(-1,-1,2,2);
+    m2.restore();
+    m2.globalCompositeOperation='source-over';
+    return c2;
+  }
+  SRC.forEach(function(src,idx){
+    var img=new Image();
+    img.onload=function(){var s=proc(img);if(s)FLORAL_SPRITES[idx]=s;if(++loaded>=SRC.length){FLORAL_SPRITES=FLORAL_SPRITES.filter(Boolean);spritesReady=FLORAL_SPRITES.length>0;}};
+    img.onerror=function(){if(++loaded>=SRC.length){FLORAL_SPRITES=FLORAL_SPRITES.filter(Boolean);spritesReady=FLORAL_SPRITES.length>0;}};
+    img.src=src;
+  });
+})();
+/* Draw a real-flower sprite in place of a vector bloom. Returns false if unavailable. */
+function drawSprite(ctx,idx,cx,cy,size,bl,a,rot,flip,t,ph){
+  if(!spritesReady)return false;
+  var spr=FLORAL_SPRITES[idx%FLORAL_SPRITES.length];if(!spr)return false;
+  var eb=bl*bl*(3-2*bl);                       // eased bloom (smoothstep)
+  var scale=0.58+0.42*eb;                       // open from 58%→100% so it never pops from nothing
+  var w=size*2.15*scale,h=w*(spr.height/spr.width);
+  if(w<1)return true;
+  ph=ph||0;
+  var rise=(1-eb)*size*0.6;                      // settle upward into place as it opens
+  var sway=Math.sin(t*0.55+ph)*size*0.05*eb;     // gentle, living drift
+  var settleRot=(rot||0)*(0.6+0.4*eb)+(1-eb)*0.22*(flip?-1:1); // rotate into place
+  ctx.save();
+  ctx.globalAlpha=Math.min(1,a)*eb*0.92;
+  ctx.translate(cx+sway,cy+rise);
+  ctx.rotate(settleRot);if(flip)ctx.scale(-1,1);
+  ctx.drawImage(spr,-w/2,-h/2,w,h);
+  ctx.restore();
+  return true;
+}
 
 /* ── PETAL PRIMITIVES ── */
 function ptl(ctx,cx,cy,a,l,w,c,al,bl){
@@ -738,7 +829,7 @@ function buildMobileAmbient(w,h,rng){
     });
   }
   // A few warm-toned ones
-  var warm=[[220,80,120],[180,40,200],[100,140,240]];
+  var warm=[[232,205,150],[206,150,168],[120,190,245]];
   for(var i=0;i<8;i++){
     pts.push({
       x:w*(0.08+rng()*0.84),
@@ -777,10 +868,10 @@ function drawMobileAmbient(ctx,pts,t,a){
 }
 
 /* ── Night sky / constellation (desktop P5/P7) ── */
-function buildNightSkyScene(w,h,rng,mode){var stars=[],clouds=[],sweeps=[],anchors=[],moon=null;var skyCols=[[160,214,255],[76,156,238],[238,114,178],[191,72,210],[255,92,120]];var starCount=mode==='p6'?(mob?48:90):(mob?34:56);for(var i=0;i<starCount;i++){var xb=mode==='p6'?Math.pow(rng(),.82):Math.pow(rng(),1.1);var yb=mode==='p6'?(0.18+rng()*.68):(0.06+rng()*.52);var col=skyCols[~~(rng()*skyCols.length)];stars.push({x:w*xb,y:h*yb,r:(mode==='p6'?.55:.5)+rng()*(mode==='p6'?1.35:1.05),tw:.35+rng()*.7,ph:rng()*Math.PI*2,drift:(rng()-.5)*(mode==='p6'?6:4),col:col,glow:rng()>.68,twinkle:rng()>(mode==='p6'?.9:.78)});}var cloudCount=mode==='p6'?3:2;for(var i=0;i<cloudCount;i++){clouds.push({x:w*(mode==='p6'?(0.22+i*.28+rng()*.08):(0.18+i*.24+rng()*.06)),y:h*(mode==='p6'?(0.72-rng()*.18):(0.28+rng()*.12)),r:(mode==='p6'?150:120)*(mob?.68:1)+(rng()*42),a:mode==='p6'?.1:.08});}if(mode==='p6'){sweeps.push({sx:w*.12,sy:h*.82,c1x:w*.24,c1y:h*.74,ex:w*.36,ey:h*.7,a:.045});sweeps.push({sx:w*.52,sy:h*.7,c1x:w*.62,c1y:h*.62,ex:w*.74,ey:h*.58,a:.04});for(var i=0;i<(mob?6:10);i++)anchors.push({x:w*(.18+i*(mob?.12:.075)),y:h*(.8-i*(mob?.032:.026)+rng()*.02),r:1+rng()*1.1});}else{sweeps.push({sx:w*.06,sy:h*.22,c1x:w*.18,c1y:h*.16,ex:w*.3,ey:h*.18,a:.05});sweeps.push({sx:w*.22,sy:h*.58,c1x:w*.3,c1y:h*.54,ex:w*.38,ey:h*.56,a:.035});for(var i=0;i<(mob?4:7);i++)anchors.push({x:w*(.12+i*(mob?.16:.08)),y:h*(.58-i*(mob?.05:.036)+rng()*.015),r:.9+rng()*.9});moon={x:w*(mob?.16:.2),y:h*(mob?.16:.18),r:(mob?24:34),phase:.22+rng()*.1};}return{stars:stars,clouds:clouds,sweeps:sweeps,anchors:anchors,moon:moon,w:w,h:h,mode:mode};}
+function buildNightSkyScene(w,h,rng,mode){var stars=[],clouds=[],sweeps=[],anchors=[],moon=null;var skyCols=[[160,214,255],[76,156,238],[120,190,245],[184,222,255],[232,205,150]];var starCount=mode==='p6'?(mob?48:90):(mob?34:56);for(var i=0;i<starCount;i++){var xb=mode==='p6'?Math.pow(rng(),.82):Math.pow(rng(),1.1);var yb=mode==='p6'?(0.18+rng()*.68):(0.06+rng()*.52);var col=skyCols[~~(rng()*skyCols.length)];stars.push({x:w*xb,y:h*yb,r:(mode==='p6'?.55:.5)+rng()*(mode==='p6'?1.35:1.05),tw:.35+rng()*.7,ph:rng()*Math.PI*2,drift:(rng()-.5)*(mode==='p6'?6:4),col:col,glow:rng()>.68,twinkle:rng()>(mode==='p6'?.9:.78)});}var cloudCount=mode==='p6'?3:2;for(var i=0;i<cloudCount;i++){clouds.push({x:w*(mode==='p6'?(0.22+i*.28+rng()*.08):(0.18+i*.24+rng()*.06)),y:h*(mode==='p6'?(0.72-rng()*.18):(0.28+rng()*.12)),r:(mode==='p6'?150:120)*(mob?.68:1)+(rng()*42),a:mode==='p6'?.1:.08});}if(mode==='p6'){sweeps.push({sx:w*.12,sy:h*.82,c1x:w*.24,c1y:h*.74,ex:w*.36,ey:h*.7,a:.045});sweeps.push({sx:w*.52,sy:h*.7,c1x:w*.62,c1y:h*.62,ex:w*.74,ey:h*.58,a:.04});for(var i=0;i<(mob?6:10);i++)anchors.push({x:w*(.18+i*(mob?.12:.075)),y:h*(.8-i*(mob?.032:.026)+rng()*.02),r:1+rng()*1.1});}else{sweeps.push({sx:w*.06,sy:h*.22,c1x:w*.18,c1y:h*.16,ex:w*.3,ey:h*.18,a:.05});sweeps.push({sx:w*.22,sy:h*.58,c1x:w*.3,c1y:h*.54,ex:w*.38,ey:h*.56,a:.035});for(var i=0;i<(mob?4:7);i++)anchors.push({x:w*(.12+i*(mob?.16:.08)),y:h*(.58-i*(mob?.05:.036)+rng()*.015),r:.9+rng()*.9});moon={x:w*(mob?.16:.2),y:h*(mob?.16:.18),r:(mob?24:34),phase:.22+rng()*.1};}return{stars:stars,clouds:clouds,sweeps:sweeps,anchors:anchors,moon:moon,w:w,h:h,mode:mode};}
 function drawNightSkyScene(ctx,data,reveal,a,t){if(!data||a<.02||reveal<.02)return;ctx.save();if(data.moon){var moonGlow=ctx.createRadialGradient(data.moon.x,data.moon.y,0,data.moon.x,data.moon.y,data.moon.r*2.8);moonGlow.addColorStop(0,'rgba(255,244,214,'+(a*.12*reveal).toFixed(3)+')');moonGlow.addColorStop(.45,'rgba(214,204,255,'+(a*.05*reveal).toFixed(3)+')');moonGlow.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=moonGlow;ctx.beginPath();ctx.arc(data.moon.x,data.moon.y,data.moon.r*2.8,0,Math.PI*2);ctx.fill();ctx.fillStyle='rgba(250,244,224,'+(a*.75*reveal).toFixed(3)+')';ctx.beginPath();ctx.arc(data.moon.x,data.moon.y,data.moon.r,0,Math.PI*2);ctx.fill();ctx.fillStyle='rgba(9,20,36,'+(a*.95*reveal).toFixed(3)+')';ctx.beginPath();ctx.arc(data.moon.x+data.moon.r*data.moon.phase,data.moon.y-data.moon.r*.08,data.moon.r*.95,0,Math.PI*2);ctx.fill();}for(var i=0;i<data.clouds.length;i++){var c=data.clouds[i];var grd=ctx.createRadialGradient(c.x,c.y,0,c.x,c.y,c.r);grd.addColorStop(0,'rgba(70,130,210,'+(a*c.a*reveal).toFixed(3)+')');grd.addColorStop(.5,'rgba(28,68,120,'+(a*c.a*.45*reveal).toFixed(3)+')');grd.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=grd;ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,Math.PI*2);ctx.fill();}for(var i=0;i<data.stars.length;i++){var s=data.stars[i],tw=.45+.55*Math.sin(t*s.tw+s.ph);var alpha=a*(.1+tw*.28+(s.twinkle?tw*.2:0))*reveal;var x=s.x+s.drift*Math.sin(t*.18+s.ph);var rr=s.r*(.88+tw*.18+(s.twinkle?tw*.2:0));if(s.glow){var glow=ctx.createRadialGradient(x,s.y,0,x,s.y,rr*5);glow.addColorStop(0,'rgba('+s.col[0]+','+s.col[1]+','+s.col[2]+','+(alpha*.18).toFixed(3)+')');glow.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=glow;ctx.beginPath();ctx.arc(x,s.y,rr*5,0,Math.PI*2);ctx.fill();}ctx.fillStyle='rgba('+s.col[0]+','+s.col[1]+','+s.col[2]+','+alpha.toFixed(3)+')';ctx.beginPath();ctx.arc(x,s.y,rr,0,Math.PI*2);ctx.fill();}ctx.restore();}
 
-function buildConstellationDean(bounds,rng){var text='Dean';var fontSize=Math.min(bounds.w*(mob?.36:.21),bounds.h*(mob?.44:.2));fontSize=Math.max(96,fontSize);var off=document.createElement('canvas'),ox=off.getContext('2d');off.width=Math.max(320,Math.round(bounds.w));off.height=Math.max(mob?210:160,Math.round(bounds.h*.42));ox.clearRect(0,0,off.width,off.height);ox.font='italic 700 '+fontSize+'px "Cormorant Garamond", serif';ox.textBaseline='middle';var metrics=ox.measureText(text);var tx=(off.width-metrics.width)/2;var ty=off.height*.56;ox.fillStyle='#fff';ox.fillText(text,tx,ty);var img=ox.getImageData(0,0,off.width,off.height).data;var step=mob?9:10,stars=[],ambient=[];var palette=[[160,214,255],[76,156,238],[238,114,178],[191,72,210],[255,92,120]];for(var y=0;y<off.height;y+=step){for(var x=0;x<off.width;x+=step){var idx=(y*off.width+x)*4+3;if(img[idx]>150&&rng()>.18){var col=palette[~~(rng()*palette.length)];stars.push({x:bounds.x+x,y:bounds.y+bounds.h*.08+y,r:(mob?1.4:1.7)+rng()*.9,color:col,tw:.6+rng()*.8,ph:rng()*Math.PI*2,edge:rng()>.72});}}}for(var i=0;i<(mob?14:22);i++)ambient.push({x:bounds.x+bounds.w*(.08+rng()*.82),y:bounds.y+bounds.h*(.08+rng()*.34),r:.5+rng()*.9,ph:rng()*Math.PI*2,tw:.35+rng()*.5,color:palette[~~(rng()*palette.length)]});return{text:text,fontSize:fontSize,bounds:bounds,stars:stars,ambient:ambient};}
+function buildConstellationDean(bounds,rng){var text='Dean';var fontSize=Math.min(bounds.w*(mob?.36:.21),bounds.h*(mob?.44:.2));fontSize=Math.max(96,fontSize);var off=document.createElement('canvas'),ox=off.getContext('2d');off.width=Math.max(320,Math.round(bounds.w));off.height=Math.max(mob?210:160,Math.round(bounds.h*.42));ox.clearRect(0,0,off.width,off.height);ox.font='italic 700 '+fontSize+'px "Cormorant Garamond", serif';ox.textBaseline='middle';var metrics=ox.measureText(text);var tx=(off.width-metrics.width)/2;var ty=off.height*.56;ox.fillStyle='#fff';ox.fillText(text,tx,ty);var img=ox.getImageData(0,0,off.width,off.height).data;var step=mob?9:10,stars=[],ambient=[];var palette=[[160,214,255],[76,156,238],[120,190,245],[184,222,255],[232,205,150]];for(var y=0;y<off.height;y+=step){for(var x=0;x<off.width;x+=step){var idx=(y*off.width+x)*4+3;if(img[idx]>150&&rng()>.18){var col=palette[~~(rng()*palette.length)];stars.push({x:bounds.x+x,y:bounds.y+bounds.h*.08+y,r:(mob?1.4:1.7)+rng()*.9,color:col,tw:.6+rng()*.8,ph:rng()*Math.PI*2,edge:rng()>.72});}}}for(var i=0;i<(mob?14:22);i++)ambient.push({x:bounds.x+bounds.w*(.08+rng()*.82),y:bounds.y+bounds.h*(.08+rng()*.34),r:.5+rng()*.9,ph:rng()*Math.PI*2,tw:.35+rng()*.5,color:palette[~~(rng()*palette.length)]});return{text:text,fontSize:fontSize,bounds:bounds,stars:stars,ambient:ambient};}
 function drawConstellationDean(ctx,data,bloom,a,t){if(!data||a<.02||bloom<.02)return;ctx.save();var reveal=Math.max(0,Math.min(1,bloom*1.04));ctx.font='italic 700 '+data.fontSize+'px "Cormorant Garamond", serif';ctx.textBaseline='middle';ctx.fillStyle='rgba(230,238,248,'+(a*.08*reveal).toFixed(3)+')';ctx.fillText(data.text,data.bounds.x+data.bounds.w*.18,data.bounds.y+data.bounds.h*.26+2);for(var i=0;i<data.stars.length;i++){var s=data.stars[i],prog=Math.max(0,Math.min(1,(reveal-(s.x-data.bounds.x)/Math.max(1,data.bounds.w)*.92)/.18));if(prog<.02)continue;var twk=.62+.38*Math.sin(t*s.tw+s.ph);var r=s.r*(.86+.24*twk)*prog;ctx.fillStyle='rgba('+s.color[0]+','+s.color[1]+','+s.color[2]+','+(a*(.42+.34*twk)*prog).toFixed(3)+')';ctx.beginPath();ctx.arc(s.x,s.y,r,0,Math.PI*2);ctx.fill();}ctx.restore();}
 
 function buildP7Garden(w,h,sc,rng){var items=[];var baseY=h*(mob?.96:.98);var clusters=mob?7:12;for(var i=0;i<clusters;i++){var zone=i/(clusters-1);var bx=w*(.16+zone*.72)+(rng()-.5)*24*sc;var stemH=(28+rng()*74)*sc;items.push({type:TYPES[~~(rng()*4)],bx:bx,stemH:stemH,size:(8+rng()*20)*sc,col:COLS[~~(rng()*COLS.length)],delay:.14+i*.028+rng()*.03,sway:(rng()-.5)*12,baseY:baseY});}return items;}
@@ -829,9 +920,19 @@ function setup(){
     D.p7={sky:buildNightSkyScene(p7LeftBounds.w,p7LeftBounds.h,sRng(777),'p7'),skyBounds:p7LeftBounds,dean:buildConstellationDean(p7LeftBounds,sRng(888)),gardenF:buildP7Garden(p7LeftBounds.w,p7LeftBounds.h,sc,sRng(889))};
     D.p6={sky:buildNightSkyScene(C6.width,C6.height,sRng(666),'p6'),florals:buildP6Florals(C6.width,C6.height,sc,sRng(667))};
     // P0–P5 desktop data
-    var rr0=sRng(42),f0=[],cx0=C0.width*.5,cy0=C0.height*.48;
-    var rings=[{n:12,min:70,max:160,sMin:48,sMax:92},{n:10,min:145,max:265,sMin:36,sMax:72},{n:8,min:215,max:345,sMin:26,sMax:58}];
-    for(var ri=0;ri<rings.length;ri++){var R=rings[ri];for(var i=0;i<R.n;i++){var a2=(i/R.n)*Math.PI*2+rr0()*.4-Math.PI*.5,d2=(R.min+rr0()*(R.max-R.min))*(mob?.62:1),sz2=(R.sMin+rr0()*(R.sMax-R.sMin))*fsc;f0.push({type:TYPES[~~(rr0()*4)],ox:Math.cos(a2)*d2,oy:Math.sin(a2)*d2*.7,size:sz2,col:COLS[~~(rr0()*COLS.length)],delay:ri*.1+rr0()*.18,stemA:a2+Math.PI});}}
+    var rr0=sRng(42),f0=[],cx0=C0.width*.5,cy0=C0.height*.493;
+    /* Flowers fill a soft ellipse hugging the DEAN wordmark — a natural bed behind and
+       around the word, and nothing outside it. Desktop px are fixed (logo is a fixed
+       500px wide); mobile scales with the canvas. Sizes ease down toward the rim and the
+       per-sprite edge-mask softens the boundary, so no bloom spills past the ellipse. */
+    var ax=(mob?C0.width*.40:182), ay=(mob?C0.height*.10:84);
+    var N=(mob?15:24);
+    for(var i=0;i<N;i++){
+      var ang=rr0()*Math.PI*2, rad=Math.sqrt(rr0());   // uniform-area fill of the ellipse
+      var ox=Math.cos(ang)*rad*ax, oy=Math.sin(ang)*rad*ay;
+      var sz2=((mob?18:26)+rr0()*(mob?24:48))*(1-0.30*rad)*fsc;
+      f0.push({type:TYPES[~~(rr0()*4)],ox:ox,oy:oy,size:sz2,col:COLS[~~(rr0()*COLS.length)],delay:0.05+rad*0.12+rr0()*0.14,sprite:~~(rr0()*7),rot:(rr0()-.5)*0.8,flip:rr0()>.5,ph:rr0()*6.283});
+    }
     D.p0={cx:cx0,cy:cy0,f:f0};
     var rr1=sRng(137),f1=[],cx1b=C1.width*.62,cy1b=C1.height*.38;
     var bc=26;for(var i=0;i<bc;i++){var a3=(i/bc)*Math.PI*2+rr1()*.6,d3=(30+rr1()*290)*(mob?.55:1),sz3=(22+rr1()*85)*fsc;f1.push({type:TYPES[~~(rr1()*4)],ox:Math.cos(a3)*d3+(rr1()-.5)*55*(mob?.55:1),oy:Math.sin(a3)*d3*.78+(rr1()-.5)*45*(mob?.55:1),size:sz3,col:COLS[~~(rr1()*COLS.length)],delay:rr1()*.32,sa:a3});}
@@ -974,7 +1075,7 @@ function render(ts){
   var intro=reduceMotion?1:Math.min(1,t/3);
 
   // Unified render — desktop draws every panel; mobile culls to on-screen panels only
-  if(C0&&x0&&(!mob||iv('p0'))){x0.clearRect(0,0,C0.width,C0.height);(function(){var g=D.p0,sp=sP(document.getElementById('p0'));var a=sp<.5?1:Math.max(0,1-(sp-.5)*3);a*=intro;if(a<.02)return;for(var i=0;i<g.f.length;i++){var f=g.f[i],bl=Math.max(0,Math.min(1,(intro-f.delay)/.8));if(bl<.02)continue;var fx=g.cx+f.ox,fy=g.cy+f.oy;if(f.stemA!==undefined)drawStem(x0,fx,fy,fx+Math.cos(f.stemA)*f.size*1.1,fy+Math.sin(f.stemA)*f.size*1.1,bl,a*.45,1.8);drawF(x0,f.type,fx,fy,f.size,bl,a*(mob?.6:.9),f.col);}})();if(mob&&D.p0Mobile){var mI=Math.min(1,t/2);drawMobileAmbient(x0,D.p0Mobile.ambient,t,mI*.55);}}
+  if(C0&&x0&&(!mob||iv('p0'))){x0.clearRect(0,0,C0.width,C0.height);(function(){var g=D.p0,sp=sP(document.getElementById('p0'));var a=sp<.5?1:Math.max(0,1-(sp-.5)*3);a*=intro;if(a<.02)return;for(var i=0;i<g.f.length;i++){var f=g.f[i],bl=Math.max(0,Math.min(1,(intro-f.delay)/.8));if(bl<.02)continue;var fx=g.cx+f.ox,fy=g.cy+f.oy;var usedSprite=!mob&&drawSprite(x0,f.sprite,fx,fy,f.size,bl,a*.9,f.rot,f.flip,t,f.ph);if(!usedSprite){if(f.stemA!==undefined)drawStem(x0,fx,fy,fx+Math.cos(f.stemA)*f.size*1.1,fy+Math.sin(f.stemA)*f.size*1.1,bl,a*.45,1.8);drawF(x0,f.type,fx,fy,f.size,bl,a*(mob?.6:.9),f.col);}}})();if(mob&&D.p0Mobile){var mI=Math.min(1,t/2);drawMobileAmbient(x0,D.p0Mobile.ambient,t,mI*.55);}}
   if(C1&&x1&&(!mob||iv('p1'))){x1.clearRect(0,0,C1.width,C1.height);(function(){var g=D.p1,sp=sP(document.getElementById('p1'));var bloom=smooth01((sp-.1)/.42);var a=sp>.9?Math.max(0,1-(sp-.9)*6):Math.min(1,sp*3.5);if(a<.02||bloom<.02)return;x1.save();for(var i=0;i<g.st.length;i++){var s=g.st[i],sb=smooth01((bloom-.04)/.58);if(sb<.02)continue;x1.globalAlpha=a*sb*.5;x1.strokeStyle=cs(s.col,.65);x1.lineWidth=s.w*sb;x1.lineCap='round';x1.beginPath();x1.moveTo(g.cx,g.cy);var ex=g.cx+Math.cos(s.a)*s.len*sb,ey=g.cy+Math.sin(s.a)*s.len*sb;x1.quadraticCurveTo(g.cx+Math.cos(s.a)*s.len*.5*sb+s.cv,g.cy+Math.sin(s.a)*s.len*.5*sb-s.cv*.5,ex,ey);x1.stroke();}x1.restore();for(var i=0;i<g.f.length;i++){var f=g.f[i],bl=smooth01((bloom-f.delay)/.52);if(bl<.02)continue;drawF(x1,f.type,g.cx+f.ox*bl,g.cy+f.oy*bl,f.size,bl,a*(mob?.55:.82),f.col);}})();}
   if(C2&&x2&&(!mob||iv('p2'))){x2.clearRect(0,0,C2.width,C2.height);(function(){var g=D.p2,sp=sP(document.getElementById('p2'));var bloom=smooth01((sp-.08)/.5);var a=sp>.92?Math.max(0,1-(sp-.92)*6):Math.min(1,(sp-.03)*4);if(a<.02||bloom<.02)return;for(var i=0;i<g.f.length;i++){var f=g.f[i],bl=smooth01((bloom-f.delay)/.65);if(bl<.02)continue;var tx=f.bx+f.sway*bl,ty=g.base-f.stemH*bl;drawStem(x2,f.bx,g.base,tx,ty,bl,a*.65,2.2);var fb=smooth01((bl-.35)/.65);if(fb>.02)drawF(x2,f.type,tx,ty,f.size,fb,a*.85,f.col);}})();}
   if(C3&&x3&&(!mob||iv('p3'))){x3.clearRect(0,0,C3.width,C3.height);(function(){var g=D.p3,sp=sP(document.getElementById('p3'));var bloom=smooth01((sp-.08)/.52);var a=sp>.92?Math.max(0,1-(sp-.92)*6):Math.min(1,(sp-.04)*4);if(a<.02||bloom<.02)return;drawVine(x3,g.vinePts,bloom,a);})();}
